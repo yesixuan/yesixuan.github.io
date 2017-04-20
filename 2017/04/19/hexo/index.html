@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="首先贴出两个网址hexo的使用教程http://www.jianshu.com/p/465830080ea9 nextT主题的替换教程http://www.tuicool.com/articles/zeIZJzv">
+<meta name="description" content="首先贴出两个网址  (hexo的使用教程)[http://www.jianshu.com/p/465830080ea9](nextT主题的替换教程)[http://www.tuicool.com/articles/zeIZJzv]">
 <meta name="keywords" content="hexo,nextT,blog,静态博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我是用hexo搭建个人博客的经历">
 <meta property="og:url" content="http://yoursite.com/2017/04/19/hexo/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="首先贴出两个网址hexo的使用教程http://www.jianshu.com/p/465830080ea9 nextT主题的替换教程http://www.tuicool.com/articles/zeIZJzv">
-<meta property="og:updated_time" content="2017-04-20T05:56:07.543Z">
+<meta property="og:description" content="首先贴出两个网址  (hexo的使用教程)[http://www.jianshu.com/p/465830080ea9](nextT主题的替换教程)[http://www.tuicool.com/articles/zeIZJzv]">
+<meta property="og:updated_time" content="2017-04-20T06:30:34.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
-<meta name="twitter:description" content="首先贴出两个网址hexo的使用教程http://www.jianshu.com/p/465830080ea9 nextT主题的替换教程http://www.tuicool.com/articles/zeIZJzv">
+<meta name="twitter:description" content="首先贴出两个网址  (hexo的使用教程)[http://www.jianshu.com/p/465830080ea9](nextT主题的替换教程)[http://www.tuicool.com/articles/zeIZJzv]">
 
 
 
@@ -344,9 +344,11 @@
       
 
       
-        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><h4 id="hexo的使用教程"><a href="#hexo的使用教程" class="headerlink" title="hexo的使用教程"></a>hexo的使用教程</h4><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">http://www.jianshu.com/p/465830080ea9</a></p>
-<h4 id="nextT主题的替换教程"><a href="#nextT主题的替换教程" class="headerlink" title="nextT主题的替换教程"></a>nextT主题的替换教程</h4><p><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">http://www.tuicool.com/articles/zeIZJzv</a><br><a id="more"></a></p>
-<h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2><h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
+        <p><code>首先贴出两个网址</code></p>
+<blockquote>
+<p>(hexo的使用教程)[<a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">http://www.jianshu.com/p/465830080ea9</a>]<br>(nextT主题的替换教程)[<a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">http://www.tuicool.com/articles/zeIZJzv</a>]<br><a id="more"></a></p>
+<h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2></blockquote>
+<h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
 <li>npm install -g hexo</li>
 <li>hexo init</li>
 <li>hexo generate（hexo g也可以，用来生成静态页面）</li>
@@ -378,6 +380,13 @@
 <li>打开站点配置文件，找到theme字段，并将其值更改为next 。</li>
 <li>此时可已在本地测试看看</li>
 <li>切换hexo里面的不同主题，在主题配置文件里面找到scheme的配置项，自己加减注释来切换</li>
+</ol>
+<h3 id="关于标签与分类-（-原地址-https-segmentfault-com-q-1010000002561642-）"><a href="#关于标签与分类-（-原地址-https-segmentfault-com-q-1010000002561642-）" class="headerlink" title="关于标签与分类 （(原地址)[https://segmentfault.com/q/1010000002561642]）"></a>关于标签与分类 （(原地址)[<a href="https://segmentfault.com/q/1010000002561642]）" target="_blank" rel="external">https://segmentfault.com/q/1010000002561642]）</a></h3><ol>
+<li>hexo new page tags （hexo new page categories）</li>
+<li>确认站点配置文件里有tag_dir: tags （category_dir: categories）</li>
+<li>确认主题配置文件里有tags: /tags （categories: /categories）</li>
+<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-10-20 06:49:50</div><div class="line">type: "tags"</div><div class="line">comments: false</div></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -568,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先贴出两个网址"><span class="nav-number">1.</span> <span class="nav-text">首先贴出两个网址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo的使用教程"><span class="nav-number">1.0.1.</span> <span class="nav-text">hexo的使用教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nextT主题的替换教程"><span class="nav-number">1.0.2.</span> <span class="nav-text">nextT主题的替换教程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面总结下我自己的填坑经历"><span class="nav-number">2.</span> <span class="nav-text">下面总结下我自己的填坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于hexo"><span class="nav-number">2.1.</span> <span class="nav-text">关于hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地操作"><span class="nav-number">2.1.1.</span> <span class="nav-text">本地操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署以及常用操作"><span class="nav-number">2.1.3.</span> <span class="nav-text">部署以及常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于更换主题（这里以nextT为例）"><span class="nav-number">2.2.</span> <span class="nav-text">关于更换主题（这里以nextT为例）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下面总结下我自己的填坑经历"><span class="nav-number">1.</span> <span class="nav-text">下面总结下我自己的填坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于hexo"><span class="nav-number">1.1.</span> <span class="nav-text">关于hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地操作"><span class="nav-number">1.1.1.</span> <span class="nav-text">本地操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署以及常用操作"><span class="nav-number">1.1.3.</span> <span class="nav-text">部署以及常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于更换主题（这里以nextT为例）"><span class="nav-number">1.2.</span> <span class="nav-text">关于更换主题（这里以nextT为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于标签与分类-（-原地址-https-segmentfault-com-q-1010000002561642-）"><span class="nav-number">1.3.</span> <span class="nav-text">关于标签与分类 （(原地址)[https://segmentfault.com/q/1010000002561642]）</span></a></li></ol></li></ol></div>
             
 
           </div>
