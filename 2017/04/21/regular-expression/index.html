@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,nextT,blog,静态博客," />
+  <meta name="keywords" content="前端,正则表达式," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta name="keywords" content="hexo,nextT,blog,静态博客">
+<meta name="description" content="通用正则语法类 [abc]表示匹配a或者b或者c的字符">
+<meta name="keywords" content="前端,正则表达式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我是用hexo搭建个人博客的经历">
-<meta property="og:url" content="http://yoursite.com/2017/04/19/hexo/index.html">
+<meta property="og:title" content="正则表达式（基础篇）">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/regular-expression/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta property="og:updated_time" content="2017-04-20T06:41:15.333Z">
+<meta property="og:description" content="通用正则语法类 [abc]表示匹配a或者b或者c的字符">
+<meta property="og:updated_time" content="2017-04-21T06:23:57.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
-<meta name="twitter:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
+<meta name="twitter:title" content="正则表达式（基础篇）">
+<meta name="twitter:description" content="通用正则语法类 [abc]表示匹配a或者b或者c的字符">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/19/hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/21/regular-expression/"/>
 
 
 
 
 
-  <title> 我是用hexo搭建个人博客的经历 | yesixuan </title>
+  <title> 正则表达式（基础篇） | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/regular-expression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -291,7 +291,7 @@
             
             
               
-                我是用hexo搭建个人博客的经历
+                正则表达式（基础篇）
               
             
           </h1>
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T13:45:01+08:00">
-                2017-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T10:41:00+08:00">
+                2017-04-21
               </time>
             
 
@@ -329,8 +329,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/正则表达式/" itemprop="url" rel="index">
+                    <span itemprop="name">正则表达式</span>
                   </a>
                 </span>
 
@@ -364,49 +375,57 @@
       
 
       
-        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">hexo的使用教程</a><br><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">nextT主题的替换教程</a></p>
+        <h3 id="通用正则语法"><a href="#通用正则语法" class="headerlink" title="通用正则语法"></a>通用正则语法</h3><h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
+<li><p><code>[abc]</code>表示匹配a或者b或者c的字符</p>
 <a id="more"></a>
-<p><br></p>
-<h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2><h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
-<li>npm install -g hexo</li>
-<li>hexo init</li>
-<li>hexo generate（hexo g也可以，用来生成静态页面）</li>
-<li>hexo server （浏览器输入<a href="http://localhost:4000）（然后去配置github，再继续第五步）" target="_blank" rel="external">http://localhost:4000）（然后去配置github，再继续第五步）</a></li>
-<li>npm install hexo-deployer-git –save （这一步是在配置完github之后）</li>
-<li>hexo deploy<h4 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h4></li>
-<li>建立Repository （名字为yesixuan.github.io）</li>
-<li>修改项目配置文件 （根目录下的_config.yml）<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: https://github.com/leopardpan/leopardpan.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<h4 id="部署以及常用操作"><a href="#部署以及常用操作" class="headerlink" title="部署以及常用操作"></a>部署以及常用操作</h4><ol>
-<li>hexo clean</li>
-<li>hexo generate</li>
-<li>hexo deploy</li>
-</ol>
-<hr>
-<ol>
-<li>hexo new”postName” #新建文章</li>
-<li>hexo new page”pageName” #新建页面</li>
-<li>hexo generate #生成静态页面至public目录</li>
-<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
-<li>hexo deploy #将.deploy目录部署到GitHub</li>
-<li>hexo help # 查看帮助</li>
-<li>hexo version #查看Hexo的版本</li>
-</ol>
-<h3 id="关于更换主题（这里以nextT为例）"><a href="#关于更换主题（这里以nextT为例）" class="headerlink" title="关于更换主题（这里以nextT为例）"></a>关于更换主题（这里以nextT为例）</h3><ol>
-<li>下载主题的zip包。（地址：<a href="https://github.com/iissnan/hexo-theme-next/releases）" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next/releases）</a></li>
-<li>结业后的文件夹改名为next，放入项目的themes目录里面</li>
-<li>打开站点配置文件，找到theme字段，并将其值更改为next 。</li>
-<li>此时可已在本地测试看看</li>
-<li>切换hexo里面的不同主题，在主题配置文件里面找到scheme的配置项，自己加减注释来切换</li>
-</ol>
-<h3 id="关于标签与分类-原地址"><a href="#关于标签与分类-原地址" class="headerlink" title="关于标签与分类 原地址"></a>关于标签与分类 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">原地址</a></h3><ol>
-<li>hexo new page tags （hexo new page categories）</li>
-<li>确认站点配置文件里有tag_dir: tags （category_dir: categories）</li>
-<li>确认主题配置文件里有tags: /tags （categories: /categories）</li>
-<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-10-20 06:49:50</div><div class="line">type: "tags"</div><div class="line">comments: false</div></pre></td></tr></table></figure>
+<li><p><code>[^abc]</code>表示匹配不是a或者b或者c的字符，<code>^</code>仅在<code>[]</code>中取反，在其他情况下表示边界</p>
 </li>
-</ol>
+<li><p>范围类<code>[a-z]</code>在中括号里面的<code>-</code>表示范围，如需匹配短横线，则需在后面再加<code>-</code>，如<code>[0-9-]</code></p>
+</li>
+<li><p>预定义类：<code>.</code> 匹配除了换行符以外的任何字符 <code>\d</code> 匹配数字 <code>\s</code> 匹配字母，数字，下划线 <code>\w</code> 匹配空格（字母如果变大写则表示取反）</p>
+</li>
+</ul>
+<h4 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h4><ul>
+<li><p><code>^ $</code> 为起始边界</p>
+</li>
+<li><p><code>\b</code> 单词边界</p>
+</li>
+<li><p><code>\B</code> 非单词边界</p>
+</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ul>
+<li><p><code>?</code> 匹配0个或1个</p>
+</li>
+<li><p><code>+</code> 匹配 &gt;=1 个</p>
+</li>
+<li><p><code>*</code> 匹配任意多个</p>
+</li>
+<li><p><code>{n,m}</code> a为最少，b为最多。若为<code>{n}</code>，则为精确匹配；若为<code>{n,}</code>，则匹配大于n个</p>
+</li>
+</ul>
+<h4 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h4><ul>
+<li><p>默认的匹配模式是贪婪模式（即尽可能多的匹配）</p>
+</li>
+<li><p>若想将贪婪模式改成“廉洁模式（自创）”，只需在量词后面加上“ ? ”</p>
+</li>
+<li><p>默认情况下，量词制作用于紧挨着它的字符。如果想要破，可以用 <code>()</code> 来进行分组</p>
+</li>
+<li><p>用 <code>()</code> 来进行分组后的分组内容可以用 <code>$1,$2,...</code> 来获取</p>
+</li>
+</ul>
+<h3 id="JS中的正则"><a href="#JS中的正则" class="headerlink" title="JS中的正则"></a>JS中的正则</h3><h4 id="正则对象"><a href="#正则对象" class="headerlink" title="正则对象"></a>正则对象</h4><ul>
+<li><p>正则对象的属性有 <code>g,i,m,lastIndex</code></p>
+</li>
+<li><p><code>test</code> 方法，返回布尔值</p>
+</li>
+<li><p><code>exec</code> 方法，匹配不成功返回 <code>null</code>，否则返回结果数组，数组的第一个元素表示匹配的文本，第二个元素是与正则对象的第一个子表达式相匹配的文本（如果有），以此类推</p>
+</li>
+</ul>
+<h4 id="与正则相关的字符串方法"><a href="#与正则相关的字符串方法" class="headerlink" title="与正则相关的字符串方法"></a>与正则相关的字符串方法</h4><ul>
+<li><code>search</code> 方法，返回第一个匹配结果的index，否则返回null（它不会执行全局匹配）</li>
+<li><code>match</code> 方法，如果不加‘ g ’，则返回null或数组，数组存放了与它找到的匹配文本有关的信息，第一个元素是匹配的文本，其余元素存放子表达式匹配的内容</li>
+</ul>
 
       
     </div>
@@ -436,13 +455,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/nextT/" rel="tag"># nextT</a>
-          
-            <a href="/tags/blog/" rel="tag"># blog</a>
-          
-            <a href="/tags/静态博客/" rel="tag"># 静态博客</a>
+            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
           
         </div>
       
@@ -455,18 +470,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/20/Front-end-Interview/" rel="next" title="Front-end-Interview">
-                <i class="fa fa-chevron-left"></i> Front-end-Interview
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/19/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/20/Front-end-Interview/" rel="prev" title="Front-end-Interview">
+                Front-end-Interview <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先贴出两个网址"><span class="nav-number">1.</span> <span class="nav-text">首先贴出两个网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面总结下我自己的填坑经历"><span class="nav-number">2.</span> <span class="nav-text">下面总结下我自己的填坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于hexo"><span class="nav-number">2.1.</span> <span class="nav-text">关于hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地操作"><span class="nav-number">2.1.1.</span> <span class="nav-text">本地操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署以及常用操作"><span class="nav-number">2.1.3.</span> <span class="nav-text">部署以及常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于更换主题（这里以nextT为例）"><span class="nav-number">2.2.</span> <span class="nav-text">关于更换主题（这里以nextT为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于标签与分类-原地址"><span class="nav-number">2.3.</span> <span class="nav-text">关于标签与分类 原地址</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用正则语法"><span class="nav-number">1.</span> <span class="nav-text">通用正则语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类"><span class="nav-number">1.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界"><span class="nav-number">1.2.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词"><span class="nav-number">1.3.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配模式"><span class="nav-number">1.4.</span> <span class="nav-text">匹配模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的正则"><span class="nav-number">2.</span> <span class="nav-text">JS中的正则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则对象"><span class="nav-number">2.1.</span> <span class="nav-text">正则对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与正则相关的字符串方法"><span class="nav-number">2.2.</span> <span class="nav-text">与正则相关的字符串方法</span></a></li></ol></li></ol></div>
             
 
           </div>
