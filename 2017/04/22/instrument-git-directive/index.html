@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,nextT,blog,静态博客," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta name="keywords" content="hexo,nextT,blog,静态博客">
+<meta name="description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我是用hexo搭建个人博客的经历">
-<meta property="og:url" content="http://yoursite.com/2017/04/19/hexo/index.html">
+<meta property="og:title" content="instrument-git-directive">
+<meta property="og:url" content="http://yoursite.com/2017/04/22/instrument-git-directive/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta property="og:updated_time" content="2017-04-20T06:41:15.333Z">
+<meta property="og:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
+<meta property="og:updated_time" content="2017-04-22T00:44:57.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
-<meta name="twitter:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
+<meta name="twitter:title" content="instrument-git-directive">
+<meta name="twitter:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/19/hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/22/instrument-git-directive/"/>
 
 
 
 
 
-  <title> 我是用hexo搭建个人博客的经历 | yesixuan </title>
+  <title> instrument-git-directive | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/instrument-git-directive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -281,7 +281,7 @@
             
             
               
-                我是用hexo搭建个人博客的经历
+                instrument-git-directive
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T13:45:01+08:00">
-                2017-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T08:02:18+08:00">
+                2017-04-22
               </time>
             
 
@@ -321,6 +321,28 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/杂项/" itemprop="url" rel="index">
                     <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂项/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂项/git/git常用命令/" itemprop="url" rel="index">
+                    <span itemprop="name">git常用命令</span>
                   </a>
                 </span>
 
@@ -354,49 +376,64 @@
       
 
       
-        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">hexo的使用教程</a><br><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">nextT主题的替换教程</a></p>
+        <blockquote>
+<p>听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…</p>
+</blockquote>
 <a id="more"></a>
-<p><br></p>
-<h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2><h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
-<li>npm install -g hexo</li>
-<li>hexo init</li>
-<li>hexo generate（hexo g也可以，用来生成静态页面）</li>
-<li>hexo server （浏览器输入<a href="http://localhost:4000）（然后去配置github，再继续第五步）" target="_blank" rel="external">http://localhost:4000）（然后去配置github，再继续第五步）</a></li>
-<li>npm install hexo-deployer-git –save （这一步是在配置完github之后）</li>
-<li>hexo deploy<h4 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h4></li>
-<li>建立Repository （名字为yesixuan.github.io）</li>
-<li>修改项目配置文件 （根目录下的_config.yml）<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: https://github.com/leopardpan/leopardpan.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<h3 id="Git的几个概念"><a href="#Git的几个概念" class="headerlink" title="Git的几个概念"></a>Git的几个概念</h3><ul>
+<li><p>Workspace 工作区</p>
 </li>
-</ol>
-<h4 id="部署以及常用操作"><a href="#部署以及常用操作" class="headerlink" title="部署以及常用操作"></a>部署以及常用操作</h4><ol>
-<li>hexo clean</li>
-<li>hexo generate</li>
-<li>hexo deploy</li>
-</ol>
-<hr>
-<ol>
-<li>hexo new”postName” #新建文章</li>
-<li>hexo new page”pageName” #新建页面</li>
-<li>hexo generate #生成静态页面至public目录</li>
-<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
-<li>hexo deploy #将.deploy目录部署到GitHub</li>
-<li>hexo help # 查看帮助</li>
-<li>hexo version #查看Hexo的版本</li>
-</ol>
-<h3 id="关于更换主题（这里以nextT为例）"><a href="#关于更换主题（这里以nextT为例）" class="headerlink" title="关于更换主题（这里以nextT为例）"></a>关于更换主题（这里以nextT为例）</h3><ol>
-<li>下载主题的zip包。（地址：<a href="https://github.com/iissnan/hexo-theme-next/releases）" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next/releases）</a></li>
-<li>结业后的文件夹改名为next，放入项目的themes目录里面</li>
-<li>打开站点配置文件，找到theme字段，并将其值更改为next 。</li>
-<li>此时可已在本地测试看看</li>
-<li>切换hexo里面的不同主题，在主题配置文件里面找到scheme的配置项，自己加减注释来切换</li>
-</ol>
-<h3 id="关于标签与分类-原地址"><a href="#关于标签与分类-原地址" class="headerlink" title="关于标签与分类 原地址"></a>关于标签与分类 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">原地址</a></h3><ol>
-<li>hexo new page tags （hexo new page categories）</li>
-<li>确认站点配置文件里有tag_dir: tags （category_dir: categories）</li>
-<li>确认主题配置文件里有tags: /tags （categories: /categories）</li>
-<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-10-20 06:49:50</div><div class="line">type: "tags"</div><div class="line">comments: false</div></pre></td></tr></table></figure>
+<li><p>Index/Stage 暂存区</p>
 </li>
-</ol>
+<li><p>Repository 本地仓储</p>
+</li>
+<li><p>Remote 远程仓储</p>
+<h3 id="我最常用的git命令"><a href="#我最常用的git命令" class="headerlink" title="我最常用的git命令"></a>我最常用的git命令</h3></li>
+<li><p>创建本地仓储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加所有文件到git的跟踪列表（除去被.gitignore过滤掉的文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 或者git add .</div><div class="line">git add --all</div></pre></td></tr></table></figure>
+</li>
+<li><p>提交代码到本地仓储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">'提交日志'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>将本地仓储与远程仓储建立联系</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// origin后面跟的就是你的远程仓储地址</div><div class="line">git remote add origin https://github.com/yesixuan/uhealth.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>将本地代码同步到远程仓储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>将远程仓储的代码拉到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 后面可以指定你想要存放的文件夹名</div><div class="line">git <span class="built_in">clone</span> https://github.com/yesixuan/uhealth.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>将远程仓储的代码同步到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="其他重要的git命令"><a href="#其他重要的git命令" class="headerlink" title="其他重要的git命令"></a>其他重要的git命令</h3><ul>
+<li><p>查看本地仓储的状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+</li>
+<li><p>对比代码的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看代码提交的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>恢复到之前的某个版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 哈希值可以在<span class="built_in">log</span>中看</div><div class="line">git reset --hash 哈希值的前六位</div></pre></td></tr></table></figure>
+</li>
+<li><p>下载远程仓储的所有变动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch [remote]</div></pre></td></tr></table></figure>
+</li>
+<li><p>同步本地代码到远程仓储的指定分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull [remote] [branch]</div></pre></td></tr></table></figure>
+</li>
+<li><p>同步所有分支到远程仓储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push [remote] --all</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -426,13 +463,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/nextT/" rel="tag"># nextT</a>
-          
-            <a href="/tags/blog/" rel="tag"># blog</a>
-          
-            <a href="/tags/静态博客/" rel="tag"># 静态博客</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -445,15 +476,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/20/Front-end-Interview/" rel="next" title="Front-end-Interview">
-                <i class="fa fa-chevron-left"></i> Front-end-Interview
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/21/JS-gleaning/" rel="prev" title="JS gleaning">
+                JS gleaning <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -593,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先贴出两个网址"><span class="nav-number">1.</span> <span class="nav-text">首先贴出两个网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面总结下我自己的填坑经历"><span class="nav-number">2.</span> <span class="nav-text">下面总结下我自己的填坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于hexo"><span class="nav-number">2.1.</span> <span class="nav-text">关于hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地操作"><span class="nav-number">2.1.1.</span> <span class="nav-text">本地操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署以及常用操作"><span class="nav-number">2.1.3.</span> <span class="nav-text">部署以及常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于更换主题（这里以nextT为例）"><span class="nav-number">2.2.</span> <span class="nav-text">关于更换主题（这里以nextT为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于标签与分类-原地址"><span class="nav-number">2.3.</span> <span class="nav-text">关于标签与分类 原地址</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的几个概念"><span class="nav-number">1.</span> <span class="nav-text">Git的几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我最常用的git命令"><span class="nav-number">2.</span> <span class="nav-text">我最常用的git命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他重要的git命令"><span class="nav-number">3.</span> <span class="nav-text">其他重要的git命令</span></a></li></ol></div>
             
 
           </div>
