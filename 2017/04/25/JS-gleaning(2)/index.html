@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,nextT,blog,静态博客," />
+  <meta name="keywords" content="JS 拾遗,js," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta name="keywords" content="hexo,nextT,blog,静态博客">
+<meta name="description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
+<meta name="keywords" content="JS 拾遗,js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我是用hexo搭建个人博客的经历">
-<meta property="og:url" content="http://yoursite.com/2017/04/19/hexo/index.html">
+<meta property="og:title" content="JS gleaning">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/JS-gleaning(2)/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta property="og:updated_time" content="2017-04-22T13:42:01.323Z">
+<meta property="og:description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
+<meta property="og:updated_time" content="2017-04-30T03:58:16.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
-<meta name="twitter:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
+<meta name="twitter:title" content="JS gleaning">
+<meta name="twitter:description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/19/hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/25/JS-gleaning(2)/"/>
 
 
 
 
 
-  <title> 我是用hexo搭建个人博客的经历 | yesixuan </title>
+  <title> JS gleaning | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/JS-gleaning(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -281,7 +281,7 @@
             
             
               
-                我是用hexo搭建个人博客的经历
+                JS gleaning
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T13:45:01+08:00">
-                2017-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T09:34:42+08:00">
+                2017-04-25
               </time>
             
 
@@ -319,8 +319,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
                   </a>
                 </span>
 
@@ -354,46 +365,37 @@
       
 
       
-        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">hexo的使用教程</a><br><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">nextT主题的替换教程</a><br><a id="more"></a><br><br></p>
-<h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2><h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
-<li>npm install -g hexo</li>
-<li>hexo init</li>
-<li>hexo generate（hexo g也可以，用来生成静态页面）</li>
-<li>hexo server （浏览器输入<a href="http://localhost:4000）（然后去配置github，再继续第五步）" target="_blank" rel="external">http://localhost:4000）（然后去配置github，再继续第五步）</a></li>
-<li>npm install hexo-deployer-git –save （这一步是在配置完github之后）</li>
-<li>hexo deploy<h4 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h4></li>
-<li>建立Repository （名字为yesixuan.github.io）</li>
-<li>修改项目配置文件 （根目录下的_config.yml）<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: https://github.com/leopardpan/leopardpan.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="部署以及常用操作"><a href="#部署以及常用操作" class="headerlink" title="部署以及常用操作"></a>部署以及常用操作</h4><ol>
-<li>hexo clean</li>
-<li>hexo generate</li>
-<li>hexo deploy</li>
-</ol>
-<hr>
-<ol>
-<li>hexo new”postName” #新建文章</li>
-<li>hexo new page”pageName” #新建页面</li>
-<li>hexo generate #生成静态页面至public目录</li>
-<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
-<li>hexo deploy #将.deploy目录部署到GitHub</li>
-<li>hexo help # 查看帮助</li>
-<li>hexo version #查看Hexo的版本</li>
-</ol>
-<h3 id="关于更换主题（这里以nextT为例）"><a href="#关于更换主题（这里以nextT为例）" class="headerlink" title="关于更换主题（这里以nextT为例）"></a>关于更换主题（这里以nextT为例）</h3><ol>
-<li>下载主题的zip包。（地址：<a href="https://github.com/iissnan/hexo-theme-next/releases）" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next/releases）</a></li>
-<li>结业后的文件夹改名为next，放入项目的themes目录里面</li>
-<li>打开站点配置文件，找到theme字段，并将其值更改为next 。</li>
-<li>此时可已在本地测试看看</li>
-<li>切换hexo里面的不同主题，在主题配置文件里面找到scheme的配置项，自己加减注释来切换</li>
-</ol>
-<h3 id="关于标签与分类-原地址"><a href="#关于标签与分类-原地址" class="headerlink" title="关于标签与分类 原地址"></a>关于标签与分类 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">原地址</a></h3><ol>
-<li>hexo new page tags （hexo new page categories）</li>
-<li>确认站点配置文件里有tag_dir: tags （category_dir: categories）</li>
-<li>确认主题配置文件里有tags: /tags （categories: /categories）</li>
-<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-10-20 06:49:50</div><div class="line">type: "tags"</div><div class="line">comments: false</div></pre></td></tr></table></figure>
-</li>
+        <blockquote>
+<p>重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…<br><a id="more"></a></p>
+</blockquote>
+<h3 id="JS语法"><a href="#JS语法" class="headerlink" title="JS语法"></a>JS语法</h3><h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4><ol>
+<li>只有用var声明变量才会变量提升</li>
+<li>要规避这种特性，可以直接写 a = 0 ，或者用 winsow.a = 0 这种形式</li>
+<li>用function关键字声明的函数会将整个函数提升到顶部，用 var foo = function () {} 可以只提升foo变量的声明，但函数体还是会留在原地，这样可以避免一些错误<h4 id="switch-case语法"><a href="#switch-case语法" class="headerlink" title="switch-case语法"></a>switch-case语法</h4></li>
+<li>每一个case语句后面都要加break，不然程序还是会往下走</li>
+<li>switch-case语法使用的是严格相等的模式<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4></li>
+<li>数组即对象，不过是拥有有序的键名(‘0’,’1’,…)。</li>
+<li>本质上，数组的下标是字符串。只不过我们写成数字下标时，JS解析器会对数字进行隐式转换。</li>
+<li>数组与狭义对象的差别之一是数组的length属性是动态变化的。清空数组的一种方式是arr.length = 0</li>
+<li>给数组添加一些不符合数组规范的属性不会影响它的length属性</li>
+<li>类数组对象也有length属性，但是该属性不是动态的<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4></li>
+<li>Number()是比parseInt()更加严格的转换</li>
+<li>String()可以用来区分狭义对象和数组</li>
+<li>Boolean()<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4></li>
+<li>error对象使用new Error()构造函数，并传入错误信息message</li>
+<li>三个属性：name、message、stack</li>
+<li>throw用于中断程序执行，抛出意外或错误。接收表达式作为参数，可以抛出各种类型的值<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4></li>
+<li>作用：①外部读内部的变量 ②闭包的变量不会被回收，可以用来存储变量 ③封装对象的私有属性和方法</li>
+<li>外部函数的内部环境会一直存在，闭包可以看作是函数内部作用域的一个接口</li>
+<li>外部函数每一次执行都会形成新的闭包，该闭包又保留外层函数的内部变量，所以内存消耗挺大，要慎用<br>####　IIFE</li>
+<li>function关键字既可以作为语句，也可以作为表达式</li>
+<li>()()是为了让JS解释器将function解析成表达式，后面的小括号是用来传参的。</li>
+<li>还有其他形式的如：(function(){}())、~function(){}()…<h4 id="狭义对象"><a href="#狭义对象" class="headerlink" title="狭义对象"></a>狭义对象</h4></li>
+<li>对象的键名为字符串。我们用对象字面量的方式定义对象，键名可以省略引号</li>
+<li>Object.keys(obj)方法返回包含所有键名的数组（该方法可以用来判断一个对象是否为空）</li>
+<li>delete obj.xx 删除对象的某个属性</li>
+<li>‘xx’ in obj 判断对象是否有某个属性（继承过来的属性也被包含）</li>
+<li>obj.hasOwnProperty(‘xx’) 判断对象是否有某个属性（不包含继承过来的属性也）</li>
 </ol>
 
       
@@ -424,13 +426,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/JS-拾遗/" rel="tag"># JS 拾遗</a>
           
-            <a href="/tags/nextT/" rel="tag"># nextT</a>
-          
-            <a href="/tags/blog/" rel="tag"># blog</a>
-          
-            <a href="/tags/静态博客/" rel="tag"># 静态博客</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -443,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/20/Front-end-Interview/" rel="next" title="Front-end-Interview">
-                <i class="fa fa-chevron-left"></i> Front-end-Interview
+              <a href="/2017/04/26/JS-vue-vuex/" rel="next" title="vuex">
+                <i class="fa fa-chevron-left"></i> vuex
               </a>
             
           </div>
@@ -452,6 +450,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/22/instrument-atom-plugin/" rel="prev" title="有关Atom编辑器的插件">
+                有关Atom编辑器的插件 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -591,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先贴出两个网址"><span class="nav-number">1.</span> <span class="nav-text">首先贴出两个网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面总结下我自己的填坑经历"><span class="nav-number">2.</span> <span class="nav-text">下面总结下我自己的填坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于hexo"><span class="nav-number">2.1.</span> <span class="nav-text">关于hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地操作"><span class="nav-number">2.1.1.</span> <span class="nav-text">本地操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署以及常用操作"><span class="nav-number">2.1.3.</span> <span class="nav-text">部署以及常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于更换主题（这里以nextT为例）"><span class="nav-number">2.2.</span> <span class="nav-text">关于更换主题（这里以nextT为例）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于标签与分类-原地址"><span class="nav-number">2.3.</span> <span class="nav-text">关于标签与分类 原地址</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS语法"><span class="nav-number">1.</span> <span class="nav-text">JS语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量提升"><span class="nav-number">1.1.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch-case语法"><span class="nav-number">1.2.</span> <span class="nav-text">switch-case语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制类型转换"><span class="nav-number">1.4.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理"><span class="nav-number">1.5.</span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">1.6.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#狭义对象"><span class="nav-number">1.7.</span> <span class="nav-text">狭义对象</span></a></li></ol></li></ol></div>
             
 
           </div>

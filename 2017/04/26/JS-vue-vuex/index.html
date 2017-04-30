@@ -1,0 +1,768 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue,vuex,状态管理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…">
+<meta name="keywords" content="vue,vuex,状态管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex">
+<meta property="og:url" content="http://yoursite.com/2017/04/26/JS-vue-vuex/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…">
+<meta property="og:updated_time" content="2017-04-30T03:58:16.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuex">
+<meta name="twitter:description" content="凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/26/JS-vue-vuex/"/>
+
+
+
+
+
+  <title> vuex | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/JS-vue-vuex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vuex
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T09:12:00+08:00">
+                2017-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…<br><a id="more"></a></p>
+<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><h4 id="what"><a href="#what" class="headerlink" title="what?"></a>what?</h4><p>state是整个应用的数据中心，管理整个应用的状态。也称为状态对象</p>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在store/index.js中，就是一个大的对象（或者单独来一个state.js引进来）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">  <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">history</span>: []</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  state</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
+<li>直接在组件模板里：</li>
+<li><p>在计算属性里面使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  count () &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最高级的用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed:&#123;</div><div class="line">  ...mapState([</div><div class="line">    count</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h3><h4 id="what-1"><a href="#what-1" class="headerlink" title="what?"></a>what?</h4><p>我把它理解为直接操作状态对象的操作中心</p>
+<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在store/mutations.js中,里面暴露了多个函数来改变状态对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = <span class="function"><span class="params">state</span> =&gt;</span> &#123;</div><div class="line">  state.count++</div><div class="line">  state.history.push(<span class="string">'increment'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mothods: &#123;</div><div class="line">  ...mapMutations([</div><div class="line">    increment</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h3><h4 id="what-2"><a href="#what-2" class="headerlink" title="what?"></a>what?</h4><p>getter可以看作是state的计算属性，即通过状态对象衍生出来的数据。从它的名字为getter可以看出,通过读取state得到衍生值</p>
+<h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在store/getters.js中,里面暴露了许多值，这些值都是通过函数返回值赋值（通过这种方式可以避免在组件内直接使用mapState这种局限性较大方式）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> count = <span class="function"><span class="params">state</span> =&gt;</span> state.count</div></pre></td></tr></table></figure></p>
+<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  ...mapGetters([</div><div class="line">    count</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><h4 id="what-3"><a href="#what-3" class="headerlink" title="what?"></a>what?</h4><p>action用来派发mutation,一个action中可以触发多个mutation，在不同的时间不同的条件下触发不同的mutation（异步操作在此处执行）</p>
+<h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在store/actions.js中,里面暴露了很多方法。方法里面触发mutation（函数默认的第一个参数是context，下例使用了对象的结构）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementIfOdd = <span class="function">(<span class="params">&#123; commit, state &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> ((state.count + <span class="number">1</span>) % <span class="number">2</span> === <span class="number">0</span>) &#123;</div><div class="line">    commit(<span class="string">'increment'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementAsync = <span class="function">(<span class="params">&#123; commit &#125;</span>) =&gt;</span> &#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    commit(<span class="string">'increment'</span>)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mothods: &#123;</div><div class="line">  ...mapActions([</div><div class="line">    incrementIfOdd,</div><div class="line">    incrementAsync</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><h4 id="what-4"><a href="#what-4" class="headerlink" title="what?"></a>what?</h4><p>用来将上述种种进行模块化</p>
+<h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  state,</div><div class="line">  getters,</div><div class="line">  actions,</div><div class="line">  mutations</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    moduleA</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h4><p>实际上就是在state后面多加了一层moduleA（我们那些可爱的映射函数都没法用了）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/vuex/" rel="tag"># vuex</a>
+          
+            <a href="/tags/状态管理/" rel="tag"># 状态管理</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/25/JS-gleaning(2)/" rel="prev" title="JS gleaning">
+                JS gleaning <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#state"><span class="nav-number">1.</span> <span class="nav-text">state</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what"><span class="nav-number">1.1.</span> <span class="nav-text">what?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">1.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mutations"><span class="nav-number">2.</span> <span class="nav-text">mutations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-1"><span class="nav-number">2.1.</span> <span class="nav-text">what?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-1"><span class="nav-number">2.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-1"><span class="nav-number">2.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getters"><span class="nav-number">3.</span> <span class="nav-text">getters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-2"><span class="nav-number">3.1.</span> <span class="nav-text">what?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-2"><span class="nav-number">3.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-2"><span class="nav-number">3.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#actions"><span class="nav-number">4.</span> <span class="nav-text">actions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-3"><span class="nav-number">4.1.</span> <span class="nav-text">what?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-3"><span class="nav-number">4.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-3"><span class="nav-number">4.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#module"><span class="nav-number">5.</span> <span class="nav-text">module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-4"><span class="nav-number">5.1.</span> <span class="nav-text">what?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-4"><span class="nav-number">5.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-4"><span class="nav-number">5.3.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
