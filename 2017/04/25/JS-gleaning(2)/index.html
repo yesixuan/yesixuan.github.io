@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/25/JS-gleaning(2)/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
-<meta property="og:updated_time" content="2017-04-30T04:11:01.782Z">
+<meta property="og:updated_time" content="2017-05-03T22:50:01.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 拾遗（二）">
 <meta name="twitter:description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
@@ -366,36 +366,37 @@
 
       
         <blockquote>
-<p>重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…<br><a id="more"></a></p>
+<p>重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="JS语法"><a href="#JS语法" class="headerlink" title="JS语法"></a>JS语法</h3><h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4><ol>
-<li>只有用var声明变量才会变量提升</li>
-<li>要规避这种特性，可以直接写 a = 0 ，或者用 winsow.a = 0 这种形式</li>
-<li>用function关键字声明的函数会将整个函数提升到顶部，用 var foo = function () {} 可以只提升foo变量的声明，但函数体还是会留在原地，这样可以避免一些错误<h4 id="switch-case语法"><a href="#switch-case语法" class="headerlink" title="switch-case语法"></a>switch-case语法</h4></li>
-<li>每一个case语句后面都要加break，不然程序还是会往下走</li>
-<li>switch-case语法使用的是严格相等的模式<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4></li>
-<li>数组即对象，不过是拥有有序的键名(‘0’,’1’,…)。</li>
-<li>本质上，数组的下标是字符串。只不过我们写成数字下标时，JS解析器会对数字进行隐式转换。</li>
-<li>数组与狭义对象的差别之一是数组的length属性是动态变化的。清空数组的一种方式是arr.length = 0</li>
-<li>给数组添加一些不符合数组规范的属性不会影响它的length属性</li>
-<li>类数组对象也有length属性，但是该属性不是动态的<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4></li>
-<li>Number()是比parseInt()更加严格的转换</li>
-<li>String()可以用来区分狭义对象和数组</li>
-<li>Boolean()<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4></li>
-<li>error对象使用new Error()构造函数，并传入错误信息message</li>
-<li>三个属性：name、message、stack</li>
-<li>throw用于中断程序执行，抛出意外或错误。接收表达式作为参数，可以抛出各种类型的值<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4></li>
+<li>只有用<code>var</code>声明变量才会变量提升</li>
+<li>要规避这种特性，可以直接写<code>a = 0</code>，或者用 <code>winsow.a = 0</code> 这种形式</li>
+<li>用<code>function</code>关键字声明的函数会将整个函数提升到顶部，用 <code>var foo = function () {}</code> 可以只提升<code>foo</code>变量的声明，但函数体还是会留在原地，这样可以避免一些错误<h4 id="switch-case语法"><a href="#switch-case语法" class="headerlink" title="switch-case语法"></a>switch-case语法</h4></li>
+<li>每一个<code>case</code>语句后面都要加<code>break</code>，不然程序还是会往下走</li>
+<li><code>switch-case</code>语法使用的是严格相等的模式<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4></li>
+<li>数组即对象，不过是拥有有序的键名(‘0’,’1’,…)</li>
+<li>本质上，数组的下标是字符串。只不过我们写成数字下标时，JS解析器会对数字进行隐式转换</li>
+<li>数组与狭义对象的差别之一是数组的length属性是动态变化的。清空数组的一种方式是<code>arr.length = 0</code></li>
+<li>给数组添加一些不符合数组规范的属性不会影响它的<code>length</code>属性</li>
+<li>类数组对象也有<code>length</code>属性，但是该属性不是动态的<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4></li>
+<li><code>Number()</code>是比<code>parseInt()</code>更加严格的转换</li>
+<li><code>String()</code>可以用来区分狭义对象和数组</li>
+<li><code>Boolean()</code><h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4></li>
+<li><code>error</code>对象使用<code>new Error()</code>构造函数，并传入错误信息<code>message</code></li>
+<li>三个属性：<code>name、message、stack</code></li>
+<li><code>throw</code>用于中断程序执行，抛出意外或错误。接收表达式作为参数，可以抛出各种类型的值<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4></li>
 <li>作用：①外部读内部的变量 ②闭包的变量不会被回收，可以用来存储变量 ③封装对象的私有属性和方法</li>
 <li>外部函数的内部环境会一直存在，闭包可以看作是函数内部作用域的一个接口</li>
 <li>外部函数每一次执行都会形成新的闭包，该闭包又保留外层函数的内部变量，所以内存消耗挺大，要慎用<br>####　IIFE</li>
-<li>function关键字既可以作为语句，也可以作为表达式</li>
-<li>()()是为了让JS解释器将function解析成表达式，后面的小括号是用来传参的。</li>
-<li>还有其他形式的如：(function(){}())、~function(){}()…<h4 id="狭义对象"><a href="#狭义对象" class="headerlink" title="狭义对象"></a>狭义对象</h4></li>
+<li><code>function</code>关键字既可以作为语句，也可以作为表达式</li>
+<li><code>()()</code>是为了让JS解释器将function解析成表达式，后面的小括号是用来传参的。</li>
+<li>还有其他形式的如：<code>(function(){}())、~function(){}()...</code><h4 id="狭义对象"><a href="#狭义对象" class="headerlink" title="狭义对象"></a>狭义对象</h4></li>
 <li>对象的键名为字符串。我们用对象字面量的方式定义对象，键名可以省略引号</li>
-<li>Object.keys(obj)方法返回包含所有键名的数组（该方法可以用来判断一个对象是否为空）</li>
-<li>delete obj.xx 删除对象的某个属性</li>
-<li>‘xx’ in obj 判断对象是否有某个属性（继承过来的属性也被包含）</li>
-<li>obj.hasOwnProperty(‘xx’) 判断对象是否有某个属性（不包含继承过来的属性也）</li>
+<li><code>Object.keys(obj)</code>方法返回包含所有键名的数组（该方法可以用来判断一个对象是否为空）</li>
+<li><code>delete obj.xx</code> 删除对象的某个属性</li>
+<li><code>&#39;xx&#39; in obj</code> 判断对象是否有某个属性（继承过来的属性也被包含）</li>
+<li><code>obj.hasOwnProperty(&#39;xx&#39;)</code> 判断对象是否有某个属性（不包含继承过来的属性也）</li>
 </ol>
 
       
