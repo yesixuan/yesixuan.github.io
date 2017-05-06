@@ -1,0 +1,801 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,堆栈,内存," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
+<meta name="keywords" content="js,堆栈,内存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 基础进阶（一）">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/JS-foundation(1)/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
+<meta property="og:updated_time" content="2017-05-06T05:00:18.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 基础进阶（一）">
+<meta name="twitter:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/JS-foundation(1)/"/>
+
+
+
+
+
+  <title> JS 基础进阶（一） | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/JS-foundation(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS 基础进阶（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T09:43:00+08:00">
+                2017-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="栈与堆"><a href="#栈与堆" class="headerlink" title="栈与堆"></a>栈与堆</h3><p>JS中没有严格区分栈内存与堆内存。</p>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p>栈的存取方式就像是往乒乓球盒子里面存放乒乓球。先进后出，后进先出。</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>堆内存的存取方式就像是从书架上拿书。我们只需要知道某本书的名字就可以从书架上准确地拿到该书。</p>
+<h3 id="JS中的基础数据类型与引用数据类型的存储"><a href="#JS中的基础数据类型与引用数据类型的存储" class="headerlink" title="JS中的基础数据类型与引用数据类型的存储"></a>JS中的基础数据类型与引用数据类型的存储</h3><h4 id="变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）"><a href="#变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）" class="headerlink" title="变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）"></a>变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）</h4><ul>
+<li>基础数据类型是统一存储在一个变量对象上的。<code>var a = 1;</code>相当于：<code>变量对象.a = 1;</code></li>
+<li>复制变量对象中的变量时会为新变量分配一个新值，这个值与之前的直没有关系</li>
+</ul>
+<h4 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h4><ul>
+<li>引用数据都是存在堆内存中的</li>
+<li>一个引用数据的内存由三个部分构成：变量对象中存储变量名与内存地址（内存指针）、堆内存中存储键值对、内存地址指向堆内存中的一个引用类型数据</li>
+<li>复制一个引用类型的数据其实是给了新变量一个新的内存地址（这个过程发生在变量对象中）。这个新的内存地址与原来的内存地址指向的是同一个引用类型数据</li>
+</ul>
+<h3 id="内存空间管理"><a href="#内存空间管理" class="headerlink" title="内存空间管理"></a>内存空间管理</h3><h4 id="JS的内存生命周期"><a href="#JS的内存生命周期" class="headerlink" title="JS的内存生命周期"></a>JS的内存生命周期</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;  <span class="comment">// 在内存中给数值变量分配空间</span></div><div class="line">alert(a + <span class="number">100</span>);  <span class="comment">// 使用内存</span></div><div class="line">a = <span class="literal">null</span>; <span class="comment">// 使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
+<pre><code>给a赋值null的目的是让a原本对应的值失去引用，脱离执行环境，这个值会在下一次垃圾收集器执行操作时被找到并释放。
+在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要了。因此垃圾收集器很容易做出判断并回收。但是全局变量什么时候需要自动释放内存空间则很难判断，因此在我们的开发中，需要尽量避免使用全局变量，以确保性能问题。
+</code></pre><h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><h4 id="what"><a href="#what" class="headerlink" title="what"></a>what</h4><blockquote>
+<p>执行上下文可以理解为当前代码的执行环境，它会形成一个作用域。</p>
+</blockquote>
+<h4 id="types"><a href="#types" class="headerlink" title="types"></a>types</h4><ul>
+<li>全局环境：JS代码执行首先进入全局环境。这个环境最先入栈，最后出栈。</li>
+<li>函数环境：当函数被调用执行时，会进入当前函数中执行代码（不是定义时，是被调用时）。</li>
+<li>eval环境：现在基本不用，所以不用考虑。</li>
+</ul>
+<h4 id="characteristic"><a href="#characteristic" class="headerlink" title="characteristic"></a>characteristic</h4><ul>
+<li>单线程</li>
+<li>同步执行，只有栈顶的上下文处于执行中，其他上下文需要等待。</li>
+<li>全局的上下文只有一个，它在浏览器窗口关闭时出栈。</li>
+<li>函数的执行上下文没有个数限制。</li>
+<li>每次某个函数被调用，就会用一个新的执行上下文为其创建。即使是调用的它自身。</li>
+</ul>
+<h4 id="执行上下文与闭包"><a href="#执行上下文与闭包" class="headerlink" title="执行上下文与闭包"></a>执行上下文与闭包</h4><blockquote>
+<p>它的执行过程是：<code>全局环境入栈--&gt;外层函数入栈--&gt;外层函数出栈--&gt;内层函数入栈--&gt;内层函数出栈--&gt;全局环境出栈</code>。<br>内层函数会记住外层函数的变量对象，从而实现闭包的效果。</p>
+</blockquote>
+<h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><blockquote>
+<p>当一个函数被调用时，就会创建一个新的执行上下文。<br>一个的执行上下文的生命周期分为创建阶段和执行阶段。<br>创建阶段：<code>生成变量对象--&gt;建立作用域链--&gt;确定this的指向</code>;<br>执行阶段：<code>变量赋值--&gt;函数引用--&gt;执行其他代码</code>。</p>
+</blockquote>
+<h4 id="变量对象（Variable-Object）的创建过程"><a href="#变量对象（Variable-Object）的创建过程" class="headerlink" title="变量对象（Variable Object）的创建过程"></a>变量对象（Variable Object）的创建过程</h4><ol>
+<li>建立arguments对象。检查当前上下文中的参数，建立该对象下的属性与属性值。</li>
+<li>检查当前上下文的函数声明，也就是使用function关键字声明的函数。在变量对象中以函数名建立一个属性，属性值为指向该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</li>
+<li>检查当前上下文中的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为undefined。如果该变量名的属性已经存在，为了防止同名的函数被修改为undefined，则会直接跳过，原属性值不会被修改。</li>
+</ol>
+<p>注：未进入执行阶段之前，变量对象中的属性都不能访问！但是进入执行阶段之后，变量对象转变为了活动对象，里面的属性都能被访问了，然后开始进行执行阶段的操作。变量对象和活动对象其实是同一个对象，只是处于执行上下文的不同生命周期。</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>按照我的理解，作用域链是由多个变量对象所组成的一个数组。<br>数组的第一个元素是当前执行上下文的变量对象，最后一个元素是全局环境的变量对象（window对象下的变量）。<br>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
+<h3 id="JS中的this"><a href="#JS中的this" class="headerlink" title="JS中的this"></a>JS中的<code>this</code></h3><blockquote>
+<p>this的指向，是在函数被调用的时候确定的。也就是执行上下文被创建时确定的。</p>
+</blockquote>
+<h4 id="函数中的this"><a href="#函数中的this" class="headerlink" title="函数中的this"></a>函数中的<code>this</code></h4><p>在一个函数上下文中，this由调用者提供，由调用函数的方式来决定。如果调用者函数，被某一个对象所拥有，那么该函数在调用时，内部的this指向该对象。如果函数独立调用，那么该函数内部的this，则指向undefined。但是在非严格模式中，当this指向undefined时，它会被自动指向全局对象。</p>
+<h4 id="使用call-apply显示指定this"><a href="#使用call-apply显示指定this" class="headerlink" title="使用call,apply显示指定this"></a>使用call,apply显示指定<code>this</code></h4><p>JavaScript内部提供了一种机制，让我们可以自行手动设置this的指向。它们就是call与apply。所有的函数都具有着两个方法。它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。<br>下面举一个利用call,apply实现继承的方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义父级的构造函数</span></div><div class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age  = age;</div><div class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">// 定义子类的构造函数</span></div><div class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</div><div class="line">    <span class="comment">// use call</span></div><div class="line">    Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">    <span class="keyword">this</span>.high = high;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Student的构造函数等同于下</span></div><div class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age  = age;</div><div class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</div><div class="line">    <span class="comment">// Person.call(this, name, age); 这一句话，相当于上面三句话，因此实现了继承</span></div><div class="line">    <span class="keyword">this</span>.high = high;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注：匿名函数经常会导致<code>this</code>丢失，可以用<code>bind</code>方法来解决。</p>
+<h4 id="构造函数与原型方法上的this"><a href="#构造函数与原型方法上的this" class="headerlink" title="构造函数与原型方法上的this"></a>构造函数与原型方法上的<code>this</code></h4><p><code>new</code>一个对象的过程：</p>
+<ol>
+<li>创建一个新的对象。</li>
+<li>将构造函数的this指向这个新对象。</li>
+<li>指向构造函数的代码，为这个对象添加属性，方法等。返回新对象。<h4 id="原型方法上的this"><a href="#原型方法上的this" class="headerlink" title="原型方法上的this"></a>原型方法上的<code>this</code></h4>原型方法上的<code>this</code>就好理解多了。谁调用的，this就指向谁。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/堆栈/" rel="tag"># 堆栈</a>
+          
+            <a href="/tags/内存/" rel="tag"># 内存</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/26/JS-vue-vuex/" rel="prev" title="vuex">
+                vuex <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈与堆"><span class="nav-number">1.</span> <span class="nav-text">栈与堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈"><span class="nav-number">1.1.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆"><span class="nav-number">1.2.</span> <span class="nav-text">堆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的基础数据类型与引用数据类型的存储"><span class="nav-number">2.</span> <span class="nav-text">JS中的基础数据类型与引用数据类型的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）"><span class="nav-number">2.1.</span> <span class="nav-text">变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">引用数据类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存空间管理"><span class="nav-number">3.</span> <span class="nav-text">内存空间管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS的内存生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">JS的内存生命周期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行上下文"><span class="nav-number">4.</span> <span class="nav-text">执行上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what"><span class="nav-number">4.1.</span> <span class="nav-text">what</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#types"><span class="nav-number">4.2.</span> <span class="nav-text">types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#characteristic"><span class="nav-number">4.3.</span> <span class="nav-text">characteristic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行上下文与闭包"><span class="nav-number">4.4.</span> <span class="nav-text">执行上下文与闭包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象"><span class="nav-number">5.</span> <span class="nav-text">变量对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量对象（Variable-Object）的创建过程"><span class="nav-number">5.1.</span> <span class="nav-text">变量对象（Variable Object）的创建过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链"><span class="nav-number">6.</span> <span class="nav-text">作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的this"><span class="nav-number">7.</span> <span class="nav-text">JS中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数中的this"><span class="nav-number">7.1.</span> <span class="nav-text">函数中的this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用call-apply显示指定this"><span class="nav-number">7.2.</span> <span class="nav-text">使用call,apply显示指定this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数与原型方法上的this"><span class="nav-number">7.3.</span> <span class="nav-text">构造函数与原型方法上的this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型方法上的this"><span class="nav-number">7.4.</span> <span class="nav-text">原型方法上的this</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
