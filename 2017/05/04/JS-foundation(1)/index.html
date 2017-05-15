@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/04/JS-foundation(1)/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
-<meta property="og:updated_time" content="2017-05-06T05:00:18.572Z">
+<meta property="og:updated_time" content="2017-05-06T12:38:40.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 基础进阶（一）">
 <meta name="twitter:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
@@ -374,7 +374,7 @@
 <h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>堆内存的存取方式就像是从书架上拿书。我们只需要知道某本书的名字就可以从书架上准确地拿到该书。</p>
 <h3 id="JS中的基础数据类型与引用数据类型的存储"><a href="#JS中的基础数据类型与引用数据类型的存储" class="headerlink" title="JS中的基础数据类型与引用数据类型的存储"></a>JS中的基础数据类型与引用数据类型的存储</h3><h4 id="变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）"><a href="#变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）" class="headerlink" title="变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）"></a>变量对象（变量对象其实也是存在堆内存中的，但它比较特殊，所以把它单独提出来）</h4><ul>
 <li>基础数据类型是统一存储在一个变量对象上的。<code>var a = 1;</code>相当于：<code>变量对象.a = 1;</code></li>
-<li>复制变量对象中的变量时会为新变量分配一个新值，这个值与之前的直没有关系</li>
+<li>复制变量对象中的变量时会为新变量分配一个新值，这个值与之前的值没有关系</li>
 </ul>
 <h4 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h4><ul>
 <li>引用数据都是存在堆内存中的</li>
@@ -470,6 +470,10 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/08/JS-react-redux/" rel="next" title="redux">
+                <i class="fa fa-chevron-left"></i> redux
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -550,7 +554,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -561,7 +565,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -572,7 +576,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
