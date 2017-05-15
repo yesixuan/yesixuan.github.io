@@ -1,0 +1,845 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS库," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…">
+<meta name="keywords" content="CSS库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS基础样式库">
+<meta property="og:url" content="http://yoursite.com/2017/05/15/CSS-fundationStyle/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…">
+<meta property="og:updated_time" content="2017-05-15T14:50:30.905Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS基础样式库">
+<meta name="twitter:description" content="本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/15/CSS-fundationStyle/"/>
+
+
+
+
+
+  <title> CSS基础样式库 | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/15/CSS-fundationStyle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS基础样式库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T21:11:00+08:00">
+                2017-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/CSS/CSS库/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>国内以为大神通读Normalize.css源码，并且将Normalize.css进行了更细粒度的划分放入<a href="https://github.com/Alsiso/Koala" target="_blank" rel="external">Koala</a>这个项目中。非常符合我的心意。感谢@Alsiso。<a href="http://segmentfault.com/a/1190000003055238" target="_blank" rel="external">原文地址</a></p>
+<h3 id="样式重置方案normal-css"><a href="#样式重置方案normal-css" class="headerlink" title="样式重置方案normal.css"></a>样式重置方案<code>normal.css</code></h3><p>Normalize.css不仅统一了样式，还保留元素的可辨识性，这是我们应该继承和发扬的优点，normal.css也会参考借鉴Normalize.css所有优势，不过Normalize.css更简洁，让开发者更容易上手，并且对它进行瘦身，比如移除一些不会用到的元素标签hgroup，将一些元素进行分模块管理，比如html5.css，form.css等，方便按需求灵活引用。</p>
+<h4 id="调整内容"><a href="#调整内容" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
+<li>字体约定62.5%，方便单位转换</li>
+<li>统一元素的内外边距</li>
+<li>设置全局字体，修复表单元素不继承父级font的问题</li>
+<li>添加链接基本样式</li>
+<li>移除列表元素的默认标识</li>
+<li>移除元素默认边框</li>
+<li>移除链接默认的下划线</li>
+<li>移除单元格间距让其边重合</li>
+<li>修复th不继承text-align，默认左对齐</li>
+<li>重置标题，采用自定义</li>
+<li>把所有斜体标签默认扶正</li>
+<li>统一引用标记</li>
+<li>统一上标和下标</li>
+</ul>
+<h3 id="HTML5元素html5-css"><a href="#HTML5元素html5-css" class="headerlink" title="HTML5元素html5.css"></a>HTML5元素<code>html5.css</code></h3><p>html5.css主要是用于解决html5新元素在旧浏览器中的不识别，并且修复一些元素存在的隐性问题。</p>
+<h4 id="调整内容-1"><a href="#调整内容-1" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
+<li>修复HTML5新元素不能正确显示的问题</li>
+<li>修复progress元素的对其问题</li>
+<li>修复没有controls属性的audio显示出来</li>
+<li>修复hidden属性不起作用的问题</li>
+<li>修复svg元素overflow不正常的问题</li>
+<li>统一mark标签的样式</li>
+<li>修复拖动元素添加拖动的光标</li>
+</ul>
+<h3 id="表单元素form-css"><a href="#表单元素form-css" class="headerlink" title="表单元素form.css"></a>表单元素<code>form.css</code></h3><p>form.css修复表单元素在不同浏览器下的默认样式，尤其是IE低浏览器版本下的一些怪异问题；并且还修复了一些表单显示状态，致力于提升用户体验。<br>button按钮在网页中是最常用的基础元件，但是不同浏览器下按钮的默认样式千奇百怪，而且表现形式过于单一，所以考虑在form.css里内置了一套按钮组件，提供几种表现场景，并且可以和下面要介绍的iconfont.css搭配使用。</p>
+<h4 id="调整内容（form-css）"><a href="#调整内容（form-css）" class="headerlink" title="调整内容（form.css）"></a>调整内容（form.css）</h4><ul>
+<li>统一fieldset元素的显示样式</li>
+<li>修复’legend’元素的若干问题</li>
+<li>修复表单元素字体与字号不继承的问题</li>
+<li>统一表单元素的垂直对其方式</li>
+<li>统一表单元素的overflow属性为visible</li>
+<li>重置按钮禁用时光标样式</li>
+<li>修复checkbox,radio的属性box-sizing: border-box;</li>
+<li>统一button,input内边距和内边框</li>
+<li>统一select的样式</li>
+<li>修复textarea只能为纵向拉伸</li>
+</ul>
+<h4 id="调整内容（ui-btn按钮组件包含的内容）"><a href="#调整内容（ui-btn按钮组件包含的内容）" class="headerlink" title="调整内容（ui-btn按钮组件包含的内容）"></a>调整内容（ui-btn按钮组件包含的内容）</h4><ul>
+<li>初始化默认按钮样式，增加不同状态下的效果</li>
+<li>提供多种场景按钮，如主要，警告与错误</li>
+<li>提供可定制的大小按钮，如较小，更小，一般，较大，更大</li>
+<li>提供组合式按钮</li>
+<li>支持iconfont.css，搭配图标按钮使用</li>
+</ul>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span>默认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="栅格系统grid-css"><a href="#栅格系统grid-css" class="headerlink" title="栅格系统grid.css"></a>栅格系统<code>grid.css</code></h3><p>借鉴了Bootstrap的一套响应式流式栅格布局系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。<br>对栅格系统的样式命名进行重新组织，简化和移除工具代码，只保留核心布局样式。</p>
+<h4 id="调整内容-2"><a href="#调整内容-2" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
+<li>.ui-grid-container(固定宽度)和.ui-grid-fluid(100%宽度)用于包裹.ui-row</li>
+<li>.ui-grid-container(固定宽度)通过媒体查询来实现响应式宽度</li>
+<li>.ui-row用于包裹一组.ui-col-1-.ui-col-12列</li>
+<li>xs,sm,lg通过媒体查询来实现响应式</li>
+<li>.ui-col-xs-* 超小屏幕 手机 (&lt;768px)</li>
+<li>.ui-col-sm-* 小屏幕 平板 (≥768px)</li>
+<li>.ui-col-* (默认)中等屏幕 桌面显示器 (≥992px)</li>
+<li>.ui-col-lg-* 大屏幕 大桌面显示器 (≥1200px)</li>
+<li>支持列嵌套，必须包裹在.ui-row行中</li>
+<li>简化代码，不支持列偏移，列排序</li>
+</ul>
+<h4 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-grid-fluid"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-8"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-4"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="辅助工具utils-css"><a href="#辅助工具utils-css" class="headerlink" title="辅助工具utils.css"></a>辅助工具<code>utils.css</code></h3><p>提供最常用的功能类class，命名使用fn-前缀来进行区别表示，如果在项目中能够灵活复用这些类，那将大大提升开发效率。</p>
+<h4 id="调整内容-3"><a href="#调整内容-3" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
+<li>浮动元素与清楚浮动元素</li>
+<li>垂直与水平滚动</li>
+<li>元素显示类型</li>
+<li>元素与文本隐藏</li>
+<li>文本不换行</li>
+<li>文本强制换行</li>
+<li>文本溢出显示省略号</li>
+<li>文本左右对齐</li>
+<li>文本垂直对齐</li>
+<li>常用符号(关闭，箭头，下三角等)</li>
+<li>自适应两端对齐</li>
+<li>未知高度垂直居中</li>
+<li>列表平铺</li>
+</ul>
+<h4 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 文字溢出显示省略号 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fn-text-ellipsis"</span>&gt;</span>文字那是相当的长<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="字体图标iconfont-css"><a href="#字体图标iconfont-css" class="headerlink" title="字体图标iconfont.css"></a>字体图标<code>iconfont.css</code></h3><p>iconfont都已经很熟悉了，是一种把图标放入自定义字体中，然后使用字体图标来替代普通图标的技术，使用起来方便灵活。</p>
+<h4 id="包含内容"><a href="#包含内容" class="headerlink" title="包含内容"></a>包含内容</h4><ul>
+<li>提供网页中66个最常用的字体图标</li>
+<li>可搭配form.css按钮组件使用</li>
+</ul>
+<h4 id="使用示例-3"><a href="#使用示例-3" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#126;<span class="tag">&lt;/<span class="name">b</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="动画库animate-css"><a href="#动画库animate-css" class="headerlink" title="动画库animate.css"></a>动画库<code>animate.css</code></h3><p>这个在动画与过度一文中有详细讲到，此处暂且不提。</p>
+<h3 id="打印print-css"><a href="#打印print-css" class="headerlink" title="打印print.css"></a>打印<code>print.css</code></h3><p>可以优化打印出的网页更适合浏览，并且加快打印速度，节省打印机耗材。</p>
+<h4 id="调整的内容"><a href="#调整的内容" class="headerlink" title="调整的内容"></a>调整的内容</h4><ul>
+<li>修复打印时的背景和文字颜色</li>
+<li>删除所有的阴影效果</li>
+<li>标注超链接，并显示URL链接</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS库/" rel="tag"># CSS库</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/15/CSS-css3-animation/" rel="prev" title="动画与过渡">
+                动画与过渡 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式重置方案normal-css"><span class="nav-number">2.</span> <span class="nav-text">样式重置方案normal.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容"><span class="nav-number">2.1.</span> <span class="nav-text">调整内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5元素html5-css"><span class="nav-number">3.</span> <span class="nav-text">HTML5元素html5.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容-1"><span class="nav-number">3.1.</span> <span class="nav-text">调整内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单元素form-css"><span class="nav-number">4.</span> <span class="nav-text">表单元素form.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容（form-css）"><span class="nav-number">4.1.</span> <span class="nav-text">调整内容（form.css）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容（ui-btn按钮组件包含的内容）"><span class="nav-number">4.2.</span> <span class="nav-text">调整内容（ui-btn按钮组件包含的内容）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例"><span class="nav-number">4.3.</span> <span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栅格系统grid-css"><span class="nav-number">5.</span> <span class="nav-text">栅格系统grid.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容-2"><span class="nav-number">5.1.</span> <span class="nav-text">调整内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例-1"><span class="nav-number">5.2.</span> <span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辅助工具utils-css"><span class="nav-number">6.</span> <span class="nav-text">辅助工具utils.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整内容-3"><span class="nav-number">6.1.</span> <span class="nav-text">调整内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例-2"><span class="nav-number">6.2.</span> <span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体图标iconfont-css"><span class="nav-number">7.</span> <span class="nav-text">字体图标iconfont.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包含内容"><span class="nav-number">7.1.</span> <span class="nav-text">包含内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例-3"><span class="nav-number">7.2.</span> <span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画库animate-css"><span class="nav-number">8.</span> <span class="nav-text">动画库animate.css</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打印print-css"><span class="nav-number">9.</span> <span class="nav-text">打印print.css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调整的内容"><span class="nav-number">9.1.</span> <span class="nav-text">调整的内容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
