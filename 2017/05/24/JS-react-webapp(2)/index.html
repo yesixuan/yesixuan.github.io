@@ -1,0 +1,767 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React webapp(二)">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/JS-react-webapp(2)/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
+<meta property="og:updated_time" content="2017-05-24T11:07:20.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React webapp(二)">
+<meta name="twitter:description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/24/JS-react-webapp(2)/"/>
+
+
+
+
+
+  <title> React webapp(二) | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/JS-react-webapp(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React webapp(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T10:55:00+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>写这篇博客的时候，刚刚将这个webapp的首页完成…</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="智能组件与木偶组件"><a href="#智能组件与木偶组件" class="headerlink" title="智能组件与木偶组件"></a>智能组件与木偶组件</h2><p>我们将react项目中的组件分为智能组件和木偶组件两类，每个组件拥有一个文件夹，文件夹里面包含index.jsx、style.less（它的子组件在它的下级目录）。</p>
+<h3 id="智能组件"><a href="#智能组件" class="headerlink" title="智能组件"></a>智能组件</h3><p>我们把智能组件放到containers文件夹下，containers文件夹下的一级目录放的是每个路由分页面。智能组件主要是作为一个容器，负责给木偶组件传递方法和数据。</p>
+<h3 id="木偶组件"><a href="#木偶组件" class="headerlink" title="木偶组件"></a>木偶组件</h3><p>木偶组件位于components文件夹下。它的作用主要是页面的展示，它是消费父组件（智能组件）传递给他的方法和数据。</p>
+<h2 id="字体图标"><a href="#字体图标" class="headerlink" title="字体图标"></a>字体图标</h2><h3 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h3><p><a href="https://icomoon.io/" target="_blank" rel="external">在线制作字体图标</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成的css文件放在’static/css’文件夹下，字体文件放在’static/fonts’文件夹下（相对路径不要搞错）。</p>
+<h2 id="postcss"><a href="#postcss" class="headerlink" title="postcss"></a>postcss</h2><p>上代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引入样式文件</span></div><div class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./style.less'</span></div><div class="line"><span class="comment">// 使用</span></div><div class="line">&lt;div className=&#123;styles[<span class="string">"content-title"</span>]&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="fetch的使用"><a href="#fetch的使用" class="headerlink" title="fetch的使用"></a>fetch的使用</h2><h3 id="mock接口"><a href="#mock接口" class="headerlink" title="mock接口"></a>mock接口</h3><h4 id="写接口"><a href="#写接口" class="headerlink" title="写接口"></a>写接口</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// mock/server.js</span></div><div class="line">  <span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'koa'</span>)();</div><div class="line">  <span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</div><div class="line">  <span class="comment">//首页广告</span></div><div class="line">  <span class="keyword">var</span> homeAdData = <span class="built_in">require</span>(<span class="string">'./home/ad.js'</span>); <span class="comment">// 这里其实是拿到一个json</span></div><div class="line">  router.get(<span class="string">'/api/homead'</span>,<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">  	<span class="keyword">this</span>.body = homeAdData;</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// ...后面可以接着写</span></div><div class="line">  <span class="comment">//开启服务</span></div><div class="line">  app.use(router.routes())</div><div class="line">     .use(router.allowedMethods());</div><div class="line">  app.listen(<span class="number">3002</span>);</div></pre></td></tr></table></figure>
+<h4 id="定义json"><a href="#定义json" class="headerlink" title="定义json"></a>定义json</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// mock/home/ad.js</span></div><div class="line"><span class="built_in">module</span>.exports = [</div><div class="line">  &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">'暑假5折'</span>,</div><div class="line">      <span class="attr">img</span>: <span class="string">'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191639092-2000037796.png'</span>,</div><div class="line">      <span class="attr">link</span>: <span class="string">'http://www.imooc.com/wap/index'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">'特价出国'</span>,</div><div class="line">      <span class="attr">img</span>: <span class="string">'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191648124-298129318.png'</span>,</div><div class="line">      <span class="attr">link</span>: <span class="string">'http://www.imooc.com/wap/index'</span></div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> AdData <span class="keyword">from</span> <span class="string">'../../../../mock/home/ad'</span></div><div class="line"><span class="keyword">import</span> &#123;getAdData&#125; <span class="keyword">from</span> <span class="string">'../../../fetch/home/home'</span></div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  <span class="comment">// 第一步，调接口</span></div><div class="line">  <span class="keyword">const</span> result = getAdData();</div><div class="line">  <span class="comment">// 第二步，拿到结果，如果成功，将字符串转成JSON对象</span></div><div class="line">  result.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(res.ok) &#123;</div><div class="line">      <span class="keyword">return</span> res.json()</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> AdData <span class="comment">// 如果调接口拿数据出错，则直接返回这个import进来的数据</span></div><div class="line">    &#125;</div><div class="line">  &#125;).then(<span class="function"><span class="params">json</span> =&gt;</span> &#123; <span class="comment">// 将转换后的数据跟UI组件的显示数据对接起来</span></div><div class="line">    <span class="keyword">const</span> data = json</div><div class="line">    <span class="keyword">if</span>(data.length) &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        <span class="attr">data</span>: data</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(err.message)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="滚动事件中的性能优化"><a href="#滚动事件中的性能优化" class="headerlink" title="滚动事件中的性能优化"></a>滚动事件中的性能优化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">  <span class="keyword">const</span> wrapper = <span class="keyword">this</span>.refs.wrapper</div><div class="line">  <span class="keyword">const</span> loadMoreFn = <span class="keyword">this</span>.props.loadMoreFn</div><div class="line">  <span class="comment">// 这里是滚动事件被触发之后的回调函数</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> top = wrapper.getBoundingClientRect().top</div><div class="line">    <span class="keyword">const</span> windowHeight = <span class="built_in">window</span>.screen.height</div><div class="line">    <span class="keyword">if</span>(top &amp;&amp; top &lt; windowHeight) &#123;</div><div class="line">      loadMoreFn() <span class="comment">// 从父组件传过来的加载更多数据的方法</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/*</span></div><div class="line">  * 1. 外部定义变量用来存储定时器</div><div class="line">  * 2. 在滚动事件里面判断那个变量有没有存定时器</div><div class="line">  * 3. 定时器搞起来，用之前的变量存起来</div><div class="line">  */</div><div class="line">  <span class="keyword">let</span> timeAction</div><div class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.props.isLoadingMore) &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(timeAction) &#123;</div><div class="line">      clearTimeout(timeAction)</div><div class="line">    &#125;</div><div class="line">    timeAction = setTimeout(callback,<span class="number">50</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/24/JS-function/" rel="next" title="JS中函数的生命周期">
+                <i class="fa fa-chevron-left"></i> JS中函数的生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/20/JS-react-webapp(1)/" rel="prev" title="React webapp(一)">
+                React webapp(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#智能组件与木偶组件"><span class="nav-number">1.</span> <span class="nav-text">智能组件与木偶组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#智能组件"><span class="nav-number">1.1.</span> <span class="nav-text">智能组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#木偶组件"><span class="nav-number">1.2.</span> <span class="nav-text">木偶组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体图标"><span class="nav-number">2.</span> <span class="nav-text">字体图标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作"><span class="nav-number">2.1.</span> <span class="nav-text">制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postcss"><span class="nav-number">3.</span> <span class="nav-text">postcss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch的使用"><span class="nav-number">4.</span> <span class="nav-text">fetch的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mock接口"><span class="nav-number">4.1.</span> <span class="nav-text">mock接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写接口"><span class="nav-number">4.1.1.</span> <span class="nav-text">写接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义json"><span class="nav-number">4.1.2.</span> <span class="nav-text">定义json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-1"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动事件中的性能优化"><span class="nav-number">5.</span> <span class="nav-text">滚动事件中的性能优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
