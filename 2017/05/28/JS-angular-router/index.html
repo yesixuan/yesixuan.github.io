@@ -91,10 +91,10 @@
 <meta name="keywords" content="js,angular,router">
 <meta property="og:type" content="article">
 <meta property="og:title" content="angular4路由">
-<meta property="og:url" content="http://yoursite.com/2017/05/27/JS-angular-router/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/JS-angular-router/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="听说angular4整了一个超级牛叉的路由模块…">
-<meta property="og:updated_time" content="2017-05-28T08:22:42.289Z">
+<meta property="og:updated_time" content="2017-05-28T11:31:52.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular4路由">
 <meta name="twitter:description" content="听说angular4整了一个超级牛叉的路由模块…">
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/27/JS-angular-router/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/28/JS-angular-router/"/>
 
 
 
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/27/JS-angular-router/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/JS-angular-router/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T19:46:00+08:00">
-                2017-05-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T18:06:00+08:00">
+                2017-05-28
               </time>
             
 
@@ -398,7 +398,7 @@
 <h3 id="辅助路由"><a href="#辅助路由" class="headerlink" title="辅助路由"></a>辅助路由</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-outlet</span> <span class="attr">name</span>=<span class="string">"aux"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这里配置哪些组件能够显示到‘aux’这个插座上，只要有outlet属性，就说明这是辅助路由的配置</span></div><div class="line">&#123;<span class="attr">path</span>: <span class="string">'xxx'</span>, <span class="attr">component</span>: XxxComponent, <span class="attr">outlet</span>: <span class="string">'aux'</span>&#125;</div><div class="line">&#123;<span class="attr">path</span>: <span class="string">'yyy'</span>, <span class="attr">component</span>: YyyComponent, <span class="attr">outlet</span>: <span class="string">'aux'</span>&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 这里的outlets只是控制辅助路由的切换（独立变化，与主路由链接无关）（辅助路由的URL是用'()'包起来的） --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/home',&#123;outlets: &#123;aux: 'xxx'&#125;&#125;]"</span>&gt;</span>Xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/product',&#123;outlets: &#123;aux: 'yyy'&#125;&#125;]"</span>&gt;</span>Yyy<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 这里是点击切换到开始聊天路由，顺便将主路由切到home路径上去 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"[&#123;primary: 'home', outlets: &#123;aux: 'chat'&#125;&#125;]"</span>&gt;</span>开始聊天<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="CanActivate"><a href="#CanActivate" class="headerlink" title="CanActivate"></a>CanActivate</h4><p>场景：用户未登陆不允许进入该路由页面<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// guard/login.guard.ts</span></div><div class="line"><span class="keyword">import</span> &#123; CanActivate &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginGuard</span> <span class="title">implements</span> <span class="title">CanActivate</span> </span>&#123;</div><div class="line">  canActivate() &#123; <span class="comment">// 这个方法要反回一个布尔值，根据这个布尔值看你是否有权限进到这个路由</span></div><div class="line">    <span class="keyword">let</span> loggedIn: boolean = Match.random() &lt; <span class="number">0.5</span> <span class="comment">// 用随技术的方式来模拟看用户是否登陆</span></div><div class="line">    <span class="keyword">if</span>(!loggedIn) &#123;</div><div class="line">      alert(<span class="string">'未登录，不能进入该页面'</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> loggedIn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 路由配置信息里面加入一个属性</span></div><div class="line"><span class="keyword">import</span> &#123; LoginGuard &#125; <span class="keyword">from</span> <span class="string">"./guard/login.guard"</span></div><div class="line">&#123;<span class="attr">path</span>: <span class="string">'product/:id'</span>,<span class="attr">component</span>:ProductComponent,...,<span class="attr">canActivatave</span>:[LoginGuard]&#125;</div><div class="line"><span class="comment">// 在providers属性中注入LoginGuard以实例化</span></div><div class="line">@NgModule(&#123;</div><div class="line">  ...</div><div class="line">  providers: [LoginGuard]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><h4 id="CanActivate"><a href="#CanActivate" class="headerlink" title="CanActivate"></a>CanActivate</h4><p>场景：用户未登陆不允许进入该路由页面<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// guard/login.guard.ts</span></div><div class="line"><span class="keyword">import</span> &#123; CanActivate &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginGuard</span> <span class="title">implements</span> <span class="title">CanActivate</span> </span>&#123;</div><div class="line">  canActivate() &#123; <span class="comment">// 这个方法要反回一个布尔值，根据这个布尔值看你是否有权限进到这个路由</span></div><div class="line">    <span class="keyword">let</span> loggedIn: boolean = Match.random() &lt; <span class="number">0.5</span> <span class="comment">// 用随机数的方式来模拟看用户是否登陆</span></div><div class="line">    <span class="keyword">if</span>(!loggedIn) &#123;</div><div class="line">      alert(<span class="string">'未登录，不能进入该页面'</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> loggedIn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 路由配置信息里面加入一个属性</span></div><div class="line"><span class="keyword">import</span> &#123; LoginGuard &#125; <span class="keyword">from</span> <span class="string">"./guard/login.guard"</span></div><div class="line">&#123;<span class="attr">path</span>: <span class="string">'product/:id'</span>,<span class="attr">component</span>:ProductComponent,...,<span class="attr">canActivatave</span>:[LoginGuard]&#125;</div><div class="line"><span class="comment">// 在providers属性中注入LoginGuard以实例化</span></div><div class="line">@NgModule(&#123;</div><div class="line">  ...</div><div class="line">  providers: [LoginGuard]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="CanDeactivate"><a href="#CanDeactivate" class="headerlink" title="CanDeactivate"></a>CanDeactivate</h4><p>场景：用户要离开时，提醒他保存表单信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// guard/unsaved.guard.ts</span></div><div class="line"><span class="keyword">import</span> &#123; CanDeactivate &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span></div><div class="line"><span class="keyword">import</span> &#123; ProductComponent &#125; <span class="keyword">from</span> <span class="string">'../product/product.component'</span> <span class="comment">// 引入你要保护的组件</span></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UnsavedGuard</span> <span class="title">implements</span> <span class="title">CanDeactivate</span>&lt;<span class="title">ProductComponent</span>&gt; </span>&#123; <span class="comment">// 这里要指定一个泛型指定你要保护谁</span></div><div class="line">  canActivate(component: ProductComponent) &#123; <span class="comment">// 这里我们可以拿到受保护的组件，判断它是否具备离开的条件</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.confirm(<span class="string">'你还没有保存，确定要离开吗？'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 路由配置信息里面加入一个属性</span></div><div class="line"><span class="keyword">import</span> &#123; UnsavedGuard &#125; <span class="keyword">from</span> <span class="string">"./guard/unsaved.guard"</span></div><div class="line">&#123;<span class="attr">path</span>: <span class="string">'product/:id'</span>,<span class="attr">component</span>:ProductComponent,...,<span class="attr">canDeactivatave</span>:[UnsavedGuard]&#125;</div><div class="line"><span class="comment">// 在providers属性中注入LoginGuard以实例化</span></div><div class="line">@NgModule(&#123;</div><div class="line">  ...</div><div class="line">  providers: [LoginGuard,UnsavedGuard]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="Resolve"><a href="#Resolve" class="headerlink" title="Resolve"></a>Resolve</h4><p>在进入路由页面之前，预先从服务器上获取到想要的数据。而后带这这些数据进入路由页面，用户体验更佳<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 太难了...</span></div></pre></td></tr></table></figure></p>
 
@@ -447,18 +447,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/27/JS-angular-suction(1)/" rel="next" title="angular4搭建竞拍网站（一）">
-                <i class="fa fa-chevron-left"></i> angular4搭建竞拍网站（一）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/24/JS-function/" rel="prev" title="JS中函数的生命周期">
-                JS中函数的生命周期 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/27/JS-angular-suction(1)/" rel="prev" title="angular4搭建竞拍网站（一）">
+                angular4搭建竞拍网站（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
