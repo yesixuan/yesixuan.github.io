@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/22/instrument-git-directive/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.930Z">
+<meta property="og:updated_time" content="2017-07-03T11:52:10.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用git命令">
 <meta name="twitter:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
@@ -319,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -330,19 +330,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂项/git/" itemprop="url" rel="index">
+                  <a href="/categories/工具/git/" itemprop="url" rel="index">
                     <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂项/git/git常用命令/" itemprop="url" rel="index">
-                    <span itemprop="name">git常用命令</span>
                   </a>
                 </span>
 
@@ -411,6 +400,23 @@
 </li>
 <li><p>将远程仓储的代码同步到本地</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
+<li><p>创建并且切换到该分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b [branch-name]</div></pre></td></tr></table></figure>
+</li>
+<li><p>切换至主分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout master</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除某分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> [branch-name]</div></pre></td></tr></table></figure>
+</li>
+<li><p>提交分支到远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin [branch-name]</div></pre></td></tr></table></figure>
+</li>
+<li><p>合并分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 一旦出现冲突，需要手动解决冲突。解决完后，还要add一下</div><div class="line">git merge [branch-name]</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="其他重要的git命令"><a href="#其他重要的git命令" class="headerlink" title="其他重要的git命令"></a>其他重要的git命令</h3><ul>
@@ -562,7 +568,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -573,7 +579,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -584,7 +590,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -630,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的几个概念"><span class="nav-number">1.</span> <span class="nav-text">Git的几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我最常用的git命令"><span class="nav-number">2.</span> <span class="nav-text">我最常用的git命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他重要的git命令"><span class="nav-number">3.</span> <span class="nav-text">其他重要的git命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的几个概念"><span class="nav-number">1.</span> <span class="nav-text">Git的几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我最常用的git命令"><span class="nav-number">2.</span> <span class="nav-text">我最常用的git命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支操作"><span class="nav-number">3.</span> <span class="nav-text">分支操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他重要的git命令"><span class="nav-number">4.</span> <span class="nav-text">其他重要的git命令</span></a></li></ol></div>
             
 
           </div>
