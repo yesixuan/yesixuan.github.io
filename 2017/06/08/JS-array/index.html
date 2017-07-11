@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/08/JS-array/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="数组是我们最常操作的JS对象之一，熟练使用各种JS方法，可以让我们的代码敲起来更爽…">
-<meta property="og:updated_time" content="2017-06-08T10:54:50.684Z">
+<meta property="og:updated_time" content="2017-07-11T11:35:23.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS的数组方法">
 <meta name="twitter:description" content="数组是我们最常操作的JS对象之一，熟练使用各种JS方法，可以让我们的代码敲起来更爽…">
@@ -390,6 +390,7 @@
 <h3 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h3><p>该方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似（比indexOf()更强）。</p>
 <h2 id="扩展的数组方法"><a href="#扩展的数组方法" class="headerlink" title="扩展的数组方法"></a>扩展的数组方法</h2><h3 id="数组的去重方法"><a href="#数组的去重方法" class="headerlink" title="数组的去重方法"></a>数组的去重方法</h3><p>filter():<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    arr.filter(<span class="function">(<span class="params">item,index,arr</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> arr.indexOf(item) == index</div><div class="line">    &#125;)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>hash方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> hash = &#123;&#125;,result = []</div><div class="line">  arr.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(!hash[item]) &#123;</div><div class="line">      hash[item] = <span class="number">1</span></div><div class="line">      result.push(item)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>splice()<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 两层循环 */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  arr.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i += index; i &lt; arr.length; i++) &#123;</div><div class="line">      <span class="keyword">if</span>(item === arr[i]) &#123;</div><div class="line">        arr.splice(i--, <span class="number">1</span>)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">return</span> arr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>sort()加filter()<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="comment">// arr.concat()得到新的数组</span></div><div class="line">  <span class="keyword">return</span> arr.concat().sort().filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> !index || item != arr[index - <span class="number">1</span>];</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>ES6的Set以及Array.from方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="数组判断"><a href="#数组判断" class="headerlink" title="数组判断"></a>数组判断</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 自带的isArray方法</span></div><div class="line"><span class="keyword">var</span> array = []</div><div class="line"><span class="built_in">Array</span>.isArray(array) <span class="comment">// true</span></div><div class="line"><span class="comment">// 利用instanceof运算符</span></div><div class="line">array <span class="keyword">instanceof</span> <span class="built_in">Array</span>;<span class="comment">//true</span></div><div class="line"><span class="comment">// 利用toString的返回值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -519,7 +520,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -530,7 +531,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -541,7 +542,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

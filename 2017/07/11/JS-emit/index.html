@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,正则表达式," />
+  <meta name="keywords" content="js,设计模式," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="正则表达式，学了好多次了，但是没有经过大量的实践，总是易忘，唉…">
-<meta name="keywords" content="前端,正则表达式">
+<meta name="description" content="观察者模式是一种非常经典的设计模式，本文是JS方式的实现…">
+<meta name="keywords" content="js,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式（基础篇）">
-<meta property="og:url" content="http://yoursite.com/2017/04/21/regular-expression/index.html">
+<meta property="og:title" content="JS观察者模式">
+<meta property="og:url" content="http://yoursite.com/2017/07/11/JS-emit/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="正则表达式，学了好多次了，但是没有经过大量的实践，总是易忘，唉…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.930Z">
+<meta property="og:description" content="观察者模式是一种非常经典的设计模式，本文是JS方式的实现…">
+<meta property="og:updated_time" content="2017-07-11T11:35:23.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式（基础篇）">
-<meta name="twitter:description" content="正则表达式，学了好多次了，但是没有经过大量的实践，总是易忘，唉…">
+<meta name="twitter:title" content="JS观察者模式">
+<meta name="twitter:description" content="观察者模式是一种非常经典的设计模式，本文是JS方式的实现…">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/21/regular-expression/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/11/JS-emit/"/>
 
 
 
 
 
-  <title> 正则表达式（基础篇） | yesixuan </title>
+  <title> JS观察者模式 | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/regular-expression/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/JS-emit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -281,7 +281,7 @@
             
             
               
-                正则表达式（基础篇）
+                JS观察者模式
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T10:41:00+08:00">
-                2017-04-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T09:52:00+08:00">
+                2017-07-11
               </time>
             
 
@@ -330,8 +330,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/正则表达式/" itemprop="url" rel="index">
-                    <span itemprop="name">正则表达式</span>
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -366,59 +377,10 @@
 
       
         <blockquote>
-<p>正则表达式，学了好多次了，但是没有经过大量的实践，总是易忘，唉…</p>
+<p>观察者模式是一种非常经典的设计模式，本文是JS方式的实现…</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="通用正则语法"><a href="#通用正则语法" class="headerlink" title="通用正则语法"></a>通用正则语法</h3><h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
-<li><p><code>[abc]</code>表示匹配a或者b或者c的字符</p>
-</li>
-<li><p><code>[^abc]</code>表示匹配不是a或者b或者c的字符，<code>^</code>仅在<code>[]</code>中取反，在其他情况下表示边界</p>
-</li>
-<li><p>范围类<code>[a-z]</code>在中括号里面的<code>-</code>表示范围，如需匹配短横线，则需在后面再加<code>-</code>，如<code>[0-9-]</code></p>
-</li>
-<li><p>预定义类：<code>.</code> 匹配除了换行符以外的任何字符 <code>\d</code> 匹配数字 <code>\s</code> 匹配字母，数字，下划线 <code>\w</code> 匹配空格（字母如果变大写则表示取反）</p>
-</li>
-</ul>
-<h4 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h4><ul>
-<li><p><code>^ $</code> 为起始边界</p>
-</li>
-<li><p><code>\b</code> 单词边界</p>
-</li>
-<li><p><code>\B</code> 非单词边界</p>
-</li>
-</ul>
-<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ul>
-<li><p><code>?</code> 匹配0个或1个</p>
-</li>
-<li><p><code>+</code> 匹配 &gt;=1 个</p>
-</li>
-<li><p><code>*</code> 匹配任意多个</p>
-</li>
-<li><p><code>{n,m}</code> a为最少，b为最多。若为<code>{n}</code>，则为精确匹配；若为<code>{n,}</code>，则匹配大于n个</p>
-</li>
-</ul>
-<h4 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h4><ul>
-<li><p>默认的匹配模式是贪婪模式（即尽可能多的匹配）</p>
-</li>
-<li><p>若想将贪婪模式改成“廉洁模式（自创）”，只需在量词后面加上“ ? ”</p>
-</li>
-<li><p>默认情况下，量词制作用于紧挨着它的字符。如果想要破，可以用 <code>()</code> 来进行分组</p>
-</li>
-<li><p>用 <code>()</code> 来进行分组后的分组内容可以用 <code>$1,$2,...</code> 来获取</p>
-</li>
-</ul>
-<h3 id="JS中的正则"><a href="#JS中的正则" class="headerlink" title="JS中的正则"></a>JS中的正则</h3><h4 id="正则对象"><a href="#正则对象" class="headerlink" title="正则对象"></a>正则对象</h4><ul>
-<li><p>正则对象的属性有 <code>g,i,m,lastIndex</code></p>
-</li>
-<li><p><code>test</code> 方法，返回布尔值</p>
-</li>
-<li><p><code>exec</code> 方法，匹配不成功返回 <code>null</code>，否则返回结果数组，数组的第一个元素表示匹配的文本，第二个元素是与正则对象的第一个子表达式相匹配的文本（如果有），以此类推</p>
-</li>
-</ul>
-<h4 id="与正则相关的字符串方法"><a href="#与正则相关的字符串方法" class="headerlink" title="与正则相关的字符串方法"></a>与正则相关的字符串方法</h4><ul>
-<li><code>search</code> 方法，返回第一个匹配结果的index，否则返回null（它不会执行全局匹配）</li>
-<li><code>match</code> 方法，如果不加‘ g ’，则返回null或数组，数组存放了与它找到的匹配文本有关的信息，第一个元素是匹配的文本，其余元素存放子表达式匹配的内容</li>
-</ul>
+<h2 id="自定义事件对象"><a href="#自定义事件对象" class="headerlink" title="自定义事件对象"></a>自定义事件对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用于创建事件对象的类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">  <span class="comment">// 私有属性，用于管理事件名称对应的回调列表</span></div><div class="line">  <span class="keyword">this</span>._events = &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 如果有这个事件名，则将传进来的回调放至回调数组尾部；如果没有，则创建 */</span></div><div class="line">Person.prototype.on = <span class="function"><span class="keyword">function</span>(<span class="params">eventName, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>._events[eventName]) &#123;</div><div class="line">    <span class="keyword">this</span>._events[eventName].push(callback)</div><div class="line">  &#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">this</span>._events[eventName] = [callback]</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 拿到事件名称对应的回调列表，依次执行这些回调 */</span></div><div class="line">Person.prototype.emit = <span class="function"><span class="keyword">function</span>(<span class="params">eventName</span>) </span>&#123;</div><div class="line">  <span class="comment">// 拿到除事件名以外的其他参数，传至每一个回调</span></div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>)</div><div class="line">  <span class="keyword">var</span> callbacks = <span class="keyword">this</span>._events[eventName]</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span></div><div class="line">  callbacks.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    callback.apply(self, args)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 解除订阅，这里的回调需要是引用外部的函数，而不是直接写函数体 */</span></div><div class="line">Person.prototype.off = <span class="function"><span class="keyword">function</span>(<span class="params">eventName, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>._events[eventName] = <span class="keyword">this</span>._events[eventName].filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> item != callback</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> girl = <span class="keyword">new</span> Person()</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">he</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'记得撩起'</span>,he)</div><div class="line">&#125;</div><div class="line">girl.on(<span class="string">'待你长发及腰'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">he</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'娶你可好？'</span>,he)</div><div class="line">&#125;)</div><div class="line">girl.on(<span class="string">'待你长发及腰'</span>, test)</div><div class="line">girl.emit(<span class="string">'待你长发及腰'</span>,<span class="string">'hehe'</span>)</div><div class="line">girl.off(<span class="string">'待你长发及腰'</span>, test)</div><div class="line">girl.emit(<span class="string">'待你长发及腰'</span>,<span class="string">'hehe'</span>)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -448,9 +410,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
-            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -463,18 +425,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/21/JS-gleaning(1)/" rel="next" title="JS 拾遗（一）">
-                <i class="fa fa-chevron-left"></i> JS 拾遗（一）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/20/Front-end-Interview/" rel="prev" title="前端面试">
-                前端面试 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/03/mood-2017073/" rel="prev" title="巴金走后">
+                巴金走后 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -615,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用正则语法"><span class="nav-number">1.</span> <span class="nav-text">通用正则语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类"><span class="nav-number">1.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界"><span class="nav-number">1.2.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词"><span class="nav-number">1.3.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配模式"><span class="nav-number">1.4.</span> <span class="nav-text">匹配模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS中的正则"><span class="nav-number">2.</span> <span class="nav-text">JS中的正则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则对象"><span class="nav-number">2.1.</span> <span class="nav-text">正则对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与正则相关的字符串方法"><span class="nav-number">2.2.</span> <span class="nav-text">与正则相关的字符串方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义事件对象"><span class="nav-number">1.</span> <span class="nav-text">自定义事件对象</span></a></li></ol></div>
             
 
           </div>
