@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs,express," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="曾经听说过这样一个说法：jQuery之于JS就好似express之于nodejs。如此这般，大家应该知道express的江湖地位了…">
+<meta name="keywords" content="nodejs,express">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CommonJs规范以及nodejs的包管理工具">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/nodejs-express/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="曾经听说过这样一个说法：jQuery之于JS就好似express之于nodejs。如此这般，大家应该知道express的江湖地位了…">
+<meta property="og:updated_time" content="2017-07-19T11:39:34.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CommonJs规范以及nodejs的包管理工具">
+<meta name="twitter:description" content="曾经听说过这样一个说法：jQuery之于JS就好似express之于nodejs。如此这般，大家应该知道express的江湖地位了…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/19/nodejs-express/"/>
+
+
+
+
+
+  <title> CommonJs规范以及nodejs的包管理工具 | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/19/nodejs-express/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CommonJs规范以及nodejs的包管理工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T11:01:00+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>曾经听说过这样一个说法：jQuery之于JS就好似express之于nodejs。如此这般，大家应该知道express的江湖地位了…<br><a id="more"></a></p>
+</blockquote>
+<p>在我看来，express最亮眼的便是它的中间件。通过各种中间件，我们对服务中最重要的两个参数<code>req</code>、<code>res</code>进行加工，加工过后的<code>req</code>、<code>res</code>就有我们经常需要用到的数据以及更加好用的方法。</p>
+<h2 id="一览"><a href="#一览" class="headerlink" title="一览"></a>一览</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</div><div class="line"><span class="keyword">const</span> cookieSession = <span class="built_in">require</span>(<span class="string">'cookie-session'</span>)</div><div class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</div><div class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>)</div><div class="line"><span class="keyword">const</span> consolidate = <span class="built_in">require</span>(<span class="string">'consolidate'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = express()</div><div class="line">server.listen(<span class="number">4001</span>)</div><div class="line"></div><div class="line"><span class="comment">// 1. 解析cookie</span></div><div class="line">server.use(cookieParser(<span class="string">'nsdojgf45642norjes'</span>))</div><div class="line"><span class="comment">// 2. 使用session</span></div><div class="line">server.use(cookieSession(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'xuan_sess'</span>,</div><div class="line">  <span class="attr">keys</span>: [<span class="string">'shd'</span>,<span class="string">'dsr156er'</span>,<span class="string">'nherisg'</span>,<span class="string">'bdsrgfij'</span>],</div><div class="line">  <span class="attr">maxAge</span>: <span class="number">1000</span>*<span class="number">3600</span>*<span class="number">20</span></div><div class="line">&#125;))</div><div class="line"><span class="comment">// 3. post数据</span></div><div class="line">server.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">false</span>&#125;))</div><div class="line">server.use(multer(&#123;<span class="attr">dest</span>: <span class="string">'./www/upload'</span>&#125;).any())</div><div class="line"><span class="comment">// 4. 模板引擎</span></div><div class="line">server.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>) <span class="comment">// 要输出什么</span></div><div class="line">server.set(<span class="string">'views'</span>, <span class="string">'./views'</span>) <span class="comment">// 指定模板目录</span></div><div class="line">server.engine(<span class="string">'html'</span>, consolidate.ejs) <span class="comment">// 指定引擎</span></div><div class="line"><span class="comment">// 6. 接口处理</span></div><div class="line">server.get(<span class="string">'/index'</span>, (req, res, next) =&gt; &#123;</div><div class="line">  res.render(<span class="string">'1.ejs'</span>, &#123;<span class="attr">name</span>: <span class="string">'yesixuan'</span>&#125;)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 5. 静态数据</span></div><div class="line">server.use(express.static(<span class="string">'./www'</span>))</div></pre></td></tr></table></figure>
+<h2 id="解析数据"><a href="#解析数据" class="headerlink" title="解析数据"></a>解析数据</h2><h3 id="解析get数据"><a href="#解析get数据" class="headerlink" title="解析get数据"></a>解析get数据</h3><p>express原生解析出get参数，并将其挂在req的query属性上。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ...</span></div><div class="line">server.get(<span class="string">'/user'</span>, (req, res) =&gt; &#123;</div><div class="line"><span class="comment">// req.query,直接可以拿到查询参数</span></div><div class="line">  <span class="built_in">console</span>.log(req.query)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="解析post数据"><a href="#解析post数据" class="headerlink" title="解析post数据"></a>解析post数据</h3><p>解析post数据需要借助<code>body-parser</code>提供的中间件。它能帮助我们解析出post数据，并将其挂在req的body属性上。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</div><div class="line"><span class="comment">// ...</span></div><div class="line">server.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">false</span>&#125;)) <span class="comment">// 取消扩展模式，免得它老是发出警告</span></div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="built_in">console</span>.log(req.body) <span class="comment">// post数据</span></div></pre></td></tr></table></figure></p>
+<h3 id="解析上传的二进制数据"><a href="#解析上传的二进制数据" class="headerlink" title="解析上传的二进制数据"></a>解析上传的二进制数据</h3><p>解析上传的文件需要借助<code>multer</code>模块。它解析出来的数据挂在req.files上。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="keyword">const</span> pathLib = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>)</div><div class="line"><span class="comment">// ...</span></div><div class="line">server.use(multer(&#123;<span class="attr">dest</span>: <span class="string">'./www/upload'</span>&#125;).any()) <span class="comment">// 指定文件上传的路径，不让buffer数据大量占用内存</span></div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="comment">/* 使用pathLib.parse('路径带文件名')可以解析更多信息，也可以拿到文件后缀名 */</span></div><div class="line"><span class="keyword">var</span> newName = req.files[<span class="number">0</span>].path + pathLib.extname(req.files[<span class="number">0</span>].originalname)</div><div class="line"><span class="comment">// 文件重命名，这里只是改了后缀名</span></div><div class="line">fs.rename(req.files[<span class="number">0</span>].path, newName, err =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(err)</div><div class="line">    res.send(<span class="string">'上传失败！'</span>)</div><div class="line">  <span class="keyword">else</span></div><div class="line">    res.send(<span class="string">'ok!'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="built_in">console</span>.log(req.files) <span class="comment">// 对象数组，每个元素包含该文件的各种信息</span></div></pre></td></tr></table></figure></p>
+<h2 id="cookie-amp-amp-session"><a href="#cookie-amp-amp-session" class="headerlink" title="cookie &amp;&amp; session"></a>cookie &amp;&amp; session</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>cookie是在浏览器保存一些数据，每次请求都会带过来。只能存4k的数据。<br>使用cookie时要注意两点：① 空间小，精打细算；② 使用时要校验cookie是否被篡改。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</div><div class="line"><span class="comment">// ... 使用中间件，这里可以添加密钥作为中间件的参数</span></div><div class="line">server.use(cookieParser())</div><div class="line"><span class="comment">// ... 写入cookie</span></div><div class="line"><span class="comment">/* 指定只有在‘/aaa’下才有cookie，保质期为一个月，是否需要签名 */</span></div><div class="line">res.cookie(res.cookie(<span class="string">'user'</span>, <span class="string">'xuan'</span>, &#123;<span class="attr">path</span>: <span class="string">'/aaa'</span>, <span class="attr">maxAge</span>: <span class="number">30</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>, <span class="attr">signed</span>: <span class="literal">true</span>&#125;))</div><div class="line"><span class="comment">// ... 读取cookies</span></div><div class="line"><span class="comment">/* 读取,子级目录可以读根级。即树枝可以去寻根。例如/aaa/bbb可以读/aaa下的cookie */</span></div><div class="line"><span class="built_in">console</span>.log(req.cookies)</div><div class="line"><span class="comment">// ... 删除cookie</span></div><div class="line">res.clearCookie(<span class="string">'user'</span>)</div></pre></td></tr></table></figure></p>
+<p>给cookie签个名。（签名虽然不能加密数据，但是可以保证数据一旦被篡改，我能够知道）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ...</span></div><div class="line">server.use(cookieParser(<span class="string">'shdgopedfgh'</span>)) <span class="comment">// 整个密钥</span></div><div class="line">res.cookie(<span class="string">'user'</span>, <span class="string">'xuan'</span>, &#123;<span class="attr">signed</span>: <span class="literal">true</span>&#125;)</div><div class="line"><span class="built_in">console</span>.log(req.cookies) <span class="comment">// 没有签过名的cookie</span></div><div class="line"><span class="built_in">console</span>.log(req.signedCookies) <span class="comment">// 签过名的cookie</span></div></pre></td></tr></table></figure></p>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>cookie没太多必要加密，真正机密的东西往session中放就好了。一定要用的话，<code>cookie-encrypter</code>。下面上session。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> cookieSession = <span class="built_in">require</span>(<span class="string">'cookie-session'</span>)</div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="comment">// 这个要在cookieParser之下</span></div><div class="line">server.use(cookieSession(&#123;</div><div class="line">  <span class="attr">keys</span>: [<span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>], <span class="comment">// 这个数组越长，越是安全</span></div><div class="line">  name: <span class="string">'sess'</span>, <span class="comment">// 如果没这个参数，默认就是在cookie中的键名就是session</span></div><div class="line">  maxAge: <span class="number">1000</span>*<span class="number">3600</span>*<span class="number">2</span> <span class="comment">// 两小时未操作，自动注销</span></div><div class="line">&#125;))</div><div class="line"><span class="comment">// ... 使用session</span></div><div class="line">server.use(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(req.session[<span class="string">'count'</span>] == <span class="literal">null</span>) &#123;</div><div class="line">    req.session[<span class="string">'count'</span>] = <span class="number">1</span></div><div class="line">  &#125;<span class="keyword">else</span> &#123;</div><div class="line">    req.session[<span class="string">'count'</span>]++</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(req.session[<span class="string">'count'</span>])</div><div class="line">  res.send(<span class="string">'ok'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// ... 删除session</span></div><div class="line"><span class="keyword">delete</span> req.session <span class="comment">// session是存储在服务器上的数据，所以我们可以使用JS原生的方法来删除session</span></div></pre></td></tr></table></figure></p>
+<h2 id="后台模版"><a href="#后台模版" class="headerlink" title="后台模版"></a>后台模版</h2><p>虽然后台模版渲染是与现代的开发方式背道而驰的，现在大家比较推崇的是后台提供数据，前端获取数据，渲染模版。<br>但是我在使用后台模版的时候，竟然找到了像撸react时相似的感觉。估计很多前端渲染模版的灵感也是来自后台模版吧。  </p>
+<h3 id="模版渲染"><a href="#模版渲染" class="headerlink" title="模版渲染"></a>模版渲染</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// consolidate帮我们整合了各种后台模版，甚至包括react</span></div><div class="line"><span class="keyword">const</span> consolidate = <span class="built_in">require</span>(<span class="string">'consolidate'</span>)</div><div class="line">server.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>) <span class="comment">// 要输出什么</span></div><div class="line">server.set(<span class="string">'views'</span>, <span class="string">'./templates'</span>) <span class="comment">// 指定模板目录</span></div><div class="line">server.engine(<span class="string">'html'</span>, consolidate.ejs) <span class="comment">// 指定引擎</span></div><div class="line"><span class="comment">// ... &#123;&#125;里面传入模版中需要的参数</span></div><div class="line">res.render(<span class="string">'index.ejs'</span>, &#123;&#125;)</div></pre></td></tr></table></figure>
+<h3 id="jade语法"><a href="#jade语法" class="headerlink" title="jade语法"></a>jade语法</h3><ul>
+<li>属性，使用小括号：img(src=”./xx.jpg”,alt=”xxx”)</li>
+<li>内容，空格往标签后面写：a 链接</li>
+<li>style属性的对象写法：div(style={width:’200px’,…})</li>
+<li>class的数组写法：div(class=[‘aa’,…])</li>
+<li>写class与id可以使用类似emmet写法</li>
+<li>标签后面加上&amp;attributes，可以用对象方式写多个属性</li>
+<li>在内容前加‘|’，表示原样输出内容（script标签里的多行代码）</li>
+<li>在标签后加‘.’，表示里面的内容原样输出</li>
+<li>include可以引入一个外部文件，include a.js（引入的内容还是嵌在页面中的）</li>
+<li>使用变量：#{变量}，变量定义在renderFile(,{},)方法的‘{}’中（还可以写表达式）</li>
+<li>可以写两个class属性，jade自会处理好</li>
+<li>以‘-’开头的，解析为js。前面一行加了‘-’，下面与它平级或下级的都不用加‘-’</li>
+<li>span #{name}与span=name，两者等价</li>
+<li>不让变量里面的尖括号被转义，在‘=’前面加‘!’</li>
+<li>原来的switch-case变成case-when结构。  </li>
+</ul>
+<h3 id="ejs语法"><a href="#ejs语法" class="headerlink" title="ejs语法"></a>ejs语法</h3><ul>
+<li>变量：&lt;%= name %&gt;</li>
+<li>js语法：&lt;% 脚本 %&gt;</li>
+<li>引入外部文件的内容：&lt;% include 路径 %&gt;</li>
+<li>include不是原生js的语法，所以使用include时，要单独起一行用“&lt;% %&gt;”包裹起来</li>
+</ul>
+<h2 id="express与数据库"><a href="#express与数据库" class="headerlink" title="express与数据库"></a>express与数据库</h2><h3 id="连接mysql"><a href="#连接mysql" class="headerlink" title="连接mysql"></a>连接mysql</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</div><div class="line"><span class="comment">// 使用连接池而不是创建连接，以提高性能（会创建多个链接，以保持跟数据库的持久通话）</span></div><div class="line"><span class="keyword">const</span> db = mysql.createPool(&#123;</div><div class="line">  <span class="attr">host</span>: <span class="string">'localhost'</span>,</div><div class="line">  <span class="attr">user</span>: <span class="string">'root'</span>,</div><div class="line">  <span class="attr">password</span>: <span class="string">'123456'</span>,</div><div class="line">  <span class="attr">database</span>: <span class="string">'blog'</span></div><div class="line">  <span class="comment">// ... 默认是3306端口的话，就不用在此处配置</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// ... 增删改查（查询语句中使用反引号是极好的）</span></div><div class="line">db.query(<span class="string">'select ID,title,summery from article_table'</span>, (err, data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    <span class="comment">// 这里的链式操作也是推荐写法</span></div><div class="line">    res.status(<span class="number">500</span>).send(<span class="string">'database err!'</span>).end()</div><div class="line">  &#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// 将文章数据挂到res上，传递到下一层去。</span></div><div class="line">    res.articles = data</div><div class="line">    next()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="连接mongodb"><a href="#连接mongodb" class="headerlink" title="连接mongodb"></a>连接mongodb</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> MongoClient = <span class="built_in">require</span>(<span class="string">'mongodb'</span>).MongoClient</div><div class="line"><span class="keyword">const</span> databaseUrl = <span class="string">'mongodb://localhost:27017/xuan'</span></div><div class="line"><span class="comment">// ...</span></div><div class="line">MongoClient.connect(databaseUrl, (err, db) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    res.status(<span class="number">500</span>).send(<span class="string">'database err!'</span>).end()</div><div class="line">    <span class="keyword">return</span></div><div class="line">  &#125;</div><div class="line">  res.send(<span class="string">'数据库连接成功！'</span>)</div><div class="line">  db.collection(<span class="string">'teacher'</span>).insert(&#123;<span class="string">'name'</span>:<span class="string">'Mary'</span>&#125;, (err, result) =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">      res.status(<span class="number">500</span>).send(<span class="string">'插入数据失败！'</span>).end()</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    res.status(<span class="number">200</span>).send(<span class="string">'数据插入成功！'</span>).end()</div><div class="line">    db.close()</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/express/" rel="tag"># express</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/19/database-mysql/" rel="next" title="mysql基本操作">
+                <i class="fa fa-chevron-left"></i> mysql基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/nodejs-createServer/" rel="prev" title="原生nodejs创建服务">
+                原生nodejs创建服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一览"><span class="nav-number">1.</span> <span class="nav-text">一览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析数据"><span class="nav-number">2.</span> <span class="nav-text">解析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析get数据"><span class="nav-number">2.1.</span> <span class="nav-text">解析get数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析post数据"><span class="nav-number">2.2.</span> <span class="nav-text">解析post数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析上传的二进制数据"><span class="nav-number">2.3.</span> <span class="nav-text">解析上传的二进制数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie-amp-amp-session"><span class="nav-number">3.</span> <span class="nav-text">cookie && session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie"><span class="nav-number">3.1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session"><span class="nav-number">3.2.</span> <span class="nav-text">session</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台模版"><span class="nav-number">4.</span> <span class="nav-text">后台模版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模版渲染"><span class="nav-number">4.1.</span> <span class="nav-text">模版渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jade语法"><span class="nav-number">4.2.</span> <span class="nav-text">jade语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ejs语法"><span class="nav-number">4.3.</span> <span class="nav-text">ejs语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express与数据库"><span class="nav-number">5.</span> <span class="nav-text">express与数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接mysql"><span class="nav-number">5.1.</span> <span class="nav-text">连接mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接mongodb"><span class="nav-number">5.2.</span> <span class="nav-text">连接mongodb</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

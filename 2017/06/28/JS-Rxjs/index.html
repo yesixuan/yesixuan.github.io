@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/28/JS-Rxjs/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="初识Rxjs是在angular2的学习过程中。那时的理解起来还是非常晦涩，现在也不能说理解有多深，姑且写下来吧…">
-<meta property="og:updated_time" content="2017-06-28T12:50:22.419Z">
+<meta property="og:updated_time" content="2017-07-17T13:36:02.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rxjs入门">
 <meta name="twitter:description" content="初识Rxjs是在angular2的学习过程中。那时的理解起来还是非常晦涩，现在也不能说理解有多深，姑且写下来吧…">
@@ -369,9 +369,9 @@
 <p>初识Rxjs是在angular2的学习过程中。那时的理解起来还是非常晦涩，现在也不能说理解有多深，姑且写下来吧…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><p>Rxjs是响应式编程思想在JS中的一种实现。那么Rxjs到底是个什么东西呢？装逼地讲，Pxjs是一种融合了函数式编程、观察者模式的以操作<code>流</code>为核心的一种编程思想。<br>Rxjs的适用场景为异步数据流。针对异步的处理是采用观察者模式。针对数据流，我们使用函数式编程中的状态集中管理的理念。<br>简单说说对面向对象编程与函数式编程的理解吧：<br>面向对象就是对数据的封装，将具有相关性的数据和方法封装到一个个对象中，以便管理；<br>函数式编程实际上就是对数据操作的封装，我们只关心数据的输入与输出，至于输入的数据经过了一些什么样的操作最终变成输出的数据，我们是不必在乎的。</p>
+<h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><p>Rxjs是响应式编程思想在JS中的一种实现。那么Rxjs到底是个什么东西呢？装逼地讲，Rxjs是一种融合了函数式编程、观察者模式的以操作<code>流</code>为核心的一种编程思想。<br>Rxjs的适用场景为异步数据流。针对异步的处理是采用观察者模式。针对数据流，我们使用函数式编程中的状态集中管理的理念。<br>简单说说对面向对象编程与函数式编程的理解吧：<br>面向对象就是对数据的封装，将具有相关性的数据和方法封装到一个个对象中，以便管理；<br>函数式编程实际上就是对数据操作的封装，我们只关心数据的输入与输出，至于输入的数据经过了一些什么样的操作最终变成输出的数据，我们是不必在乎的。</p>
 <h2 id="核心概念一览"><a href="#核心概念一览" class="headerlink" title="核心概念一览"></a>核心概念一览</h2><h3 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h3><p>Observable是事件流的源，相当于观察者模式中的被观察者。可以发射一个个的事件、数据等流。</p>
-<h3 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h3><p>Operator是Observable的操作符。体现了函数式编程和迭代qi模式的思想。通过各种转变，将Observable流转变为新的Observable流。</p>
+<h3 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h3><p>Operator是Observable的操作符。体现了函数式编程和迭代器模式的思想。通过各种转变，将Observable流转变为新的Observable流。</p>
 <h3 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h3><p>对Observable对象发出的每个事件进行响应。</p>
 <h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe()"></a>subscribe()</h3><p>subscribe()方法用来订阅Observable流。该方法会接受一个observe作为参数，每当observable完成并发送一个事件时，该事件就会被observer所捕获，进入到observer对应的回调函数中。</p>
 <h3 id="Subscription"><a href="#Subscription" class="headerlink" title="Subscription"></a>Subscription</h3><p>Observable对象被订阅后返回的Subscription实例（可取消订阅）。</p>
@@ -387,6 +387,7 @@
 <li>switchMap(): 保证前端拿到的数据是有序的<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ...</span></div><div class="line">.switchMap(<span class="function"><span class="params">event</span> =&gt;</span> getRecommend(event.target.value))</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://cn.rx.js.org/" target="_blank" rel="external">RxJS中文文档</a></p>
 
       
     </div>
@@ -515,7 +516,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -526,7 +527,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -537,7 +538,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -583,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念一览"><span class="nav-number">2.</span> <span class="nav-text">核心概念一览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Observable"><span class="nav-number">2.1.</span> <span class="nav-text">Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operator"><span class="nav-number">2.2.</span> <span class="nav-text">Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Observer"><span class="nav-number">2.3.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subscribe"><span class="nav-number">2.4.</span> <span class="nav-text">subscribe()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscription"><span class="nav-number">2.5.</span> <span class="nav-text">Subscription</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subject"><span class="nav-number">2.6.</span> <span class="nav-text">Subject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个完整的Rx流"><span class="nav-number">3.</span> <span class="nav-text">一个完整的Rx流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Observable对象"><span class="nav-number">3.1.</span> <span class="nav-text">创建Observable对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对Observable流进行各种花式操作"><span class="nav-number">3.2.</span> <span class="nav-text">对Observable流进行各种花式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map变换操作符"><span class="nav-number">3.2.1.</span> <span class="nav-text">map变换操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter过滤操作符"><span class="nav-number">3.2.2.</span> <span class="nav-text">filter过滤操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forkJoin组合操作符"><span class="nav-number">3.2.3.</span> <span class="nav-text">forkJoin组合操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concatMap组合操作符"><span class="nav-number">3.2.4.</span> <span class="nav-text">concatMap组合操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具操作符"><span class="nav-number">3.2.5.</span> <span class="nav-text">工具操作符</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概况"><span class="nav-number">1.</span> <span class="nav-text">概况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念一览"><span class="nav-number">2.</span> <span class="nav-text">核心概念一览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Observable"><span class="nav-number">2.1.</span> <span class="nav-text">Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operator"><span class="nav-number">2.2.</span> <span class="nav-text">Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Observer"><span class="nav-number">2.3.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subscribe"><span class="nav-number">2.4.</span> <span class="nav-text">subscribe()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscription"><span class="nav-number">2.5.</span> <span class="nav-text">Subscription</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subject"><span class="nav-number">2.6.</span> <span class="nav-text">Subject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个完整的Rx流"><span class="nav-number">3.</span> <span class="nav-text">一个完整的Rx流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Observable对象"><span class="nav-number">3.1.</span> <span class="nav-text">创建Observable对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对Observable流进行各种花式操作"><span class="nav-number">3.2.</span> <span class="nav-text">对Observable流进行各种花式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map变换操作符"><span class="nav-number">3.2.1.</span> <span class="nav-text">map变换操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter过滤操作符"><span class="nav-number">3.2.2.</span> <span class="nav-text">filter过滤操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forkJoin组合操作符"><span class="nav-number">3.2.3.</span> <span class="nav-text">forkJoin组合操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concatMap组合操作符"><span class="nav-number">3.2.4.</span> <span class="nav-text">concatMap组合操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具操作符"><span class="nav-number">3.2.5.</span> <span class="nav-text">工具操作符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>
