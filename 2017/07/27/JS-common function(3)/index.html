@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,常用方法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="整理一下从别处看到的js常用函数参考（dom操作）…">
+<meta name="keywords" content="js,常用方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用方法（三）">
+<meta property="og:url" content="http://yoursite.com/2017/07/27/JS-common function(3)/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="整理一下从别处看到的js常用函数参考（dom操作）…">
+<meta property="og:updated_time" content="2017-07-27T12:11:12.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常用方法（三）">
+<meta name="twitter:description" content="整理一下从别处看到的js常用函数参考（dom操作）…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/27/JS-common function(3)/"/>
+
+
+
+
+
+  <title> JS常用方法（三） | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/27/JS-common function(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS常用方法（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T12:25:00+08:00">
+                2017-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/常用函数/" itemprop="url" rel="index">
+                    <span itemprop="name">常用函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>整理一下从别处看到的js常用函数<a href="https://segmentfault.com/a/1190000010225928" target="_blank" rel="external">参考</a>（dom操作）…</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="基础DOM操作"><a href="#基础DOM操作" class="headerlink" title="基础DOM操作"></a>基础DOM操作</h2><h3 id="检测对象是否有某个类名"><a href="#检测对象是否有某个类名" class="headerlink" title="检测对象是否有某个类名"></a>检测对象是否有某个类名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasClass</span>(<span class="params">obj,classStr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> arr=obj.className.split(<span class="regexp">/\s+/</span>);</div><div class="line">  <span class="keyword">return</span> (arr.indexOf(classStr)==<span class="number">-1</span>)?<span class="literal">false</span>:<span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="添加类名"><a href="#添加类名" class="headerlink" title="添加类名"></a>添加类名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">obj, classStr</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!hasClass(obj, classStr)) &#123;</div><div class="line">    obj.className += <span class="string">" "</span> + classStr</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="删除类名"><a href="#删除类名" class="headerlink" title="删除类名"></a>删除类名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeClass</span>(<span class="params">obj, classStr</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (hasClass(obj, classStr)) &#123;</div><div class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(\\s|^)'</span> + classStr + <span class="string">'(\\s|$)'</span>);</div><div class="line">    obj.className = obj.className.replace(reg, <span class="string">''</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="替换类名-“被替换的类名”-”替换的类名”"><a href="#替换类名-“被替换的类名”-”替换的类名”" class="headerlink" title="替换类名(“被替换的类名”,”替换的类名”)"></a>替换类名(“被替换的类名”,”替换的类名”)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceClass</span>(<span class="params">obj, newName, oldName</span>) </span>&#123;</div><div class="line">  removeClass(obj, oldName);</div><div class="line">  addClass(obj, newName);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设置样式"><a href="#设置样式" class="headerlink" title="设置样式"></a>设置样式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">obj, json</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> json) &#123;</div><div class="line">    obj.style[attr] = json[attr];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><h3 id="cookie相关"><a href="#cookie相关" class="headerlink" title="cookie相关"></a>cookie相关</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// cookie</span></div><div class="line"><span class="comment">// 设置cookie</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name, value, iDay</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  oDate.setDate(oDate.getDate() + iDay);</div><div class="line">  <span class="built_in">document</span>.cookie = name + <span class="string">'='</span> + value + <span class="string">';expires='</span> + oDate;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获取cookie</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> arr = <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">    <span class="keyword">var</span> arr2 = arr[i].split(<span class="string">'='</span>);</div><div class="line">    <span class="keyword">if</span> (arr2[<span class="number">0</span>] == name) &#123;</div><div class="line">      <span class="keyword">return</span> arr2[<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 删除cookie</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeCookie</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  setCookie(name, <span class="number">1</span>, <span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="清除对象中值为空的属性"><a href="#清除对象中值为空的属性" class="headerlink" title="清除对象中值为空的属性"></a>清除对象中值为空的属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// filterParams(&#123;a:"",b:null,c:"010",d:123&#125;)</span></div><div class="line"><span class="comment">// Object &#123;c: "010", d: 123&#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterParams</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _newPar = &#123;&#125;;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</div><div class="line">    <span class="keyword">if</span> ((obj[key] === <span class="number">0</span> || obj[key]) &amp;&amp; obj[key].toString().replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>) !== <span class="string">''</span>) &#123;</div><div class="line">      _newPar[key] = obj[key];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _newPar;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="现金额大写转换函数"><a href="#现金额大写转换函数" class="headerlink" title="现金额大写转换函数"></a>现金额大写转换函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// upDigit(1682)</span></div><div class="line"><span class="comment">// "人民币壹仟陆佰捌拾贰元整"</span></div><div class="line"><span class="comment">// upDigit(-1693)</span></div><div class="line"><span class="comment">// "欠人民币壹仟陆佰玖拾叁元整"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">upDigit</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> fraction = [<span class="string">'角'</span>, <span class="string">'分'</span>, <span class="string">'厘'</span>];</div><div class="line">  <span class="keyword">var</span> digit = [<span class="string">'零'</span>, <span class="string">'壹'</span>, <span class="string">'贰'</span>, <span class="string">'叁'</span>, <span class="string">'肆'</span>, <span class="string">'伍'</span>, <span class="string">'陆'</span>, <span class="string">'柒'</span>, <span class="string">'捌'</span>, <span class="string">'玖'</span>];</div><div class="line">  <span class="keyword">var</span> unit = [</div><div class="line">    [<span class="string">'元'</span>, <span class="string">'万'</span>, <span class="string">'亿'</span>],</div><div class="line">    [<span class="string">''</span>, <span class="string">'拾'</span>, <span class="string">'佰'</span>, <span class="string">'仟'</span>]</div><div class="line">  ];</div><div class="line">  <span class="keyword">var</span> head = n &lt; <span class="number">0</span> ? <span class="string">'欠人民币'</span> : <span class="string">'人民币'</span>;</div><div class="line">  n = <span class="built_in">Math</span>.abs(n);</div><div class="line">  <span class="keyword">var</span> s = <span class="string">''</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; fraction.length; i++) &#123;</div><div class="line">    s += (digit[<span class="built_in">Math</span>.floor(n * <span class="number">10</span> * <span class="built_in">Math</span>.pow(<span class="number">10</span>, i)) % <span class="number">10</span>] + fraction[i]).replace(<span class="regexp">/零./</span>, <span class="string">''</span>);</div><div class="line">  &#125;</div><div class="line">  s = s || <span class="string">'整'</span>;</div><div class="line">  n = <span class="built_in">Math</span>.floor(n);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; n &gt; <span class="number">0</span>; i++) &#123;</div><div class="line">    <span class="keyword">var</span> p = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</div><div class="line">      p = digit[n % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p;</div><div class="line">      n = <span class="built_in">Math</span>.floor(n / <span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// s = p.replace(/(零.)*零$/, '').replace(/^$/, '零')+ unit[0][i] + s;</span></div><div class="line">    s = p + unit[<span class="number">0</span>][i] + s;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> head + s.replace(<span class="regexp">/(零.)*零元/</span>, <span class="string">'元'</span>).replace(<span class="regexp">/(零.)+/g</span>, <span class="string">'零'</span>).replace(<span class="regexp">/^整$/</span>, <span class="string">'零元整'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取，设置url参数"><a href="#获取，设置url参数" class="headerlink" title="获取，设置url参数"></a>获取，设置url参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取url参数</span></div><div class="line"><span class="comment">// getUrlPrmt('segmentfault.com/write?draftId=122000011938')</span></div><div class="line"><span class="comment">// Object&#123;draftId: "122000011938"&#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlPrmt</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">  url = url ? url : <span class="built_in">window</span>.location.href;</div><div class="line">  <span class="keyword">let</span> _pa = url.substring(url.indexOf(<span class="string">'?'</span>) + <span class="number">1</span>),</div><div class="line">    _arrS = _pa.split(<span class="string">'&amp;'</span>),</div><div class="line">    _rs = &#123;&#125;;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, _len = _arrS.length; i &lt; _len; i++) &#123;</div><div class="line">    <span class="keyword">let</span> pos = _arrS[i].indexOf(<span class="string">'='</span>);</div><div class="line">    <span class="keyword">if</span> (pos == <span class="number">-1</span>) &#123;</div><div class="line">      <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> name = _arrS[i].substring(<span class="number">0</span>, pos),</div><div class="line">      value = <span class="built_in">window</span>.decodeURIComponent(_arrS[i].substring(pos + <span class="number">1</span>));</div><div class="line">    _rs[name] = value;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _rs;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 设置url参数</span></div><div class="line"><span class="comment">// setUrlPrmt(&#123;'a':1,'b':2&#125;)</span></div><div class="line"><span class="comment">// a=1&amp;b=2</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setUrlPrmt</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _rs = [];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">in</span> obj) &#123;</div><div class="line">    <span class="keyword">if</span> (obj[p] != <span class="literal">null</span> &amp;&amp; obj[p] != <span class="string">''</span>) &#123;</div><div class="line">      _rs.push(p + <span class="string">'='</span> + obj[p])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _rs.join(<span class="string">'&amp;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="随机返回一个范围的数字"><a href="#随机返回一个范围的数字" class="headerlink" title="随机返回一个范围的数字"></a>随机返回一个范围的数字</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomNumber</span>(<span class="params">n1, n2</span>) </span>&#123;</div><div class="line">  <span class="comment">// randomNumber(5,10)</span></div><div class="line">  <span class="comment">// 返回5-10的随机整数，包括5，10</span></div><div class="line">  <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">2</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(n1 + <span class="built_in">Math</span>.random() * (n2 - n1));</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// randomNumber(10)</span></div><div class="line">  <span class="comment">// 返回0-10的随机整数，包括0，10</span></div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random() * n1)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// randomNumber()</span></div><div class="line">  <span class="comment">// 返回0-255的随机整数，包括0，255</span></div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random() * <span class="number">255</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="随机产生颜色"><a href="#随机产生颜色" class="headerlink" title="随机产生颜色"></a>随机产生颜色</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// randomNumber是上面定义的函数</span></div><div class="line">  <span class="comment">// 写法1</span></div><div class="line">  <span class="keyword">return</span> <span class="string">'rgb('</span> + randomNumber(<span class="number">255</span>) + <span class="string">','</span> + randomNumber(<span class="number">255</span>) + <span class="string">','</span> + randomNumber(<span class="number">255</span>) + <span class="string">')'</span>;</div><div class="line">  <span class="comment">// 写法2</span></div><div class="line">  <span class="keyword">return</span> <span class="string">'#'</span> + <span class="built_in">Math</span>.random().toString(<span class="number">16</span>).substring(<span class="number">2</span>).substr(<span class="number">0</span>, <span class="number">6</span>);</div><div class="line">  <span class="comment">// 写法3</span></div><div class="line">  <span class="keyword">var</span> color = <span class="string">'#'</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</div><div class="line">    color += <span class="string">'0123456789abcdef'</span> [randomNumber(<span class="number">15</span>)];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> color;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="到某个时间的倒计时"><a href="#到某个时间的倒计时" class="headerlink" title="到某个时间的倒计时"></a>到某个时间的倒计时</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 到某一个时间的倒计时</span></div><div class="line"><span class="comment">// getEndTime('2017/7/22 16:0:0')</span></div><div class="line"><span class="comment">// "剩余时间6天 2小时 28 分钟20 秒"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getEndTime</span>(<span class="params">endTime</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> startDate = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">//开始时间，当前时间</span></div><div class="line">  <span class="keyword">var</span> endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(endTime); <span class="comment">//结束时间，需传入时间参数</span></div><div class="line">  <span class="keyword">var</span> t = endDate.getTime() - startDate.getTime(); <span class="comment">//时间差的毫秒数</span></div><div class="line">  <span class="keyword">var</span> d = <span class="number">0</span>,</div><div class="line">    h = <span class="number">0</span>,</div><div class="line">    m = <span class="number">0</span>,</div><div class="line">    s = <span class="number">0</span>;</div><div class="line">  <span class="keyword">if</span> (t &gt;= <span class="number">0</span>) &#123;</div><div class="line">    d = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">3600</span> / <span class="number">24</span>);</div><div class="line">    h = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>);</div><div class="line">    m = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">60</span> % <span class="number">60</span>);</div><div class="line">    s = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> % <span class="number">60</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="string">"剩余时间"</span> + d + <span class="string">"天 "</span> + h + <span class="string">"小时 "</span> + m + <span class="string">" 分钟"</span> + s + <span class="string">" 秒"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="适配rem"><a href="#适配rem" class="headerlink" title="适配rem"></a>适配rem</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFontSize</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> doc = <span class="built_in">document</span>, win = <span class="built_in">window</span>;</div><div class="line">  <span class="keyword">var</span> docEl = doc.documentElement,</div><div class="line">    resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>,</div><div class="line">    recalc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> clientWidth = docEl.clientWidth;</div><div class="line">      <span class="keyword">if</span> (!clientWidth) <span class="keyword">return</span>;</div><div class="line">      <span class="comment">// 如果屏幕大于750（750是根据我效果图设置的，具体数值参考效果图），就设置clientWidth=750，防止font-size会超过100px</span></div><div class="line">      <span class="keyword">if</span> (clientWidth &gt; <span class="number">750</span>) &#123;</div><div class="line">        clientWidth = <span class="number">750</span></div><div class="line">      &#125;</div><div class="line">      <span class="comment">// 设置根元素font-size大小</span></div><div class="line">      docEl.style.fontSize = <span class="number">100</span> * (clientWidth / <span class="number">750</span>) + <span class="string">'px'</span>;</div><div class="line">    &#125;;</div><div class="line">  <span class="comment">// 屏幕大小改变，或者横竖屏切换时，触发函数</span></div><div class="line">  win.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</div><div class="line">  <span class="comment">// 文档加载完成时，触发函数</span></div><div class="line">  doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 使用方式很简单，比如效果图上，有张图片。宽高都是100px;</span></div><div class="line"><span class="comment">// 样式写法就是</span></div><div class="line">img &#123;</div><div class="line">  <span class="attr">width</span>: <span class="number">1</span> rem;</div><div class="line">  height: <span class="number">1</span> rem;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 这样的设置，比如在屏幕宽度大于等于750px设备上，1rem=100px；图片显示就是宽高都是100px</span></div><div class="line"><span class="comment">// 比如在iphone6(屏幕宽度：375)上，375/750*100=50px;就是1rem=50px;图片显示就是宽高都是50px;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/常用方法/" rel="tag"># 常用方法</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/28/JS-the way to inherit/" rel="next" title="JS实现继承的几种方式">
+                <i class="fa fa-chevron-left"></i> JS实现继承的几种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/27/JS-common function(2)/" rel="prev" title="JS常用方法（二）">
+                JS常用方法（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础DOM操作"><span class="nav-number">1.</span> <span class="nav-text">基础DOM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检测对象是否有某个类名"><span class="nav-number">1.1.</span> <span class="nav-text">检测对象是否有某个类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加类名"><span class="nav-number">1.2.</span> <span class="nav-text">添加类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除类名"><span class="nav-number">1.3.</span> <span class="nav-text">删除类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换类名-“被替换的类名”-”替换的类名”"><span class="nav-number">1.4.</span> <span class="nav-text">替换类名(“被替换的类名”,”替换的类名”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置样式"><span class="nav-number">1.5.</span> <span class="nav-text">设置样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他操作"><span class="nav-number">2.</span> <span class="nav-text">其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie相关"><span class="nav-number">2.1.</span> <span class="nav-text">cookie相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除对象中值为空的属性"><span class="nav-number">2.2.</span> <span class="nav-text">清除对象中值为空的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现金额大写转换函数"><span class="nav-number">2.3.</span> <span class="nav-text">现金额大写转换函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取，设置url参数"><span class="nav-number">2.4.</span> <span class="nav-text">获取，设置url参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机返回一个范围的数字"><span class="nav-number">2.5.</span> <span class="nav-text">随机返回一个范围的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机产生颜色"><span class="nav-number">2.6.</span> <span class="nav-text">随机产生颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#到某个时间的倒计时"><span class="nav-number">2.7.</span> <span class="nav-text">到某个时间的倒计时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配rem"><span class="nav-number">2.8.</span> <span class="nav-text">适配rem</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
