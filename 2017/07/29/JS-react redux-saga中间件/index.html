@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,redux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…">
+<meta name="keywords" content="js,redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用redux-saga中间件处理redux中的异步">
+<meta property="og:url" content="http://yoursite.com/2017/07/29/JS-react redux-saga中间件/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…">
+<meta property="og:updated_time" content="2017-07-30T03:38:38.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用redux-saga中间件处理redux中的异步">
+<meta name="twitter:description" content="记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/29/JS-react redux-saga中间件/"/>
+
+
+
+
+
+  <title> 使用redux-saga中间件处理redux中的异步 | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/JS-react redux-saga中间件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用redux-saga中间件处理redux中的异步
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T20:41:00+08:00">
+                2017-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/redux/" itemprop="url" rel="index">
+                    <span itemprop="name">redux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="整体感知"><a href="#整体感知" class="headerlink" title="整体感知"></a>整体感知</h2><h3 id="使用redux-saga封装异步操作"><a href="#使用redux-saga封装异步操作" class="headerlink" title="使用redux-saga封装异步操作"></a>使用redux-saga封装异步操作</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; call, put &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"><span class="keyword">import</span> &#123; takeEvery &#125; <span class="keyword">from</span> <span class="string">'redux-saga'</span></div><div class="line"><span class="comment">// 这个函数就封装了我们的异步操作，每一个yield都要等上一个yield完成之后再执行</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fetchData</span>(<span class="params">action</span>) </span>&#123;</div><div class="line">   <span class="keyword">try</span> &#123;</div><div class="line">     <span class="comment">// 这里其实是用声明式的方式调用Api.fetchUser方法，并传入参数</span></div><div class="line">      <span class="keyword">const</span> data = <span class="keyword">yield</span> call(Api.fetchUser, action.payload.url);</div><div class="line">      <span class="keyword">yield</span> put(&#123;<span class="attr">type</span>: <span class="string">"FETCH_SUCCEEDED"</span>, data&#125;);</div><div class="line">   &#125; <span class="keyword">catch</span> (error) &#123;</div><div class="line">      <span class="keyword">yield</span> put(&#123;<span class="attr">type</span>: <span class="string">"FETCH_FAILED"</span>, error&#125;);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 监听INCREMENT_ASYNC action的调用，然后调用fetchData这个封装了异步的generate函数</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>* <span class="title">watchFetchData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span>* takeEvery(<span class="string">'FETCH_REQUESTED'</span>, fetchData)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="将watchFetchData这个Saga连接至Store"><a href="#将watchFetchData这个Saga连接至Store" class="headerlink" title="将watchFetchData这个Saga连接至Store"></a>将<code>watchFetchData</code>这个Saga连接至Store</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; fetchData, watchFetchData &#125; <span class="keyword">from</span> <span class="string">'./sagas'</span></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  reducer,</div><div class="line">  applyMiddleware(createSagaMiddleware(watchFetchData))</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="细节展示"><a href="#细节展示" class="headerlink" title="细节展示"></a>细节展示</h2><h3 id="Saga辅助函数"><a href="#Saga辅助函数" class="headerlink" title="Saga辅助函数"></a>Saga辅助函数</h3><p><code>takeEvery</code>是最常见的，它提供了类似<code>redux-thunk</code>的行为；<code>takeLatest</code>则只执行最后一次fetchData<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; takeEvery &#125; <span class="keyword">from</span> <span class="string">'redux-saga'</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">watchFetchData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 只要监听到FETCH_REQUESTED这个action被派发，就一定会调用fetchData。不管上一次的fetchData有没有完成</span></div><div class="line">  <span class="keyword">yield</span>* takeEvery(<span class="string">'FETCH_REQUESTED'</span>, fetchData)</div><div class="line">  <span class="comment">// 可以作为节流函数使用，还可以避免上一次输入已经清空，但结果还是返回了上次的输入得到的结果</span></div><div class="line">  <span class="keyword">yield</span>* takeLatest(<span class="string">'FETCH_REQUESTED'</span>, fetchData)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="声明式Effects"><a href="#声明式Effects" class="headerlink" title="声明式Effects"></a>声明式Effects</h3><p>在 redux-saga 的世界里，Sagas 都用 Generator 函数实现。我们从 Generator 里 yield 纯 JavaScript 对象以表达 Saga 逻辑。 我们称呼那些对象为 Effect。Effect 是一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。 你可以把 Effect 看作是发送给 middleware 的指令以执行某些操作（调用某些异步函数，发起一个 action 到 store）。</p>
+<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><p>为什么我们使用call声明式地调用一个函数而不是用“函数()”的方式？这是为了方便我们做断言测试。<br>call 同样支持调用对象方法，你可以使用以下形式，为调用的函数提供一个 this 上下文：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">yield</span> call([obj, obj.method], arg1, arg2, ...) <span class="comment">// 如同 obj.method(arg1, arg2 ...)</span></div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line">#### apply</div><div class="line">apply 提供了另外一种调用的方式：  </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">yield</span> apply(obj, obj.method, [arg1, arg2, ...])</div></pre></td></tr></table></figure></p>
+<h4 id="cps"><a href="#cps" class="headerlink" title="cps"></a>cps</h4><p>call 和 apply 非常适合返回 Promise 结果的函数。另外一个函数 cps 可以用来处理 Node 风格的函数 （例如，fn(…args, callback) 中的 callback 是 (error, result) =&gt; () 这样的形式，cps 表示的是延续传递风格（Continuation Passing Style））。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; cps &#125; <span class="keyword">from</span> <span class="string">'redux-saga'</span></div><div class="line"><span class="keyword">const</span> content = <span class="keyword">yield</span> cps(readFile, <span class="string">'/path/to/file'</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="put"><a href="#put" class="headerlink" title="put"></a>put</h4><p>同样的，如果我们想在获取到异步数据之后派发一个action也不能直接<code>dispatch({ type: &#39;PRODUCTS_RECEIVED&#39;, products })</code>而是要用<code>yield put({ type: &#39;PRODUCTS_RECEIVED&#39;, products })</code>这样声明式的调用以便测试。  </p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>我们可以使用熟悉的 try/catch 语法在 Saga 中捕获错误。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Api <span class="keyword">from</span> <span class="string">'./path/to/api'</span></div><div class="line"><span class="keyword">import</span> &#123; call, put &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fetchProducts</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> products = <span class="keyword">yield</span> call(Api.fetch, <span class="string">'/products'</span>)</div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_RECEIVED'</span>, products &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">catch</span>(error) &#123;</div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_REQUEST_FAILED'</span>, error &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然了，你并不一定得在 try/catch 区块中处理错误，你也可以让你的 API 服务返回一个正常的含有错误标识的值。例如， 你可以捕捉 Promise 的拒绝操作，并将它们映射到一个错误字段对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Api <span class="keyword">from</span> <span class="string">'./path/to/api'</span></div><div class="line"><span class="keyword">import</span> &#123; take, put &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchProductsApi</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> Api.fetch(<span class="string">'/products'</span>)</div><div class="line">    .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;response&#125;)</div><div class="line">    .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;error&#125;)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fetchProducts</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> &#123; response, error &#125; = <span class="keyword">yield</span> call(fetchProductsApi)</div><div class="line">  <span class="keyword">if</span>(response)</div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_RECEIVED'</span>, <span class="attr">products</span>: response &#125;)</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_REQUEST_FAILED'</span>, error &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="高级（官方中文文档）"><a href="#高级（官方中文文档）" class="headerlink" title="高级（官方中文文档）"></a>高级（<a href="http://leonshi.com/redux-saga-in-chinese/docs/advanced/FutureActions.html" target="_blank" rel="external">官方中文文档</a>）</h2><h3 id="监听未来的action"><a href="#监听未来的action" class="headerlink" title="监听未来的action"></a>监听未来的action</h3><p>之前我们有用<code>takeEvery</code>来对每一个相同的action进行无差别对待，但其实我们也有<code>take</code>可以对每一次的action进行细微调控。比如说，我们可以在观察到用户完成了3个任务之后，派发一个向用户表示祝贺的action。  </p>
+<h3 id="同时执行多个任务"><a href="#同时执行多个任务" class="headerlink" title="同时执行多个任务"></a>同时执行多个任务</h3><p>yield 指令可以很简单的将异步控制流以同步的写法表现出来，但与此同时我们将也会需要同时执行多个任务，我们不能直接这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误写法，effects 将按照顺序执行</span></div><div class="line"><span class="keyword">const</span> users = <span class="keyword">yield</span> call(fetch, <span class="string">'/users'</span>),</div><div class="line">      repos = <span class="keyword">yield</span> call(fetch, <span class="string">'/repos'</span>)</div><div class="line">      <span class="keyword">import</span> &#123; call &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"></div><div class="line"><span class="comment">// 正确写法, effects 将会同步执行</span></div><div class="line"><span class="keyword">const</span> [users, repos] = <span class="keyword">yield</span> [</div><div class="line">  call(fetch, <span class="string">'/users'</span>),</div><div class="line">  call(fetch, <span class="string">'/repos'</span>)</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>当我们需要 yield 一个包含 effects 的数组， generator 会被阻塞直到所有的 effects 都执行完毕，或者当一个 effect 被拒绝 （就像 Promise.all 的行为）。  </p>
+<h3 id="同时启动多个任务，择其优者取值"><a href="#同时启动多个任务，择其优者取值" class="headerlink" title="同时启动多个任务，择其优者取值"></a>同时启动多个任务，择其优者取值</h3><p>有时候我们同时启动多个任务，但又不想等待所有任务完成，我们只希望拿到 胜利者：即第一个被 resolve（或 reject）的任务。 race Effect 提供了一个方法，在多个 Effects 之间触发一个竞赛（race）。<br>下面的示例演示了触发一个远程的获取请求，并且限制了 1 秒内响应，否则作超时处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; race, take, put &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fetchPostsWithTimeout</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> &#123;posts, timeout&#125; = <span class="keyword">yield</span> race(&#123;</div><div class="line">    <span class="attr">posts</span>   : call(fetchApi, <span class="string">'/posts'</span>),</div><div class="line">    <span class="attr">timeout</span> : call(delay, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">if</span>(posts)</div><div class="line">    put(&#123;<span class="attr">type</span>: <span class="string">'POSTS_RECEIVED'</span>, posts&#125;)</div><div class="line">  <span class="keyword">else</span></div><div class="line">    put(&#123;<span class="attr">type</span>: <span class="string">'TIMEOUT_ERROR'</span>&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>race 的另一个有用的功能是，它会自动取消那些失败的 Effects。具体实例参看官方文档</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/redux/" rel="tag"># redux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/29/JS-react-immutable在react中的应用/" rel="prev" title="immutable在redux中的应用">
+                immutable在redux中的应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体感知"><span class="nav-number">1.</span> <span class="nav-text">整体感知</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用redux-saga封装异步操作"><span class="nav-number">1.1.</span> <span class="nav-text">使用redux-saga封装异步操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将watchFetchData这个Saga连接至Store"><span class="nav-number">1.2.</span> <span class="nav-text">将watchFetchData这个Saga连接至Store</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#细节展示"><span class="nav-number">2.</span> <span class="nav-text">细节展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Saga辅助函数"><span class="nav-number">2.1.</span> <span class="nav-text">Saga辅助函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明式Effects"><span class="nav-number">2.2.</span> <span class="nav-text">声明式Effects</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#call"><span class="nav-number">2.2.1.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cps"><span class="nav-number">2.2.2.</span> <span class="nav-text">cps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#put"><span class="nav-number">2.2.3.</span> <span class="nav-text">put</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">2.3.</span> <span class="nav-text">错误处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级（官方中文文档）"><span class="nav-number">3.</span> <span class="nav-text">高级（官方中文文档）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听未来的action"><span class="nav-number">3.1.</span> <span class="nav-text">监听未来的action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时执行多个任务"><span class="nav-number">3.2.</span> <span class="nav-text">同时执行多个任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时启动多个任务，择其优者取值"><span class="nav-number">3.3.</span> <span class="nav-text">同时启动多个任务，择其优者取值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
