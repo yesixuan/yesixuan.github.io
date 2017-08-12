@@ -99,6 +99,16 @@
 <meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
 <meta name="twitter:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -460,13 +470,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
-            <a href="/tags/nextT/" rel="tag"># nextT</a>
+            <a href="/tags/nextT/" rel="tag"><i class="fa fa-tag"></i> nextT</a>
           
-            <a href="/tags/blog/" rel="tag"># blog</a>
+            <a href="/tags/blog/" rel="tag"><i class="fa fa-tag"></i> blog</a>
           
-            <a href="/tags/静态博客/" rel="tag"># 静态博客</a>
+            <a href="/tags/静态博客/" rel="tag"><i class="fa fa-tag"></i> 静态博客</a>
           
         </div>
       

@@ -99,6 +99,16 @@
 <meta name="twitter:title" content="npm">
 <meta name="twitter:description" content="本文旨在拾起一些实用但是容易被忽略的npm小知识…">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -437,7 +447,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/npm/" rel="tag"># npm</a>
+            <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
           
         </div>
       

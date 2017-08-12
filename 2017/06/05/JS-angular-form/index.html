@@ -99,6 +99,16 @@
 <meta name="twitter:title" content="angular4表单">
 <meta name="twitter:description" content="angular4提供了两种方式来处理表单。模板式表单适合处理比较简单和常规的表单；响应式表单适合应付比较复杂的表单…">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -452,11 +462,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
           
-            <a href="/tags/angular/" rel="tag"># angular</a>
+            <a href="/tags/angular/" rel="tag"><i class="fa fa-tag"></i> angular</a>
           
-            <a href="/tags/表单/" rel="tag"># 表单</a>
+            <a href="/tags/表单/" rel="tag"><i class="fa fa-tag"></i> 表单</a>
           
         </div>
       
@@ -469,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/08/JS-array/" rel="next" title="JS的数组方法">
-                <i class="fa fa-chevron-left"></i> JS的数组方法
+              <a href="/2017/06/05/JS-string/" rel="next" title="JS中的字符串">
+                <i class="fa fa-chevron-left"></i> JS中的字符串
               </a>
             
           </div>
@@ -479,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/05/JS-string/" rel="prev" title="JS中的字符串">
-                JS中的字符串 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/05/JS-angular-lifeCycle/" rel="prev" title="angular4生命周期">
+                angular4生命周期 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

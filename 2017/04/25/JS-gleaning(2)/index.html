@@ -99,6 +99,16 @@
 <meta name="twitter:title" content="JS 拾遗（二）">
 <meta name="twitter:description" content="重读阮一峰 《JavaScript 标准参考教程》一书。有沧海拾遗的感觉，偶有收获，记录下来，以便之后查阅…">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -475,9 +485,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
           
-            <a href="/tags/JS-拾遗/" rel="tag"># JS 拾遗</a>
+            <a href="/tags/JS-拾遗/" rel="tag"><i class="fa fa-tag"></i> JS 拾遗</a>
           
         </div>
       

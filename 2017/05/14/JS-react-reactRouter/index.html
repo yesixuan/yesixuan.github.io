@@ -99,6 +99,16 @@
 <meta name="twitter:title" content="react-router">
 <meta name="twitter:description" content="前几天苦修react大法，然后从github上拉了一个简单的react项目吗，准备挑个‘软柿子’捏一捏。结果一看人家代码，发现还有很多陌生的面孔，甚至连路由都是一知半解的…">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -476,9 +486,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/router/" rel="tag"># router</a>
+            <a href="/tags/router/" rel="tag"><i class="fa fa-tag"></i> router</a>
           
-            <a href="/tags/react/" rel="tag"># react</a>
+            <a href="/tags/react/" rel="tag"><i class="fa fa-tag"></i> react</a>
           
         </div>
       
