@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/11/java-collection/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="之前一直很费解java中那么严格的数组怎么能满足开发中的各种需求，也一直为javascript那么灵活的数据类型而庆幸。直到了解了集合这个东西的时候才知道很多东西是想当然了…">
-<meta property="og:updated_time" content="2017-08-11T11:29:50.009Z">
+<meta property="og:updated_time" content="2017-08-12T07:39:23.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合">
 <meta name="twitter:description" content="之前一直很费解java中那么严格的数组怎么能满足开发中的各种需求，也一直为javascript那么灵活的数据类型而庆幸。直到了解了集合这个东西的时候才知道很多东西是想当然了…">
@@ -388,17 +388,6 @@
 
           
             
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/08/11/java-collection/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/08/11/java-collection/" itemprop="commentsCount"></span>
-                </a>
-              
-            
           
 
           
@@ -425,7 +414,86 @@
 <p>之前一直很费解java中那么严格的数组怎么能满足开发中的各种需求，也一直为javascript那么灵活的数据类型而庆幸。直到了解了集合这个东西的时候才知道很多东西是想当然了…</p>
 </blockquote>
 <a id="more"></a>
-<p>Collection是与数组一个阶层的数据类型。不同的是，数组是定长并且数据类型固定。而Collection就没有这样的限制。<br>Collection的体系如下：<br>—-| Collection 描述所有集合共性接口<br>    —-| List 描述可以有重复元素的集合<br>        —-| ArrayList 实现了List接口的实现类，特点是查询快，增删慢<br>        —-| LinkedList 链表存储，特点是查询慢，增删快<br>    —-| Set接口 不可以有重复元素的集合<br>        —-| HashSet hash表存储，新增时，先判断hashcode，hashcode相同再调用equals方法判断<br>        —-| TreeSet 二叉树结构存储，会对集合内的元素进行排序    </p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Collection是与数组一个阶层的数据类型。不同的是，数组是定长并且数据类型固定。而Collection就没有这样的限制。<br>Collection的体系如下：<br>—-| Collection 单列集合类的根接口<br>&emsp;&emsp;—-| List 描述可以有重复元素的集合<br>&emsp;&emsp;&emsp;&emsp;—-| ArrayList 实现了List接口的实现类，特点是查询快，增删慢<br>&emsp;&emsp;&emsp;&emsp;—-| LinkedList 链表存储，特点是查询慢，增删快<br>&emsp;&emsp;—-| Set接口 不可以有重复元素的集合<br>&emsp;&emsp;&emsp;&emsp;—-| HashSet hash表存储，新增时，先判断hashcode，hashcode相同再调用equals方法判断<br>&emsp;&emsp;&emsp;&emsp;—-| TreeSet 二叉树结构存储，会对集合内的元素进行排序    </p>
+<h3 id="collection常用方法"><a href="#collection常用方法" class="headerlink" title="collection常用方法"></a>collection常用方法</h3><ul>
+<li>增加<ul>
+<li>add(E e)</li>
+<li>addAll(Collection c)</li>
+</ul>
+</li>
+<li>删除<ul>
+<li>clear() ：清空集合元素</li>
+<li>remove(Object 0) ：删除某元素（返回boolean）</li>
+<li>removeAll(Collection c) ：删除两个集合中的交集元素（返回boolean）</li>
+<li>retainAll(Collection c) ：保留两个集合中的交集元素（返回boolean）</li>
+</ul>
+</li>
+<li>查看<ul>
+<li>contains(Object o)</li>
+<li>containsAll(Collection c)</li>
+<li>isEmpty()</li>
+<li>size()</li>
+</ul>
+</li>
+<li>迭代<ul>
+<li>toArray() ：将集合中的元素存储到对象数组中返回</li>
+<li>iterator() ：返回一个实现了Iterator接口的实现类对象  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h3><p>当获取到集合中的迭代器的时候，那么迭代器对象就会有一个游标指向了集合中的第一个元素。<br>常用方法：hasNext()、next()、remove()。<br>remove()移除迭代器最后一次返回的元素（即最后一个next()返回的）。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Collection是接口，所以创建的时候都是创建它的实现类对象</span></div><div class="line">Collection c = <span class="keyword">new</span> ArrayList();</div><div class="line"><span class="comment">// 获取实现了Iterator接口的实现类对象</span></div><div class="line">Iterator it = c.iterator();</div><div class="line"><span class="comment">// 遍历</span></div><div class="line"><span class="keyword">while</span>(it.hasNext()) &#123;</div><div class="line">  System.out.println(it.next());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>要以对象的形式查看集合元素，需要重写集合元素中的toString();  </li>
+<li>ArrayList实现的contains()判断的依据实际上是调用了每个每个元素的equals()。equals()默认比较内存地址，很多时候，我们需要重写元素的equals();</li>
+<li>isEmpty()判断集合中如果有null，则判定结果也是非空的;</li>
+<li>hasNext()实际上是问当前游标有没有指向一个元素;</li>
+<li>next()首先返回当前游标指向的元素，然后游标向下移动一个单位;</li>
+</ol>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>实现了List接口类的添加元素都是有序的，并且可以重复。<br>有序：在集合中所谓的“有序”不是指自然顺序，而是指添加进去的顺序与存储的顺序一致。</p>
+<h3 id="List接口特有方法"><a href="#List接口特有方法" class="headerlink" title="List接口特有方法"></a>List接口特有方法</h3><ul>
+<li>增加<ul>
+<li>add(int index, E element)</li>
+<li>addAll(int index, Collection c)</li>
+</ul>
+</li>
+<li>删除<ul>
+<li>remove(int index)</li>
+</ul>
+</li>
+<li>修改<ul>
+<li>set(int index, E element)</li>
+</ul>
+</li>
+<li>获取（类似字符串方法）<ul>
+<li>get(int index)</li>
+<li>indexOf(Object o) ：类似js，如果不存在则返回-1</li>
+<li>lastIndexOf(Object o)</li>
+<li>subList(int fromIndex, int toIndex) ：返回Lint接口的实现类对象SubList，而不是List</li>
+</ul>
+</li>
+<li>迭代<ul>
+<li>listIterator()<br>listIterator()特有的方法：hasPrevious()（是否有上一个元素，注意区别hasnext()）、previous()、add(E e)、set(E e)。<br>add(E e)表示将元素添加到当前游标指向的位置上。<br>set(E e)替换最后一次返回出来的元素，包括previous()和next()。<br>总结：List接口下的方法大都是操作索引的（传入索引或返回索引），这一是它有序的前提下造成的现象。<br>四种遍历方式：① toArray(); ② for循环配合get; ③ 遍历器顺序; ④ 遍历器逆序。<br>集合对象的add()添加至集合的尾部，而List实现类对象的add()添加至游标指向的索引。在遍历过程中，使用集合对象的add()会报错，而List实现类对象的add()会跳过新添加的元素继续遍历。<br>注意：迭代器在迭代过程中（指在两个及以上的next()中间），不能使用集合对象改变集合的元素个数。  </li>
+</ul>
+</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList无参构造方法默认容量为10。如果不够，则自动增加为原来的1.5倍。它的底层是使用了Object数组来存储元素的。<br>ArrayList的特有方法: ensureCapacity(int mainCapacity)（设置长度）、trimToSize()（设置为实际长度）。两者都不常用。<br>ArrayList查询快，增删慢的原因是：Object数组中，元素与元素的内存地址是连续的（查询快）；增删过程中会判断原数组长度是否足够，如果不够，则对数组进行拷贝，这一点很费时。  </p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>LinkedList的存储方式是链表式存储。类似现实生活中的链条，一环扣着一环。上个元素保存着下个元素的内存地址。正因如此，LinkedList查询慢，增删快。  </p>
+<h4 id="LinkedList特有方法"><a href="#LinkedList特有方法" class="headerlink" title="LinkedList特有方法"></a>LinkedList特有方法</h4><p>LinkedList特有方法都是跟首尾有关的：addFirst(E e)、addLast(E e)、getFirst()、getLast()、removeFirst()、removeLast()</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>实现了Set接口的集合类具备的特点：无序、元素不可重复。  </p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet底层是使用hashTable来实现的。<br>HashSet判断重复元素的判断过程是首先使用<code>hashCode()</code>判断，如果hashcode相同再调用<code>equals()</code>，如果hashCode相同，而equals不等时，两个元素将存储在同一个单元格（桶式结构，一个单元格可以看作一个桶）中。<br>所以很多时候，我们要利用HashSet来去重的话，需要重写<code>hashcode()</code>。  </p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet内部使用红黑树结构存储，具有自动排序功能。<br>TreeSet默认是按照元素的自然顺序进行排序的，但是如果元素不具备自然顺序则需要我们为元素所属类实现Comparable接口的compareTo的方法或者是在创建TreeSet对象时传入比较器对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 方法一，实现Comparable接口的compareTo方法 */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    Emp e = (Emp)o;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.salary - e.salary;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 方法二，创建TreeSet对象时传入比较器对象 */</span></div><div class="line"><span class="comment">// 自定义比较器类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AgeComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span> </span>&#123;</div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span> <span class="params">(Object o1, Object o2)</span> </span>&#123;</div><div class="line">    Emp e1 = (Emp)o1;</div><div class="line">    Emp e2 = (Emp)o2;</div><div class="line">    <span class="keyword">return</span> e1.age - e2.age;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="comment">// 传入TreeSet构造方法</span></div><div class="line">AgeComparator ageComparator = <span class="keyword">new</span> AgeComparator();</div><div class="line">TreeSet tree = <span class="keyword">new</span> TreeSet(ageComparator);</div></pre></td></tr></table></figure></p>
+<p>当TreeSet对象必备上述两种比较规则的话，将会优先使用传入比较器的方式。这里推荐使用传入比较器方式，复用性与优先级都比较高。  </p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>严格来说，泛型并不属于collection这个体系。但听说collection搭配泛型口感会更佳。这里也一并来唠唠。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &lt;String&gt;相当于给list这个元素贴上了一个标签，只能用来存放String类型的元素</span></div><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(); <span class="comment">// 标准写法是两边都写泛型，但只写一边也没问题</span></div></pre></td></tr></table></figure></p>
+<p>泛型的好处：  </p>
+<ol>
+<li>把运行时出现的问题提前至编译时；</li>
+<li>避免无意义的强制类型转换；  </li>
+</ol>
+<h3 id="自定义泛型"><a href="#自定义泛型" class="headerlink" title="自定义泛型"></a>自定义泛型</h3><p>自定义泛型可以理解为是一个数据类型的变量或者是一个数据类型的占位符。<br>函数自定义泛型的格式：<br>修饰符 &lt;声明自定义泛型&gt; 返回值类型 函数名 (形参列表…) {}<br>在调用函数时才确定自定义泛型所代表的数据类型。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 如果传入的是基础数据类型，则返回的该数据类型的包装类</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; print(T o) &#123;</div><div class="line">  <span class="keyword">return</span> o</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>基础数据类型对应的包装类型：Integer、Float、Double、Character、Boolean、Byte、Short、Long。  </p>
+<p>自定义泛型类：在类名后面加上泛型，则该类变为泛型类。类中的方法就不用重复地声明泛型了。这里泛型的确定时机是在创建对象是确定的（如果在创建泛型类对象时，没有传入泛型类型，则默认为Object类型）。<br>注意：类上的泛型是不能够给静态方法使用的，此时只能在静态方法上声明泛型。  </p>
+<p>泛型接口：与泛型类类似，泛型声明在接口名后面。在实现该接口时确定泛型类型（如果此时还不能确定泛型类型，就需要将该实现类声明为同名接口）。  </p>
+<h3 id="泛型的上下限"><a href="#泛型的上下限" class="headerlink" title="泛型的上下限"></a>泛型的上下限</h3><p>泛型的上下限实际上就是将泛型的指代范围缩小。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接收Integer以及它的父类</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Collection&lt;? <span class="keyword">super</span> Integer&gt;)</span> </span>&#123;&#125;</div><div class="line"><span class="comment">// 接受Number以及它的子类</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(Collection&lt;? extend Number&gt;)</span> </span>&#123;&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -510,7 +578,7 @@
           
   <div class="comments" id="comments">
     
-      <div id="SOHUCS"></div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMwNy80ODc5"></div>
     
   </div>
 
@@ -533,8 +601,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -607,6 +684,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#collection常用方法"><span class="nav-number">1.1.</span> <span class="nav-text">collection常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator接口"><span class="nav-number">1.2.</span> <span class="nav-text">Iterator接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.3.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List接口特有方法"><span class="nav-number">2.1.</span> <span class="nav-text">List接口特有方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.2.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.3.</span> <span class="nav-text">LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList特有方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">LinkedList特有方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">3.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">3.2.</span> <span class="nav-text">TreeSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">4.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义泛型"><span class="nav-number">4.1.</span> <span class="nav-text">自定义泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型的上下限"><span class="nav-number">4.2.</span> <span class="nav-text">泛型的上下限</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -760,24 +853,20 @@
 
 
   
-
-
-
-
-  
     <script type="text/javascript">
-    (function(){
-      var appid = 'cyt9T7IG5';
-      var conf = '81498ea908c75fd696c4e03d904dcfa1';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
     </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
   
+
+
+
 
 
 
