@@ -1,0 +1,955 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,常用方法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="整理一下从别处看到的js常用函数参考…">
+<meta name="keywords" content="js,常用方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用方法（三）">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/JS-common function(4)/index.html">
+<meta property="og:site_name" content="yesixuan">
+<meta property="og:description" content="整理一下从别处看到的js常用函数参考…">
+<meta property="og:updated_time" content="2017-08-22T12:41:22.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常用方法（三）">
+<meta name="twitter:description" content="整理一下从别处看到的js常用函数参考…">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/22/JS-common function(4)/"/>
+
+
+
+
+
+  <title> JS常用方法（三） | yesixuan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yesixuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱他们就像爱自己，讨厌他们就像讨厌自己</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/JS-common function(4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶思玄">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yesixuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS常用方法（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T09:59:00+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/常用函数/" itemprop="url" rel="index">
+                    <span itemprop="name">常用函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>整理一下从别处看到的js常用函数<a href="https://segmentfault.com/a/1190000010527982" target="_blank" rel="external">参考</a>…</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="字符串相关"><a href="#字符串相关" class="headerlink" title="字符串相关"></a>字符串相关</h2><h3 id="字符串过滤"><a href="#字符串过滤" class="headerlink" title="字符串过滤"></a>字符串过滤</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//过滤字符串(html标签，表情，特殊字符，)</span></div><div class="line"><span class="comment">//字符串，替换内容（special-特殊字符,html-html标签,emjoy-emjoy表情,word-小写字母，WORD-大写字母，number-数字,chinese-中文），要替换成什么，默认'',保留哪些特殊字符</span></div><div class="line"><span class="comment">//如果需要过滤多种字符，type参数使用','分割</span></div><div class="line"><span class="comment">//如下栗子,意思就是过滤字符串的html标签，大写字母，中文，特殊字符，全部替换成*,但是保留特殊字符'%'，'?'，除了这两个，其他特殊字符全部清除</span></div><div class="line"><span class="comment">//var str='asd    654a大蠢sasdasdASDQWEXZC6d5#%^*^&amp;*^%^&amp;*$\\"\'#@!()*/-())_\'":"&#123;&#125;?&lt;div&gt;&lt;/div&gt;&lt;img src=""/&gt;啊实打实大蠢猪自行车这些课程';</span></div><div class="line"><span class="comment">// ecDo.filterStr(str,'html,WORD,chinese,special','*','%?')</span></div><div class="line"><span class="comment">//"asd    654a**sasdasd*********6d5#%^*^&amp;*^%^&amp;*$\"'#@!()*/-())_'":"&#123;&#125;?*****************"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterStr</span>(<span class="params">str, type, restr, spstr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> typeArr = type.split(<span class="string">','</span>),</div><div class="line">    _str = str;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = typeArr.length; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (typeArr[i] === <span class="string">'special'</span>) &#123;</div><div class="line">      <span class="keyword">var</span> pattern, regText = <span class="string">'$()[]&#123;&#125;?\|^*+./\"\'+'</span>;</div><div class="line">      <span class="keyword">if</span> (spstr) &#123;</div><div class="line">        <span class="keyword">var</span> _spstr = spstr.split(<span class="string">""</span>),</div><div class="line">          _regText = <span class="string">"[^0-9A-Za-z\\s"</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = _spstr.length; i &lt; len; i++) &#123;</div><div class="line">          <span class="keyword">if</span> (regText.indexOf(_spstr[i]) === <span class="number">-1</span>) &#123;</div><div class="line">            _regText += _spstr[i];</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            _regText += <span class="string">'\\'</span> + _spstr[i];</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        _regText += <span class="string">']'</span></div><div class="line">        pattern = <span class="keyword">new</span> <span class="built_in">RegExp</span>(_regText, <span class="string">'g'</span>);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        pattern = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[^0-9A-Za-z\\s]"</span>, <span class="string">'g'</span>)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> _restr = restr || <span class="string">''</span>;</div><div class="line">    <span class="keyword">switch</span> (typeArr[i]) &#123;</div><div class="line">      <span class="keyword">case</span> <span class="string">'special'</span>:</div><div class="line">        _str = _str.replace(pattern, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'html'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/&lt;\/?[^&gt;]*&gt;/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'emjoy'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/[^\u4e00-\u9fa5|\u0000-\u00ff|\u3002|\uFF1F|\uFF01|\uff0c|\u3001|\uff1b|\uff1a|\u3008-\u300f|\u2018|\u2019|\u201c|\u201d|\uff08|\uff09|\u2014|\u2026|\u2013|\uff0e]/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'word'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/[a-z]/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'WORD'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/[A-Z]/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'number'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/[0-9]/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'chinese'</span>:</div><div class="line">        _str = _str.replace(<span class="regexp">/[\u4E00-\u9FA5]/g</span>, _restr);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="创建正则字符"><a href="#创建正则字符" class="headerlink" title="创建正则字符"></a>创建正则字符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建正则字符,一般是为搜索或者高亮操作</span></div><div class="line"><span class="comment">//createKeyExp(['我','谁'])</span></div><div class="line"><span class="comment">//'(我|谁)'</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createKeyExp</span>(<span class="params">strArr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> str = <span class="string">""</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; strArr.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (i != strArr.length - <span class="number">1</span>) &#123;</div><div class="line">      str = str + strArr[i] + <span class="string">"|"</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      str = str + strArr[i];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="string">"("</span> + str + <span class="string">")"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="关键字加标签"><a href="#关键字加标签" class="headerlink" title="关键字加标签"></a>关键字加标签</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//简单关键字加标签（多个关键词用空格隔开）</span></div><div class="line"><span class="comment">//ecDo.findKey('守侯我oaks接到了来自下次你离开快乐吉祥留在开城侯','守侯 开','i')</span></div><div class="line"><span class="comment">//"&lt;i&gt;守侯&lt;/i&gt;我oaks接到了来自下次你离&lt;i&gt;开&lt;/i&gt;快乐吉祥留在&lt;i&gt;开&lt;/i&gt;城侯"</span></div><div class="line"><span class="comment">//加完了标签，对i怎么设置样式就靠大家了！</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">findKey</span>(<span class="params">str, key, el</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> arr = <span class="literal">null</span>,</div><div class="line">    regStr = <span class="literal">null</span>,</div><div class="line">    content = <span class="literal">null</span>,</div><div class="line">    Reg = <span class="literal">null</span>,</div><div class="line">    _el = el || <span class="string">'span'</span>;</div><div class="line">  arr = key.split(<span class="regexp">/\s+/</span>);</div><div class="line">  <span class="comment">//alert(regStr); //    如：(前端|过来)</span></div><div class="line">  regStr = <span class="keyword">this</span>.createKeyExp(arr);</div><div class="line">  content = str;</div><div class="line">  <span class="comment">//alert(Reg);//        /如：(前端|过来)/g</span></div><div class="line">  Reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(regStr, <span class="string">"g"</span>);</div><div class="line">  content = content;</div><div class="line">  <span class="comment">//过滤html标签 替换标签，往关键字前后加上标签</span></div><div class="line">  <span class="keyword">return</span> content.replace(<span class="regexp">/&lt;\/?[^&gt;]*&gt;/g</span>, <span class="string">''</span>).replace(Reg, <span class="string">"&lt;"</span> + _el + <span class="string">"&gt;$1&lt;/"</span> + _el + <span class="string">"&gt;"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="数组相关"><a href="#数组相关" class="headerlink" title="数组相关"></a>数组相关</h2><h3 id="对象数组排序"><a href="#对象数组排序" class="headerlink" title="对象数组排序"></a>对象数组排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对象数组的排序</span></div><div class="line"><span class="comment">//var arr=[&#123;a:1,b:2,c:9&#125;,&#123;a:2,b:3,c:5&#125;,&#123;a:5,b:9&#125;,&#123;a:4,b:2,c:5&#125;,&#123;a:4,b:5,c:7&#125;]</span></div><div class="line"><span class="comment">//arraySort(arr2,'a,b')  a是第一排序条件，b是第二排序条件</span></div><div class="line"><span class="comment">//[&#123;a:1,b:2,c:9&#125;,&#123;a:2,b:3,c:5&#125;,&#123;a:4,b:2,c:5&#125;,&#123;a:4,b:5,c:7&#125;,&#123;a:5,b:9&#125;]</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arraySort</span>(<span class="params">arr, sortText</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!sortText) &#123;</div><div class="line">    <span class="keyword">return</span> arr</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> _sortText = sortText.split(<span class="string">','</span>).reverse(),</div><div class="line">    _arr = arr.slice(<span class="number">0</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = _sortText.length; i &lt; len; i++) &#123;</div><div class="line">    _arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">n1, n2</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> n1[_sortText[i]] - n2[_sortText[i]]</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><h3 id="预加载图片"><a href="#预加载图片" class="headerlink" title="预加载图片"></a>预加载图片</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//图片没加载出来时用一张图片（loading图片）代替，一般和图片懒加载一起使用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">aftLoadImg</span>(<span class="params">obj, url, cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> oImg = <span class="keyword">new</span> Image(), _this = <span class="keyword">this</span>;</div><div class="line">  oImg.src = url;</div><div class="line">  oImg.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    obj.src = oImg.src;</div><div class="line">    <span class="keyword">if</span> (cb &amp;&amp; _this.istype(cb, <span class="string">'function'</span>)) &#123;</div><div class="line">      cb(obj);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="图片滚动懒加载"><a href="#图片滚动懒加载" class="headerlink" title="图片滚动懒加载"></a>图片滚动懒加载</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//图片滚动懒加载</span></div><div class="line"><span class="comment">//@className &#123;string&#125; 要遍历图片的类名</span></div><div class="line"><span class="comment">//@num &#123;number&#125; 距离多少的时候开始加载 默认 0</span></div><div class="line"><span class="comment">//比如，一张图片距离文档顶部3000，num参数设置200，那么在页面滚动到2800的时候，图片加载。不传num参数就滚动，num默认是0，页面滚动到3000就加载</span></div><div class="line"></div><div class="line"><span class="comment">//html代码</span></div><div class="line"><span class="comment">//&lt;p&gt;&lt;img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /&gt;&lt;/p&gt;</span></div><div class="line"><span class="comment">//&lt;p&gt;&lt;img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /&gt;&lt;/p&gt;</span></div><div class="line"><span class="comment">//&lt;p&gt;&lt;img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /&gt;&lt;/p&gt;....</span></div><div class="line"><span class="comment">//data-src储存src的数据，到需要加载的时候把data-src的值赋值给src属性，图片就会加载。</span></div><div class="line"><span class="comment">//详细可以查看testLoadImg.html</span></div><div class="line"></div><div class="line"><span class="comment">//window.onload = function() &#123;</span></div><div class="line"><span class="comment">//    ecDo.loadImg('load-img',100);</span></div><div class="line"><span class="comment">//    window.onscroll = function() &#123;</span></div><div class="line"><span class="comment">//        ecDo.loadImg('load-img',100);</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">className, num</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> _className = className || <span class="string">'ec-load-img'</span>,</div><div class="line">    _num = num || <span class="number">0</span>,</div><div class="line">    _this = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> oImgLoad = <span class="built_in">document</span>.getElementsByClassName(_className);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = oImgLoad.length; i &lt; len; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.documentElement.clientHeight + <span class="built_in">document</span>.body.scrollTop &gt; oImgLoad[i].offsetTop - _num &amp;&amp; !oImgLoad[i].isLoad) &#123;</div><div class="line">      <span class="comment">//记录图片是否已经加载</span></div><div class="line">      oImgLoad[i].isLoad = <span class="literal">true</span>;</div><div class="line">      <span class="comment">//设置过渡，当图片下来的时候有一个图片透明度变化</span></div><div class="line">      oImgLoad[i].style.cssText = <span class="string">"transition: ''; opacity: 0;"</span></div><div class="line">      <span class="keyword">if</span> (oImgLoad[i].dataset) &#123;</div><div class="line">        <span class="keyword">this</span>.aftLoadImg(oImgLoad[i], oImgLoad[i].dataset.src, <span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">          setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (o.isLoad) &#123;</div><div class="line">              _this.removeClass(o, _className);</div><div class="line">              o.style.cssText = <span class="string">""</span>;</div><div class="line">            &#125;</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">        &#125;);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">this</span>.aftLoadImg(oImgLoad[i], oImgLoad[i].getAttribute(<span class="string">"data-src"</span>), <span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">          setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (o.isLoad) &#123;</div><div class="line">              _this.removeClass(o, _className);</div><div class="line">              o.style.cssText = <span class="string">""</span>;</div><div class="line">            &#125;</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">        &#125;);</div><div class="line">      &#125;</div><div class="line">      (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          oImgLoad[i].style.cssText = <span class="string">"transition:all 1s; opacity: 1;"</span>;</div><div class="line">        &#125;, <span class="number">16</span>)</div><div class="line">      &#125;)(i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="其它做操"><a href="#其它做操" class="headerlink" title="其它做操"></a>其它做操</h2><h3 id="封装AJAX"><a href="#封装AJAX" class="headerlink" title="封装AJAX"></a>封装AJAX</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * @param &#123;string&#125;obj.type http连接的方式，包括POST和GET两种方式</div><div class="line"> * @param &#123;string&#125;obj.url 发送请求的url</div><div class="line"> * @param &#123;boolean&#125;obj.async 是否为异步请求，true为异步的，false为同步的</div><div class="line"> * @param &#123;object&#125;obj.data 发送的参数，格式为对象类型</div><div class="line"> * @param &#123;function&#125;obj.success ajax发送并接收成功调用的回调函数</div><div class="line"> * @param &#123;function&#125;obj.error ajax发送失败或者接收失败调用的回调函数</div><div class="line"> */</div><div class="line"><span class="comment">//  ecDo.ajax(&#123;</span></div><div class="line"><span class="comment">//      type:'get',</span></div><div class="line"><span class="comment">//      url:'xxx',</span></div><div class="line"><span class="comment">//      data:&#123;</span></div><div class="line"><span class="comment">//          id:'111'</span></div><div class="line"><span class="comment">//      &#125;,</span></div><div class="line"><span class="comment">//      success:function(res)&#123;</span></div><div class="line"><span class="comment">//          console.log(res)</span></div><div class="line"><span class="comment">//      &#125;</span></div><div class="line"><span class="comment">//  &#125;)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  obj = obj || &#123;&#125;;</div><div class="line">  obj.type = obj.type.toUpperCase() || <span class="string">'POST'</span>;</div><div class="line">  obj.url = obj.url || <span class="string">''</span>;</div><div class="line">  obj.async = obj.async || <span class="literal">true</span>;</div><div class="line">  obj.data = obj.data || <span class="literal">null</span>;</div><div class="line">  obj.success = obj.success || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  obj.error = obj.error || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  <span class="keyword">var</span> xmlHttp = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">if</span> (XMLHttpRequest) &#123;</div><div class="line">    xmlHttp = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    xmlHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> params = [];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj.data) &#123;</div><div class="line">    params.push(key + <span class="string">'='</span> + obj.data[key]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> postData = params.join(<span class="string">'&amp;'</span>);</div><div class="line">  <span class="keyword">if</span> (obj.type.toUpperCase() === <span class="string">'POST'</span>) &#123;</div><div class="line">    xmlHttp.open(obj.type, obj.url, obj.async);</div><div class="line">    xmlHttp.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span>);</div><div class="line">    xmlHttp.send(postData);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj.type.toUpperCase() === <span class="string">'GET'</span>) &#123;</div><div class="line">    xmlHttp.open(obj.type, obj.url + <span class="string">'?'</span> + postData, obj.async);</div><div class="line">    xmlHttp.send(<span class="literal">null</span>);</div><div class="line">  &#125;</div><div class="line">  xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == <span class="number">4</span> &amp;&amp; xmlHttp.status == <span class="number">200</span>) &#123;</div><div class="line">      obj.success(xmlHttp.responseText);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      obj.error(xmlHttp.responseText);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="手机类型判断"><a href="#手机类型判断" class="headerlink" title="手机类型判断"></a>手机类型判断</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//手机类型判断</span></div><div class="line"><span class="comment">//browserInfo('android')</span></div><div class="line"><span class="comment">//false（在浏览器iphone6模拟器的调试）</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">browserInfo</span>(<span class="params">type</span>) </span>&#123;</div><div class="line">  <span class="keyword">switch</span> (type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'android'</span>:</div><div class="line">      <span class="keyword">return</span> navigator.userAgent.toLowerCase().indexOf(<span class="string">'android'</span>) !== <span class="number">-1</span></div><div class="line">    <span class="keyword">case</span> <span class="string">'iphone'</span>:</div><div class="line">      <span class="keyword">return</span> navigator.userAgent.toLowerCase().indexOf(<span class="string">'iphone'</span>) !== <span class="number">-1</span></div><div class="line">    <span class="keyword">case</span> <span class="string">'ipad'</span>:</div><div class="line">      <span class="keyword">return</span> navigator.userAgent.toLowerCase().indexOf(<span class="string">'ipad'</span>) !== <span class="number">-1</span></div><div class="line">    <span class="keyword">case</span> <span class="string">'weixin'</span>:</div><div class="line">      <span class="keyword">return</span> navigator.userAgent.toLowerCase().indexOf(<span class="string">'MicroMessenger'</span>) !== <span class="number">-1</span></div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">return</span> navigator.userAgent.toLowerCase()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weiChat.jpg" alt="叶思玄 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>如果觉得我的文章对您有用，请随意赞赏。您的支持将鼓励我继续创作！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
+          
+            <a href="/tags/常用方法/" rel="tag"><i class="fa fa-tag"></i> 常用方法</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/22/JS-optimize 图片懒加载/" rel="prev" title="细说图片懒加载">
+                细说图片懒加载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMwNy80ODc5"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="叶思玄" />
+          <p class="site-author-name" itemprop="name">叶思玄</p>
+           
+              <p class="site-description motion-element" itemprop="description">虽然喜欢频频回头，但是永远是一往无前</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yesixuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串相关"><span class="nav-number">1.</span> <span class="nav-text">字符串相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串过滤"><span class="nav-number">1.1.</span> <span class="nav-text">字符串过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建正则字符"><span class="nav-number">1.2.</span> <span class="nav-text">创建正则字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字加标签"><span class="nav-number">1.3.</span> <span class="nav-text">关键字加标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组相关"><span class="nav-number">2.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象数组排序"><span class="nav-number">2.1.</span> <span class="nav-text">对象数组排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM操作"><span class="nav-number">3.</span> <span class="nav-text">DOM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预加载图片"><span class="nav-number">3.1.</span> <span class="nav-text">预加载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片滚动懒加载"><span class="nav-number">3.2.</span> <span class="nav-text">图片滚动懒加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它做操"><span class="nav-number">4.</span> <span class="nav-text">其它做操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装AJAX"><span class="nav-number">4.1.</span> <span class="nav-text">封装AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手机类型判断"><span class="nav-number">4.2.</span> <span class="nav-text">手机类型判断</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <!-- 在底部添加网易云音乐外链 -->
+<div id="cloud-music" style="position: relative;top: 19px;"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=147749150&auto=0&height=90"></iframe></div>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶思玄</span>
+</div>
+
+
+<!--<div class="powered-by">
+    海承载
+</div>
+
+<div class="theme-info">
+  水迷津
+</div>-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
