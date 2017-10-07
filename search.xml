@@ -26,18 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[别把偷懒当作骄傲]]></title>
-    <url>%2F2017%2F08%2F30%2Fmood-20170830%2F</url>
-    <content type="text"><![CDATA[刚刚跑步回来，计划着要换工作的种种。细思极恐… 什么才是决定你工作开不开心的因素？ 在这以前，我一直让自己认为是用最新的技术，写出让自己引以为傲的作品。而现状是我们公司现在所用的是古老的angular1.x框架（或许算不上古来，但注定是要被淘汰的），写的东西是永远不能对外开放的不是表格就是表单的平庸的页面。所以我在工作中是不开心的，现在的工作在我看来就像是在搬砖一样，纯粹的是机械地完成任务而已。能偷懒就偷懒，实在躲不过了才动动手。安慰自己的理由总是有很多的… 可怕的是一开始我并不想成为现在的自己的。是什么影响了我？是环境，项目，同事。或许更多的是自己内心的负面能量日日蚕食工作生活中的各种抱怨慢慢壮大。 一直以来又会有一个声音告诉我，这一切都只是暂时的。一旦换了新的工作环境，我会用上最新的框架，承担更多的责任，更积极的去面对工作中的种种。但是今晚突然惊觉：如果心态没有改变，那么换新的工作也不会让我的激情持续太久。因为工作过程不可能总是一帆风顺的，一旦某一天以上一点挫折，它将再次在我的心中种下一颗逃避的种子，如果不能及时调整心态，那么新一轮的思变计划将重启循环。而我，又有多少时间能拿来浪费呢？ 在工作中，也许领导只会让你做一些枯燥的，所谓没有技术含量的工作，而让更有经验的同事做一些全局统筹的工作。这一点是无可厚非的，你经验不足，学历也没有优势。换做是你自己当领导，也一定会这么安排。如果你不能在茫茫没有技术含量的工作中做出一点不一样的地方，或者是像拼命三郎一样地干（不推荐长期这样做，珍惜生命），那么你的抱怨解决不了任何问题。]]></content>
-      <categories>
-        <category>随笔</category>
-        <category>反思</category>
-      </categories>
-      <tags>
-        <tag>反思</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[VScode上手]]></title>
     <url>%2F2017%2F08%2F24%2Ftools-VScode%20%E4%B8%8A%E6%89%8B%2F</url>
     <content type="text"><![CDATA[从webstorm到sublime，再到atom。一路上兜兜转转，直到昨天晚上开始了与VScode的第一次邂逅… 渊源还记得上手的第一个编辑器是webstorm，第一次知道代码还可以写得这么流畅。但是很快就觉得它太大了，让我的机器不堪重负。后来知道有一个叫做sublime的轻量级编辑器，各种配置都是通过代码（而不是点选操作）来控制，可以安装各种插件，感觉是高手装逼专用。然后兴致勃勃地捣鼓各种插件。sublime算是用的事件比较长的一款编辑器，但就像小两口一样，日子过久了自然就会出现各种小矛盾。本身底子有点薄弱以及日益庞大的插件群便是我与sublime矛盾的根源了。与atom的交集是始于它的美貌，结束于它的空有其表（个人认为）。与webstorm差不多的体积，功能的集成程度却差得太远。没换电脑之前估计还hold不住它。对VScode的第一印象不算太好。首先它的默认界面就给人一种古板、老旧的感觉。其次这货是微软出的，印象就更差了。但VScode确实超出我的预期。开源免费、对中文友好、功能集成度高、运行流畅…值得称道的东西太多。 使用技巧控制面板按Ctrl + shift + p或者F1打开控制面板。 修改默认快捷键按F1打开控制面板，输入“keyboard shortcut file”，参照默认快捷键设置来自定义快捷键。 开启terminal按Ctrl + shift + oem_3(反引号)，Ctrl + k清屏操作。 markdown预览界面右上角的有小图标，可以在右侧开启markdown预览。 拆分编辑器右上角类似翻开书本的小图标可以拆分编辑器，Ctrl + \快捷键也是可以的。 关于gitVScode已经集成Git管理，这一点大赞。开启源代码管理界面，可以清楚地看到你所作的修改。提交代码只需要在消息框中输入提交日志，按Ctrl + Enter提交。左下角有图标显示本地与远程代码的状态，点击该图标就可以拉取或是提交代码到远端。 必备插件备注信息：8d32546b11e0fa881ddee3928583e95b6c1e8221 自动生成文档注释vscode-fileheader 安装vscode-fileheader插件; 在用户配置json文件中添加&quot;fileheader.Author&quot;: &quot;yesixuan&quot;, &quot;fileheader.LastModifiedBy&quot;: &quot;xuan&quot;,; 生成文档注释：ctrl+alt+i。 vscode-icons话不多说，直接上插件vscode-icons。Debugger for Chrome让vscode映射chrome的debug功能，静态页面都可以用vscode来打断点调试。（这个有待后续研究）VUE插件vetur：语法高亮、智能感知、Emmet等；VueHelper：snippet代码片段。Syncing备份Syncing插件用来备份编辑器所有配置数据（包括插件）。上传配置信息：打开控制面板，依次输入upload、token，Gist ID给个空的让其随机生成即可。下载配置信息：打开控制面板，依次输入download、token，选择一个Gist ID。 常用快捷键 移动行上下：Alt + up/down 删除行：Ctrl + Shift + K 缩进：Ctrl + ] / [ 或 Tab / Shift + Tab 替代鼠标滚轮：Ctrl + Up / Down 整页地翻：Alt + PageUp / PageDown 折叠展开区块代码：Ctrl + Shift + [ / ] 跳转文件：Ctrl + P 切换最近打开：Ctrl + Tab 多选 / 跳选：Ctrl + D / K 从光标处扩展选中全行：Shift + Alt + right 选择所有出现在当前选中的词汇-操作：Ctrl + F2 侧边栏显示隐藏：Ctrl + B 选中行（可以连续选）：Ctrl + I]]></content>
