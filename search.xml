@@ -280,8 +280,8 @@
       </categories>
       <tags>
         <tag>nodejs</tag>
-        <tag>npm</tag>
         <tag>module</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -378,6 +378,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[JS中的字符串]]></title>
+    <url>%2F2017%2F06%2F05%2FJS-string%2F</url>
+    <content type="text"><![CDATA[拒绝字符串中的各种模糊的方法… 字符串的转换1234567var num= 19 // 19// 方法一var myStr = num.toString() // "19"// 方法二var myStr = String(num) // "19"// 方法三(这个我喜欢)var myStr = "" +num // "19" 字符串分割(split)12345var myStr = "I,Love,You,Do,you,love,me"// 以","为分割点，将字符串分割为多个片段组成的数组var substrArray = myStr .split(",") // ["I", "Love", "You", "Do", "you", "love", "me"];// 加上第二个参数，指定切割后数组的最大长度var arrayLimited = myStr .split(",", 3) // ["I", "Love", "You"]; 查询子字符串123456var myStr = "I,Love,you,Do,you,love,me"// indexOf()如果匹配成功，则返回这个匹配上的位置，匹配不成功返回-1var index = myStr.indexOf("you") // 7 ,基于0开始,找不到返回-1// 从字符串的末尾开始查找var index = myStr.lastIndexOf("you") // 14/* 以上两个函数同样接收第二个可选的参数，表示开始查找的位置。 */ 字符串替换1234var myStr = "I,love,you,Do,you,love,me";var replacedStr = myStr.replace("love","hate") // "I,hate,you,Do,you,love,me"/* 默认只替换第一次查找到的，想要全局替换，需要置上正则全局标识 */var replacedStr = myStr.replace(/love/g,"hate") //"I,hate,you,Do,you,hate,me" 查找给定位置的字符或其字符编码值1234var myStr = "I,love,you,Do,you,love,me"var theChar = myStr.charAt(8) // "o",同样从0开始/* 查找对应位置的字符编码值 */var theChar = myStr.charCodeAt(8) // 111 字符串连接12345/* 除了使用"+"，JS还提供了专门的函数来处理 */var str1 = "I,love,you!"var str2 = "Do,you,love,me?"// concat()函数可以有多个参数，传递多个字符串，拼接多个字符串var str = str1.concat(str2) // "I,love,you!Do,you,love,me?" 字符串切割和提取1234567var myStr = "I,love,you,Do,you,love,me"// slice()含头不含尾var subStr = myStr.slice(1,5) // ",lov"// substring()跟上面效果一样var subStr = myStr.substring(1,5) // ",lov"// 从哪个位置开始截取，最多截取多少个var subStr = myStr.substr(1,5) // ",love" 字符串大小写转换123var myStr = "I,love,you,Do,you,love,me"var lowCaseStr = myStr.toLowerCase() // "i,love,you,do,you,love,me";var upCaseStr = myStr.toUpperCase() // "I,LOVE,YOU,DO,YOU,LOVE,ME" 字符串匹配字符串方法match()12345var myStr = "I,love,you,Do,you,love,me"var pattern = /love/var result = myStr.match(pattern) // ["love"]console.log(result .index) // 2console.log(result.input ) // I,love,you,Do,you,love,me 正则方法exec()123456var myStr = "I,love,you,Do,you,love,me"var pattern = /love//* 其实就是将match()方法反过来用 */var result = pattern .exec(myStr) // ["love"]console.log(result .index) // 2console.log(result.input ) // I,love,you,Do,you,love,me 对于以上两个方法，匹配的结果都是返回第一个匹配成功的字符串，如果匹配失败则返回null。 search()1234var myStr = "I,love,you,Do,you,love,me";var pattern = /love/;/* 返回查到的匹配的下标，如果匹配失败则返回-1 */var result = myStr.search(pattern) // 2]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[angular4表单]]></title>
     <url>%2F2017%2F06%2F05%2FJS-angular-form%2F</url>
     <content type="text"><![CDATA[angular4提供了两种方式来处理表单。模板式表单适合处理比较简单和常规的表单；响应式表单适合应付比较复杂的表单… 模板式表单麻雀一览12345678910&lt;!-- 表单元素要被包裹在ngForm属性里边，通过模版局部变量，可以拿到表单中的所有数据 --&gt;&lt;form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)"&gt; &lt;!-- ngModel作为单独的属性放进去，name的属性值将作为表单对象的键名 --&gt; &lt;input ngModel name="userName" type="text"&gt; &lt;!-- 给表单中的元素分组，即给表单对象加一层 --&gt; &lt;div ngModelGroup="pwds"&gt; &lt;input ngModel type="password" name="pwd"&gt; &lt;input ngModel type="password" name="confirmPwd"&gt; &lt;/div&gt;&lt;/form&gt; 响应式表单名词解释FormControl: 表单模版的基本单位FormGroup: 整个表单或者表单的一个固定的子集FormArray: 多个同类型的数据组成的数组 代码实例12345678910111213141516171819formModel: FormGroup// 单独的inputuserName: FormControl = new FormControl()constructor() &#123; this.formModel: FormGroup = new FormGroup(&#123; dateRange: FormGroup = new FormGroup(&#123; from: new FormControl(), to: new FormControl() &#125;), emails: FormArray = new FormArray([ new FormControl() ]) &#125;)&#125;// 增加email输入框addEmail() &#123; let emails = this.fromModel.get('emails') as FormArray emails.push(new FormControl())&#125; 123456789101112// 使用formBuilder来简化代码('[]'里面可以有三个元素，分别为默认值、校验、异步校验)constructor(fb: formBuilder) &#123; this.fromModel = fb.group(&#123; dateRange: FormGroup = fb.group(&#123; from: [""], to: [""] &#125;), emails: FormArray = fb.rray([ new FormControl() ]) &#125;,&#123;&#125;) // 最后的对象里面定义表单组整体的校验规则&#125; 12345678910111213&lt;form [formGroup]="formModel" (ngSubmit)="onSubmit()"&gt; &lt;div formGroupName="dateRange"&gt; &lt;input type="date" formControlName="from"&gt; &lt;input type="date" formControlName="to"&gt; &lt;/div&gt; &lt;ul formArrayName="emails"&gt; &lt;li *ngFor="let e of this.fromModel.get('emails').controls; let i=index;"&gt; &lt;input [formControlName]="i" type="email"&gt; &lt;/li&gt; &lt;/ul&gt;&lt;/form&gt;&lt;!-- fromControl不能在formGroup中使用，要拎出来单独用（在里面的话要用fromControlName="xx"） --&gt;&lt;input [FormControl]="userName" type="text" name="" value=""&gt; 表单校验angular自带校验器不用定义，直接可用：required、minlength、maxlength、pattern12345678910constructor(fb: formBuilder) &#123; this.fromModel = fb.group(&#123; userName: ['',[Validators.required,Validators.minLength(6)]] &#125;)&#125;onSubmit() &#123; let isValid: boolean = this.formModel.get('userName').Validators // 这里拿到的是一个对象（没有错误时返回的null） let errors: any = this.formModel.get('userName').errors&#125; 自定义校验123456789101112131415161718192021constructor(fb: formBuilder) &#123; this.fromModel = fb.group(&#123; userName: ['',[Validators.required,Validators.minLength(6)]], mobile: ['',[this.mobileValidator]], passwordsGroup: fb.group(&#123; password: [''], confirmPwd: [''] &#125;,&#123;validator: this.equalValidator&#125;) &#125;)&#125;mobileValidator(control: FormControl):any &#123; var myreg = /^(((13[0-9])&#123;1&#125;) | (15[0-9]&#123;1&#125;) | (18[0-9]&#123;1&#125;)) + \d&#123;8&#125;)$/ let valid = myreg.test(control.value) return valid ? null : &#123;mobile: true&#125;&#125;equalValidator(group: FormGroup):any &#123; let password: FormControl = group.get('password') as FormControl let confirmPwd: FormControl = group.get('confirmPwd') as FormControl let valid: boolean = (password.value === confirmPwd.value) return valid ? null : &#123;equal: true&#125;&#125; 表单状态字段touched和untouched: 有没有获取过焦点pristine和dirty: 有值被改变，就会变为dirtypending: 正处于异步校验的状态123456&lt;!-- 校验不通过时显示的提示信息 --&gt; &lt;div [hidden]="formModel.get('userName').valid || formModel.get('userName').untouched"&gt;校验不通过！&lt;/div&gt; &lt;!-- 注意用error的话要取反的 --&gt; &lt;div [hidden]="!formModel.hasError('required','userName') || formModel.get('userName').pristine"&gt;必填项！&lt;/div&gt; &lt;!-- 异步校验提示信息 --&gt; &lt;div [hidden]="!formModel.get('mobile').pending"&gt;正在校验手机号合法性！&lt;/div&gt; 表单元素的动态class初始状态：ng-untouched ng-pristine ng-invalid其他状态：ng-dirty ng-touched ng-valid注意：这些class都是全局的，自定义的时候要防止误伤。12&lt;!-- 验证不通过的表单元素加红边框 --&gt;&lt;input [class.hasError]="formModel.get('userName').invalid &amp;&amp; fromModel.get('userName').touched"/&gt;]]></content>
@@ -390,19 +403,6 @@
         <tag>js</tag>
         <tag>angular</tag>
         <tag>表单</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JS中的字符串]]></title>
-    <url>%2F2017%2F06%2F05%2FJS-string%2F</url>
-    <content type="text"><![CDATA[拒绝字符串中的各种模糊的方法… 字符串的转换1234567var num= 19 // 19// 方法一var myStr = num.toString() // "19"// 方法二var myStr = String(num) // "19"// 方法三(这个我喜欢)var myStr = "" +num // "19" 字符串分割(split)12345var myStr = "I,Love,You,Do,you,love,me"// 以","为分割点，将字符串分割为多个片段组成的数组var substrArray = myStr .split(",") // ["I", "Love", "You", "Do", "you", "love", "me"];// 加上第二个参数，指定切割后数组的最大长度var arrayLimited = myStr .split(",", 3) // ["I", "Love", "You"]; 查询子字符串123456var myStr = "I,Love,you,Do,you,love,me"// indexOf()如果匹配成功，则返回这个匹配上的位置，匹配不成功返回-1var index = myStr.indexOf("you") // 7 ,基于0开始,找不到返回-1// 从字符串的末尾开始查找var index = myStr.lastIndexOf("you") // 14/* 以上两个函数同样接收第二个可选的参数，表示开始查找的位置。 */ 字符串替换1234var myStr = "I,love,you,Do,you,love,me";var replacedStr = myStr.replace("love","hate") // "I,hate,you,Do,you,love,me"/* 默认只替换第一次查找到的，想要全局替换，需要置上正则全局标识 */var replacedStr = myStr.replace(/love/g,"hate") //"I,hate,you,Do,you,hate,me" 查找给定位置的字符或其字符编码值1234var myStr = "I,love,you,Do,you,love,me"var theChar = myStr.charAt(8) // "o",同样从0开始/* 查找对应位置的字符编码值 */var theChar = myStr.charCodeAt(8) // 111 字符串连接12345/* 除了使用"+"，JS还提供了专门的函数来处理 */var str1 = "I,love,you!"var str2 = "Do,you,love,me?"// concat()函数可以有多个参数，传递多个字符串，拼接多个字符串var str = str1.concat(str2) // "I,love,you!Do,you,love,me?" 字符串切割和提取1234567var myStr = "I,love,you,Do,you,love,me"// slice()含头不含尾var subStr = myStr.slice(1,5) // ",lov"// substring()跟上面效果一样var subStr = myStr.substring(1,5) // ",lov"// 从哪个位置开始截取，最多截取多少个var subStr = myStr.substr(1,5) // ",love" 字符串大小写转换123var myStr = "I,love,you,Do,you,love,me"var lowCaseStr = myStr.toLowerCase() // "i,love,you,do,you,love,me";var upCaseStr = myStr.toUpperCase() // "I,LOVE,YOU,DO,YOU,LOVE,ME" 字符串匹配字符串方法match()12345var myStr = "I,love,you,Do,you,love,me"var pattern = /love/var result = myStr.match(pattern) // ["love"]console.log(result .index) // 2console.log(result.input ) // I,love,you,Do,you,love,me 正则方法exec()123456var myStr = "I,love,you,Do,you,love,me"var pattern = /love//* 其实就是将match()方法反过来用 */var result = pattern .exec(myStr) // ["love"]console.log(result .index) // 2console.log(result.input ) // I,love,you,Do,you,love,me 对于以上两个方法，匹配的结果都是返回第一个匹配成功的字符串，如果匹配失败则返回null。 search()1234var myStr = "I,love,you,Do,you,love,me";var pattern = /love/;/* 返回查到的匹配的下标，如果匹配失败则返回-1 */var result = myStr.search(pattern) // 2]]></content>
-      <categories>
-        <category>前端</category>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
