@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/29/JS-react redux-saga中间件/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…">
-<meta property="og:updated_time" content="2017-07-30T03:38:38.137Z">
+<meta property="og:updated_time" content="2017-10-17T10:31:44.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用redux-saga中间件处理redux中的异步">
 <meta name="twitter:description" content="记得某一天，第一次看到有人说到redux-saga。他说：用了redux-saga之后就再也回不去redux-thunk了…">
@@ -417,7 +417,7 @@
 <h3 id="将watchFetchData这个Saga连接至Store"><a href="#将watchFetchData这个Saga连接至Store" class="headerlink" title="将watchFetchData这个Saga连接至Store"></a>将<code>watchFetchData</code>这个Saga连接至Store</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; fetchData, watchFetchData &#125; <span class="keyword">from</span> <span class="string">'./sagas'</span></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">  reducer,</div><div class="line">  applyMiddleware(createSagaMiddleware(watchFetchData))</div><div class="line">)</div></pre></td></tr></table></figure>
 <h2 id="细节展示"><a href="#细节展示" class="headerlink" title="细节展示"></a>细节展示</h2><h3 id="Saga辅助函数"><a href="#Saga辅助函数" class="headerlink" title="Saga辅助函数"></a>Saga辅助函数</h3><p><code>takeEvery</code>是最常见的，它提供了类似<code>redux-thunk</code>的行为；<code>takeLatest</code>则只执行最后一次fetchData<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; takeEvery &#125; <span class="keyword">from</span> <span class="string">'redux-saga'</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">watchFetchData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 只要监听到FETCH_REQUESTED这个action被派发，就一定会调用fetchData。不管上一次的fetchData有没有完成</span></div><div class="line">  <span class="keyword">yield</span>* takeEvery(<span class="string">'FETCH_REQUESTED'</span>, fetchData)</div><div class="line">  <span class="comment">// 可以作为节流函数使用，还可以避免上一次输入已经清空，但结果还是返回了上次的输入得到的结果</span></div><div class="line">  <span class="keyword">yield</span>* takeLatest(<span class="string">'FETCH_REQUESTED'</span>, fetchData)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="声明式Effects"><a href="#声明式Effects" class="headerlink" title="声明式Effects"></a>声明式Effects</h3><p>在 redux-saga 的世界里，Sagas 都用 Generator 函数实现。我们从 Generator 里 yield 纯 JavaScript 对象以表达 Saga 逻辑。 我们称呼那些对象为 Effect。Effect 是一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。 你可以把 Effect 看作是发送给 middleware 的指令以执行某些操作（调用某些异步函数，发起一个 action 到 store）。</p>
-<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><p>为什么我们使用call声明式地调用一个函数而不是用“函数()”的方式？这是为了方便我们做断言测试。<br>call 同样支持调用对象方法，你可以使用以下形式，为调用的函数提供一个 this 上下文：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">yield</span> call([obj, obj.method], arg1, arg2, ...) <span class="comment">// 如同 obj.method(arg1, arg2 ...)</span></div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line">#### apply</div><div class="line">apply 提供了另外一种调用的方式：  </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">yield</span> apply(obj, obj.method, [arg1, arg2, ...])</div></pre></td></tr></table></figure></p>
+<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><p>为什么我们使用call声明式地调用一个函数而不是用“函数()”的方式？这是为了方便我们做断言测试。<br>call 同样支持调用对象方法，你可以使用以下形式，为调用的函数提供一个 this 上下文：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">yield</span> call([obj, obj.method], arg1, arg2, ...) <span class="comment">// 如同 obj.method(arg1, arg2 ...)</span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line"></div><div class="line">#### apply</div><div class="line">apply 提供了另外一种调用的方式：    </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">yield</span> apply(obj, obj.method, [arg1, arg2, ...])</div></pre></td></tr></table></figure></p>
 <h4 id="cps"><a href="#cps" class="headerlink" title="cps"></a>cps</h4><p>call 和 apply 非常适合返回 Promise 结果的函数。另外一个函数 cps 可以用来处理 Node 风格的函数 （例如，fn(…args, callback) 中的 callback 是 (error, result) =&gt; () 这样的形式，cps 表示的是延续传递风格（Continuation Passing Style））。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; cps &#125; <span class="keyword">from</span> <span class="string">'redux-saga'</span></div><div class="line"><span class="keyword">const</span> content = <span class="keyword">yield</span> cps(readFile, <span class="string">'/path/to/file'</span>)</div></pre></td></tr></table></figure></p>
 <h4 id="put"><a href="#put" class="headerlink" title="put"></a>put</h4><p>同样的，如果我们想在获取到异步数据之后派发一个action也不能直接<code>dispatch({ type: &#39;PRODUCTS_RECEIVED&#39;, products })</code>而是要用<code>yield put({ type: &#39;PRODUCTS_RECEIVED&#39;, products })</code>这样声明式的调用以便测试。  </p>
 <h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>我们可以使用熟悉的 try/catch 语法在 Saga 中捕获错误。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Api <span class="keyword">from</span> <span class="string">'./path/to/api'</span></div><div class="line"><span class="keyword">import</span> &#123; call, put &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fetchProducts</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> products = <span class="keyword">yield</span> call(Api.fetch, <span class="string">'/products'</span>)</div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_RECEIVED'</span>, products &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">catch</span>(error) &#123;</div><div class="line">    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRODUCTS_REQUEST_FAILED'</span>, error &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -520,7 +520,7 @@
           
   <div class="comments" id="comments">
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMwNy80ODc5"></div>
+      <div id="SOHUCS"></div>
     
   </div>
 
@@ -568,7 +568,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -590,7 +590,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -792,17 +792,6 @@
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 
