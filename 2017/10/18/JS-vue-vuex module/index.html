@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/18/JS-vue-vuex module/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…">
-<meta property="og:updated_time" content="2017-10-18T12:18:35.330Z">
+<meta property="og:updated_time" content="2017-10-18T12:23:09.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再谈vuex之模块化">
 <meta name="twitter:description" content="很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…">
@@ -419,7 +419,8 @@
 <li>模块如何访问外部信息  </li>
 <li>组件中如何操作模块  </li>
 </ul>
-<h2 id="模块是什么"><a href="#模块是什么" class="headerlink" title="模块是什么"></a>模块是什么</h2><p>不同于redux中的模块，vuex中的模块相当于是一个小的store，包含state、mutations、actions、getters。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">getters</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> moduleB = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA,</div><div class="line">    <span class="attr">b</span>: moduleB</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></div><div class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></div></pre></td></tr></table></figure></p>
+<h2 id="模块是什么"><a href="#模块是什么" class="headerlink" title="模块是什么"></a>模块是什么</h2><p>不同于redux中的模块，vuex中的模块相当于是一个小的store，包含state、mutations、actions、getters。  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">getters</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> moduleB = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA,</div><div class="line">    <span class="attr">b</span>: moduleB</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></div><div class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></div></pre></td></tr></table></figure>
 <h2 id="模块的局部状态"><a href="#模块的局部状态" class="headerlink" title="模块的局部状态"></a>模块的局部状态</h2><h3 id="模块内的mutations"><a href="#模块内的mutations" class="headerlink" title="模块内的mutations"></a>模块内的mutations</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">mutations</span>: &#123;</div><div class="line">    increment (state) &#123;</div><div class="line">      <span class="comment">// 这里的 `state` 对象是模块的局部状态</span></div><div class="line">      state.count++</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="模块内的getters"><a href="#模块内的getters" class="headerlink" title="模块内的getters"></a>模块内的getters</h3><pre><code class="js">getters: {
   <span class="comment">// 接收到的第一个参数是模块局部的state</span>
@@ -460,37 +461,37 @@ getters: {
 </code></pre>
 <h3 id="在命名空间模块内访问全局内容"><a href="#在命名空间模块内访问全局内容" class="headerlink" title="在命名空间模块内访问全局内容"></a>在命名空间模块内访问全局内容</h3><p>如果你希望使用全局 state 和 getter，rootState 和 rootGetter 会作为第三和第四参数传入 getter，也会通过 context 对象的属性传入 action。  </p>
 <ul>
-<li><p>getters  </p>
+<li>getters  </li>
+</ul>
 <pre><code class="js">getters: {
-<span class="comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
-<span class="comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
-someGetter (state, getters, rootState, rootGetters) {
-  getters.someOtherGetter <span class="comment">// -&gt; 'foo/someOtherGetter'</span>
-  rootGetters.someOtherGetter <span class="comment">// -&gt; 'someOtherGetter'</span>
-},
-<span class="attr">someOtherGetter</span>: <span class="function"><span class="params">state</span> =&gt;</span> { ... }
+  <span class="comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
+  <span class="comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
+  someGetter (state, getters, rootState, rootGetters) {
+    getters.someOtherGetter <span class="comment">// -&gt; 'foo/someOtherGetter'</span>
+    rootGetters.someOtherGetter <span class="comment">// -&gt; 'someOtherGetter'</span>
+  },
+  <span class="attr">someOtherGetter</span>: <span class="function"><span class="params">state</span> =&gt;</span> { ... }
 },
 </code></pre>
-</li>
-<li><p>actions  </p>
+<ul>
+<li>actions  </li>
+</ul>
 <pre><code class="js">actions: {
-<span class="comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
-<span class="comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
-someAction ({ dispatch, commit, getters, rootGetters }) {
-  getters.someGetter <span class="comment">// -&gt; 'foo/someGetter'</span>
-  rootGetters.someGetter <span class="comment">// -&gt; 'someGetter'</span>
+  <span class="comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
+  <span class="comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
+  someAction ({ dispatch, commit, getters, rootGetters }) {
+    getters.someGetter <span class="comment">// -&gt; 'foo/someGetter'</span>
+    rootGetters.someGetter <span class="comment">// -&gt; 'someGetter'</span>
 
-  dispatch(<span class="string">'someOtherAction'</span>) <span class="comment">// -&gt; 'foo/someOtherAction'</span>
-  dispatch(<span class="string">'someOtherAction'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someOtherAction'</span>
+    dispatch(<span class="string">'someOtherAction'</span>) <span class="comment">// -&gt; 'foo/someOtherAction'</span>
+    dispatch(<span class="string">'someOtherAction'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someOtherAction'</span>
 
-  commit(<span class="string">'someMutation'</span>) <span class="comment">// -&gt; 'foo/someMutation'</span>
-  commit(<span class="string">'someMutation'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someMutation'</span>
-},
-someOtherAction (ctx, payload) { ... }
+    commit(<span class="string">'someMutation'</span>) <span class="comment">// -&gt; 'foo/someMutation'</span>
+    commit(<span class="string">'someMutation'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someMutation'</span>
+  },
+  someOtherAction (ctx, payload) { ... }
 }
 </code></pre>
-</li>
-</ul>
 <h3 id="组件内使用绑定函数"><a href="#组件内使用绑定函数" class="headerlink" title="组件内使用绑定函数"></a>组件内使用绑定函数</h3><p>当使用 mapState, mapGetters, mapActions 和 mapMutations 这些函数来绑定命名空间模块时，写起来可能比较繁琐：  </p>
 <pre><code class="js"><span class="comment">/* 原始写法 */</span>
 computed: {
@@ -506,7 +507,7 @@ computed: {
   ])
 }
 </code></pre>
-<p>对于这种情况，你可以将模块的空间名称字符串作为第一个参数传递给上述函数，这样所有绑定都会自动将该模块作为上下文。于是上面的例子可以简化为：  </p>
+<p>对于这种情况，你可以将模块的空间名称字符串作为第一个参数传递给上述函数，这样所有绑定都会自动将该模块作为上下文。于是上面的例子可以简化为：   </p>
 <pre><code class="js"><span class="comment">/* 推荐写法 */</span>
 computed: {
   ...mapState(<span class="string">'some/nested/module'</span>, {
@@ -521,7 +522,7 @@ computed: {
   ])
 }
 </code></pre>
-<p>还可以更精简一点：</p>
+<p>还可以更精简一点： </p>
 <pre><code class="js"><span class="comment">/* 鼎力推荐 */</span>
 <span class="keyword">import</span> { createNamespacedHelpers } <span class="keyword">from</span> <span class="string">'vuex'</span>
 
