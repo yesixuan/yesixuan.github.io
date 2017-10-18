@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/07/JS-Rxjs操作符/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="在响应式编程的世界里，我们需要做的最多的便是处理应用在不同的携带数据以及逻辑的时间流中的变化规则，而这恰恰是Rxjs操作符在很大程度是帮我们简化和梳理的…">
-<meta property="og:updated_time" content="2017-10-08T05:28:47.673Z">
+<meta property="og:updated_time" content="2017-10-18T12:18:35.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rxjs操作符">
 <meta name="twitter:description" content="在响应式编程的世界里，我们需要做的最多的便是处理应用在不同的携带数据以及逻辑的时间流中的变化规则，而这恰恰是Rxjs操作符在很大程度是帮我们简化和梳理的…">
@@ -462,7 +462,7 @@
 <h3 id="startWith"><a href="#startWith" class="headerlink" title="startWith"></a>startWith</h3><p>在流的前面增加一个值。<br>使用场景：给流赋初始值。  </p>
 <h3 id="combineLastest"><a href="#combineLastest" class="headerlink" title="combineLastest"></a>combineLastest</h3><p>接受两个流作为参数。取出两个流中的最新值，合并成一个流（任何一个流的改变多会引起流的重新组合）。  </p>
 <h3 id="withLatestFrom"><a href="#withLatestFrom" class="headerlink" title="withLatestFrom"></a>withLatestFrom</h3><p>与combineLastest类似，不同之处在于这里有主流的概念，主流发射新值时才从另一个流中取出最新值进行组合，并且返回的是数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">length$.withLatestFrom(width$)</div><div class="line">	.subscribe(<span class="function"><span class="params">v</span> =&gt;</span> <span class="built_in">console</span>.log(v))</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">length$.withLatestFrom(width$)</div><div class="line">  .subscribe(<span class="function"><span class="params">v</span> =&gt;</span> <span class="built_in">console</span>.log(v))</div></pre></td></tr></table></figure>
 <h3 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h3><p>接受两个流作为参数。一一对应，讲究辈分相同，而不在乎实际年纪（与combineLastest对比）。</p>
 <h2 id="高阶操作符"><a href="#高阶操作符" class="headerlink" title="高阶操作符"></a>高阶操作符</h2><p>何为流中流？ 点击事件是个流，点击事件后要调后台接口又是一个流。这就是典型的流中流的场景。<br>高阶操作符是用来处理流中流的情况（即流的乘法）。</p>
 <h3 id="mergeMap"><a href="#mergeMap" class="headerlink" title="mergeMap"></a>mergeMap</h3><p>所有主流下的支流全部保留，拍平。  </p>
@@ -608,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

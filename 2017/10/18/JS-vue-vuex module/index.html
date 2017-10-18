@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nodejs,module,npm," />
+  <meta name="keywords" content="vue,vuex,状态管理," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…">
-<meta name="keywords" content="nodejs,module,npm">
+<meta name="description" content="很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…">
+<meta name="keywords" content="vue,vuex,状态管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CommonJs规范以及nodejs的包管理工具">
-<meta property="og:url" content="http://yoursite.com/2017/07/19/nodejs-module/index.html">
+<meta property="og:title" content="再谈vuex之模块化">
+<meta property="og:url" content="http://yoursite.com/2017/10/18/JS-vue-vuex module/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…">
-<meta property="og:updated_time" content="2017-07-19T11:39:34.070Z">
+<meta property="og:description" content="很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…">
+<meta property="og:updated_time" content="2017-10-18T12:18:35.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CommonJs规范以及nodejs的包管理工具">
-<meta name="twitter:description" content="借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…">
+<meta name="twitter:title" content="再谈vuex之模块化">
+<meta name="twitter:description" content="很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…">
 
 <script>
     (function(){
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/19/nodejs-module/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/18/JS-vue-vuex module/"/>
 
 
 
 
 
-  <title> CommonJs规范以及nodejs的包管理工具 | yesixuan </title>
+  <title> 再谈vuex之模块化 | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/19/nodejs-module/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/18/JS-vue-vuex module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -325,7 +325,7 @@
             
             
               
-                CommonJs规范以及nodejs的包管理工具
+                再谈vuex之模块化
               
             
           </h1>
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T09:06:00+08:00">
-                2017-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T09:38:00+08:00">
+                2017-10-18
               </time>
             
 
@@ -363,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后台/" itemprop="url" rel="index">
-                    <span itemprop="name">后台</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -374,8 +374,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后台/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
+                  <a href="/categories/前端/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
                   </a>
                 </span>
 
@@ -410,49 +410,142 @@
 
       
         <blockquote>
-<p>借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…</p>
+<p>很多人都知道，使用redux时的模块化是很方便的。利用不同的reducer函数管理不同模块中的状态。vuex也是支持模块化的，今天来侃侃…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="CommonJs规范"><a href="#CommonJs规范" class="headerlink" title="CommonJs规范"></a>CommonJs规范</h2><h3 id="一览"><a href="#一览" class="headerlink" title="一览"></a>一览</h3><p>module代表当前的模块，而module上的exports属性是这个模块对外暴露对象的接口。require其实就是导入某个模块的exports属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 导出模块 */</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;&#125;</div><div class="line"><span class="comment">/* 导入模块 */</span></div><div class="line"><span class="keyword">const</span> xx = <span class="built_in">require</span>(<span class="string">'xx'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存</li>
-<li>模块加载的顺序，按照其在代码中出现的顺序（这也是我们一般将导入模块的操作放到最顶部的原因）</li>
+<h2 id="前导"><a href="#前导" class="headerlink" title="前导"></a>前导</h2><ul>
+<li>模块包含什么  </li>
+<li>模块如何组织  </li>
+<li>模块如何访问外部信息  </li>
+<li>组件中如何操作模块  </li>
 </ul>
-<h3 id="module-exports与exports"><a href="#module-exports与exports" class="headerlink" title="module.exports与exports"></a>module.exports与exports</h3><p>为了方便，Node为每个模块提供一个exports变量，指向module.exports。等同在每个模块头部，有一行这样的命令：<code>var exports = module.exports</code>。<br>这样就有两个值得我们注意的点了：</p>
-<ol>
-<li><p>我们可以在exports变量上添加属性，但是不能直接给exports变量赋值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 正确做法 */</span></div><div class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">/* 错误的做法 */</span></div><div class="line">exports = <span class="function"><span class="keyword">function</span> <span class="title">exp</span>(<span class="params"></span>) </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<h2 id="模块是什么"><a href="#模块是什么" class="headerlink" title="模块是什么"></a>模块是什么</h2><p>不同于redux中的模块，vuex中的模块相当于是一个小的store，包含state、mutations、actions、getters。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">getters</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> moduleB = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA,</div><div class="line">    <span class="attr">b</span>: moduleB</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></div><div class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></div></pre></td></tr></table></figure></p>
+<h2 id="模块的局部状态"><a href="#模块的局部状态" class="headerlink" title="模块的局部状态"></a>模块的局部状态</h2><h3 id="模块内的mutations"><a href="#模块内的mutations" class="headerlink" title="模块内的mutations"></a>模块内的mutations</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">mutations</span>: &#123;</div><div class="line">    increment (state) &#123;</div><div class="line">      <span class="comment">// 这里的 `state` 对象是模块的局部状态</span></div><div class="line">      state.count++</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="模块内的getters"><a href="#模块内的getters" class="headerlink" title="模块内的getters"></a>模块内的getters</h3><pre><code class="js">getters: {
+  <span class="comment">// 接收到的第一个参数是模块局部的state</span>
+  doubleCount (state) {
+    <span class="keyword">return</span> state.count * <span class="number">2</span>
+  }
+}
+
+<span class="comment">/* 如果getters需要用到模块外部的state数据，就要接受后面的参数 */</span>
+getters: {
+  <span class="comment">// 对于模块内部的 getter，根节点状态会作为第三个参数暴露出来</span>
+  sumWithRootCount (state, getters, rootState) {
+    <span class="keyword">return</span> state.count + rootState.count
+  }
+}
+</code></pre>
+<h3 id="模块内的actions"><a href="#模块内的actions" class="headerlink" title="模块内的actions"></a>模块内的actions</h3><p>对于模块内部的 action，局部状态通过 context.state 暴露出来，根节点状态则为 context.rootState.  </p>
+<pre><code class="js">actions: {
+  <span class="comment">// 将state, commit, rootState解构出来</span>
+  incrementIfOddOnRootSum ({ state, commit, rootState }) {
+    <span class="keyword">if</span> ((state.count + rootState.count) % <span class="number">2</span> === <span class="number">1</span>) {
+      commit(<span class="string">'increment'</span>)
+    }
+  }
+}
+</code></pre>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>默认情况下，模块内部的 action、mutation 和 getter 是注册在全局命名空间的——这样使得多个模块能够对同一 mutation 或 action 作出响应。<br>但我们通常是希望每个模块拥有各自的命名空间，以免“误伤”。  </p>
+<h3 id="给予模块各自不同的命名空间"><a href="#给予模块各自不同的命名空间" class="headerlink" title="给予模块各自不同的命名空间"></a>给予模块各自不同的命名空间</h3><p>你可以通过添加 namespaced: true 的方式使其成为命名空间模块。当模块被注册后，它的所有 getter、action 及 mutation 都会自动根据模块注册的路径调整命名。  </p>
+<pre><code class="js"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store({
+  <span class="attr">modules</span>: {
+    <span class="attr">account</span>: {
+      <span class="comment">/* 开启该模块自己的命名空间 */</span>
+      namespaced: <span class="literal">true</span>,
+      <span class="comment">// ...</span>
+    }
+  }
+})
+</code></pre>
+<h3 id="在命名空间模块内访问全局内容"><a href="#在命名空间模块内访问全局内容" class="headerlink" title="在命名空间模块内访问全局内容"></a>在命名空间模块内访问全局内容</h3><p>如果你希望使用全局 state 和 getter，rootState 和 rootGetter 会作为第三和第四参数传入 getter，也会通过 context 对象的属性传入 action。  </p>
+<ul>
+<li><p>getters  </p>
+<pre><code class="js">getters: {
+<span class="comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
+<span class="comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
+someGetter (state, getters, rootState, rootGetters) {
+  getters.someOtherGetter <span class="comment">// -&gt; 'foo/someOtherGetter'</span>
+  rootGetters.someOtherGetter <span class="comment">// -&gt; 'someOtherGetter'</span>
+},
+<span class="attr">someOtherGetter</span>: <span class="function"><span class="params">state</span> =&gt;</span> { ... }
+},
+</code></pre>
 </li>
-<li><p>在给exports添加属性后不能给module.exports重新赋值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 实际对外输出的就是module.exports属性，这样就切断了module.exports与exports的联系</span></div><div class="line"><span class="built_in">module</span>.exports = <span class="string">'Hello world'</span></div></pre></td></tr></table></figure>
+<li><p>actions  </p>
+<pre><code class="js">actions: {
+<span class="comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
+<span class="comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
+someAction ({ dispatch, commit, getters, rootGetters }) {
+  getters.someGetter <span class="comment">// -&gt; 'foo/someGetter'</span>
+  rootGetters.someGetter <span class="comment">// -&gt; 'someGetter'</span>
+
+  dispatch(<span class="string">'someOtherAction'</span>) <span class="comment">// -&gt; 'foo/someOtherAction'</span>
+  dispatch(<span class="string">'someOtherAction'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someOtherAction'</span>
+
+  commit(<span class="string">'someMutation'</span>) <span class="comment">// -&gt; 'foo/someMutation'</span>
+  commit(<span class="string">'someMutation'</span>, <span class="literal">null</span>, { <span class="attr">root</span>: <span class="literal">true</span> }) <span class="comment">// -&gt; 'someMutation'</span>
+},
+someOtherAction (ctx, payload) { ... }
+}
+</code></pre>
 </li>
-</ol>
-<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><p>require的常规用法这里就不再多说了，这里只说以前忽略的点。<br>目录加载规则：有些时候，我们在require的参数中只写目录而不写文件名。在没有特殊指定的情况下，node会加载该目录下的index.js或是index.node文件。当然我们也可以指定目录与文件名:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span> : <span class="string">"some-library"</span>,</div><div class="line">  <span class="string">"main"</span> : <span class="string">"./lib/some-library.js"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="模块加载机制"><a href="#模块加载机制" class="headerlink" title="模块加载机制"></a>模块加载机制</h3><p>CommonJS模块的加载机制是，输入的是被输出的值的拷贝。也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。</p>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li>npm init：创建package.json文件</li>
-<li>npm login：登录npm</li>
-<li>npm whoami：告诉你当前登录用户是谁</li>
-<li>npm publish：发布自己的npm包</li>
-<li>npm unpublish –force：删除自己的npm包（每个版本都得删）</li>
-<li>npm config list：查看配置信息</li>
 </ul>
-<h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>之前发布不成功，报了403的错误。解决方案是要讲淘宝的源切换会npm官方的源。然后还要重新登录。<br>某些模块被墙的解决方案（以node-sass为例）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install --save node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass</div><div class="line"><span class="comment"># --registry=https://registry.npm.taobao.org 淘宝npm包镜像</span></div><div class="line"><span class="comment"># --disturl=https://npm.taobao.org/dist 淘宝node源码镜像，一些二进制包编译时用</span></div><div class="line"><span class="comment"># --sass-binary-site=http://npm.taobao.org/mirrors/node-sass 这个才是node-sass镜像</span></div></pre></td></tr></table></figure></p>
-<h2 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h2><p>yarn安装模块的速度着实把我给惊艳到了，这里必须要说道说道。</p>
-<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li>yarn</li>
-<li>yarn init</li>
-<li>yarn add：默认添加到开发依赖</li>
-<li>yarn upgrade</li>
-<li>yarn add –offline：指定离线安装（当前最新版本好像不太需要显式指定）</li>
-<li>yarn add –dev：添加到开发依赖</li>
-<li>yarn remove</li>
-<li>yarn publish</li>
-<li>yarn config set 淘宝源</li>
-<li>yarn global add：全局安装（yarn不推荐滥用全局安装）</li>
-<li>yarn self-update</li>
-<li>yarn run：运行package.json中的脚本</li>
-</ul>
+<h3 id="组件内使用绑定函数"><a href="#组件内使用绑定函数" class="headerlink" title="组件内使用绑定函数"></a>组件内使用绑定函数</h3><p>当使用 mapState, mapGetters, mapActions 和 mapMutations 这些函数来绑定命名空间模块时，写起来可能比较繁琐：  </p>
+<pre><code class="js"><span class="comment">/* 原始写法 */</span>
+computed: {
+  ...mapState({
+    <span class="attr">a</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.some.nested.module.a,
+    <span class="attr">b</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.some.nested.module.b
+  })
+},
+<span class="attr">methods</span>: {
+  ...mapActions([
+    <span class="string">'some/nested/module/foo'</span>,
+    <span class="string">'some/nested/module/bar'</span>
+  ])
+}
+</code></pre>
+<p>对于这种情况，你可以将模块的空间名称字符串作为第一个参数传递给上述函数，这样所有绑定都会自动将该模块作为上下文。于是上面的例子可以简化为：  </p>
+<pre><code class="js"><span class="comment">/* 推荐写法 */</span>
+computed: {
+  ...mapState(<span class="string">'some/nested/module'</span>, {
+    <span class="attr">a</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.a,
+    <span class="attr">b</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.b
+  })
+},
+<span class="attr">methods</span>: {
+  ...mapActions(<span class="string">'some/nested/module'</span>, [
+    <span class="string">'foo'</span>,
+    <span class="string">'bar'</span>
+  ])
+}
+</code></pre>
+<p>还可以更精简一点：</p>
+<pre><code class="js"><span class="comment">/* 鼎力推荐 */</span>
+<span class="keyword">import</span> { createNamespacedHelpers } <span class="keyword">from</span> <span class="string">'vuex'</span>
+
+<span class="keyword">const</span> { mapState, mapActions } = createNamespacedHelpers(<span class="string">'some/nested/module'</span>)
+
+<span class="comment">// 使用 createNamespacedHelpers 对组件的侵入最小</span>
+<span class="keyword">export</span> <span class="keyword">default</span> {
+  <span class="attr">computed</span>: {
+    <span class="comment">// 在 `some/nested/module` 中查找</span>
+    ...mapState({
+      <span class="attr">a</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.a,
+      <span class="attr">b</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.b
+    })
+  },
+  <span class="attr">methods</span>: {
+    <span class="comment">// 在 `some/nested/module` 中查找</span>
+    ...mapActions([
+      <span class="string">'foo'</span>,
+      <span class="string">'bar'</span>
+    ])
+  }
+}
+</code></pre>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>虽然vuex赋予我们在模块内部访问全局的信息，但是不推荐这般使用。这样会使得模块与模块之间相互耦合，不利于复用。<br>如果你发现自己不得不从模块内部访问全局的信息，那你就该思考现在的模块划分是不是有问题，有没有更好的模块划分方式。</p>
 
       
     </div>
@@ -487,11 +580,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nodejs/" rel="tag"><i class="fa fa-tag"></i> nodejs</a>
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
           
-            <a href="/tags/module/" rel="tag"><i class="fa fa-tag"></i> module</a>
+            <a href="/tags/vuex/" rel="tag"><i class="fa fa-tag"></i> vuex</a>
           
-            <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+            <a href="/tags/状态管理/" rel="tag"><i class="fa fa-tag"></i> 状态管理</a>
           
         </div>
       
@@ -504,18 +597,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/19/nodejs-createServer/" rel="next" title="原生nodejs创建服务">
-                <i class="fa fa-chevron-left"></i> 原生nodejs创建服务
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/11/JS-common function(1)/" rel="prev" title="JS常用方法（一）">
-                JS常用方法（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/17/JS-react-next/" rel="prev" title="react ssr入门">
+                react ssr入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -664,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJs规范"><span class="nav-number">1.</span> <span class="nav-text">CommonJs规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一览"><span class="nav-number">1.1.</span> <span class="nav-text">一览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#module-exports与exports"><span class="nav-number">1.3.</span> <span class="nav-text">module.exports与exports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#require"><span class="nav-number">1.4.</span> <span class="nav-text">require</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块加载机制"><span class="nav-number">1.5.</span> <span class="nav-text">模块加载机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm"><span class="nav-number">2.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩过的坑"><span class="nav-number">2.2.</span> <span class="nav-text">踩过的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn"><span class="nav-number">3.</span> <span class="nav-text">yarn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令-1"><span class="nav-number">3.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前导"><span class="nav-number">1.</span> <span class="nav-text">前导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块是什么"><span class="nav-number">2.</span> <span class="nav-text">模块是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块的局部状态"><span class="nav-number">3.</span> <span class="nav-text">模块的局部状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块内的mutations"><span class="nav-number">3.1.</span> <span class="nav-text">模块内的mutations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块内的getters"><span class="nav-number">3.2.</span> <span class="nav-text">模块内的getters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块内的actions"><span class="nav-number">3.3.</span> <span class="nav-text">模块内的actions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间"><span class="nav-number">4.</span> <span class="nav-text">命名空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#给予模块各自不同的命名空间"><span class="nav-number">4.1.</span> <span class="nav-text">给予模块各自不同的命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在命名空间模块内访问全局内容"><span class="nav-number">4.2.</span> <span class="nav-text">在命名空间模块内访问全局内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件内使用绑定函数"><span class="nav-number">4.3.</span> <span class="nav-text">组件内使用绑定函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
