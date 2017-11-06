@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="将纸质的笔记搬运到线上来，随时备忘…">
+<meta name="description" content="将纸质的笔记搬运到线上来，备忘…">
 <meta name="keywords" content="ps">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ps小结">
 <meta property="og:url" content="http://yoursite.com/2017/06/25/tools-ps-summarize/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="将纸质的笔记搬运到线上来，随时备忘…">
-<meta property="og:updated_time" content="2017-06-25T12:06:56.692Z">
+<meta property="og:description" content="将纸质的笔记搬运到线上来，备忘…">
+<meta property="og:updated_time" content="2017-11-06T11:44:31.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ps小结">
-<meta name="twitter:description" content="将纸质的笔记搬运到线上来，随时备忘…">
+<meta name="twitter:description" content="将纸质的笔记搬运到线上来，备忘…">
 
 <script>
     (function(){
@@ -410,10 +410,10 @@
 
       
         <blockquote>
-<p>将纸质的笔记搬运到线上来，随时备忘…</p>
+<p>将纸质的笔记搬运到线上来，备忘…</p>
 </blockquote>
 <a id="more"></a>
-<ul>
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><ul>
 <li><p>自由变换：Ctrl+T，按住shift等比缩放，右键可旋转</p>
 </li>
 <li><p>复制选区：Ctrl+C</p>
@@ -448,9 +448,37 @@
 </li>
 <li><p>将文字属性变为图层属性：右键，文字栅格化</p>
 </li>
-<li><p>动图：窗口-&gt;动画-&gt;n个图，存储为web和设备所用格式</p>
+<li><p>动图：窗口-&gt;动画-&gt;n个图，存储为web和设备所用格式  </p>
 </li>
 </ul>
+<h2 id="切图使用技巧"><a href="#切图使用技巧" class="headerlink" title="切图使用技巧"></a>切图使用技巧</h2><h3 id="从目标图层中拿切图"><a href="#从目标图层中拿切图" class="headerlink" title="从目标图层中拿切图"></a>从目标图层中拿切图</h3><ol>
+<li><p>快速定位到目标图层  </p>
+<ol>
+<li>选择“选择工具”  </li>
+<li>工具栏中勾选“自动选择”，后面选择“图层”</li>
+<li>鼠标点击目标图标 </li>
+</ol>
+</li>
+<li><p>右键目标图层选择“转换为智能对象”（转换为智能对象是为了在图片放大的情况下截取图片也不至于导致像素丢失）  </p>
+</li>
+<li><p>截取目标图标，放入新图中  </p>
+<ol>
+<li>选区工具选择目标图标  </li>
+<li>“Ctrl + C”复制选取  </li>
+<li>“Ctrl + N”新建画布（新建画布时注意背景色要选择透明，至于宽高不需要手动设置，PS会根据之前选区的大小设定新建画布的尺寸）  </li>
+<li>“Ctrl + V”将选区内容粘贴到新建画布中  </li>
+</ol>
+</li>
+<li><p>“Ctrl+Shift+Alt+S”保存为“png-24”类型的图片  </p>
+</li>
+</ol>
+<h3 id="使用切片工具快速从原图中切出所有的选区"><a href="#使用切片工具快速从原图中切出所有的选区" class="headerlink" title="使用切片工具快速从原图中切出所有的选区"></a>使用切片工具快速从原图中切出所有的选区</h3><p>这一步可以在上一步得到目标图标之后进行进一步处理。  </p>
+<ol>
+<li>从左侧工具栏中找到切片工具  </li>
+<li>类似矩形选框那样划分区域，不同的是切片工具可以拉出很多个矩形选框  </li>
+<li>“Ctrl+Shift+Alt+S”保存为“png-24”类型的图片</li>
+<li>“切片”选项中选择“所有用户切片”（重要），最终生成的一堆图标将放到一个文件夹下  </li>
+</ol>
 
       
     </div>
@@ -565,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -639,6 +676,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础操作"><span class="nav-number">1.</span> <span class="nav-text">基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切图使用技巧"><span class="nav-number">2.</span> <span class="nav-text">切图使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从目标图层中拿切图"><span class="nav-number">2.1.</span> <span class="nav-text">从目标图层中拿切图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用切片工具快速从原图中切出所有的选区"><span class="nav-number">2.2.</span> <span class="nav-text">使用切片工具快速从原图中切出所有的选区</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
