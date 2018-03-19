@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/22/instrument-git-directive/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
-<meta property="og:updated_time" content="2017-08-14T11:01:25.526Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:11:27.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用git命令">
 <meta name="twitter:description" content="听说git可能是目前世界上最好的代码管理工具，下面整理下我迄今为止用到的git命令。不全，但极为实用…">
@@ -425,68 +426,68 @@
 </ul>
 <h3 id="我最常用的git命令"><a href="#我最常用的git命令" class="headerlink" title="我最常用的git命令"></a>我最常用的git命令</h3><ul>
 <li><p>创建本地仓储</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加所有文件到git的跟踪列表（除去被.gitignore过滤掉的文件）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 或者git add .</div><div class="line">git add --all</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 或者git add .</span><br><span class="line">git add --all</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>提交代码到本地仓储</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">'提交日志'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">'提交日志'</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将本地仓储与远程仓储建立联系</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// origin后面跟的就是你的远程仓储地址</div><div class="line">git remote add origin https://github.com/yesixuan/uhealth.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// origin后面跟的就是你的远程仓储地址</span><br><span class="line">git remote add origin https://github.com/yesixuan/uhealth.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将本地代码同步到远程仓储</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将远程仓储的代码拉到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 后面可以指定你想要存放的文件夹名</div><div class="line">git <span class="built_in">clone</span> https://github.com/yesixuan/uhealth.git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 后面可以指定你想要存放的文件夹名</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/yesixuan/uhealth.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将远程仓储的代码同步到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
 <li><p>创建并且切换到该分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch-name]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>切换至主分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout master</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除某分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branch-name]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>提交分支到远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin [branch-name]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除远程分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin --delete [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>合并分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 一旦出现冲突，需要手动解决冲突。解决完后，还要add一下</div><div class="line">git merge [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 一旦出现冲突，需要手动解决冲突。解决完后，还要add一下</span><br><span class="line">git merge [branch-name]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="其他重要的git命令"><a href="#其他重要的git命令" class="headerlink" title="其他重要的git命令"></a>其他重要的git命令</h3><ul>
 <li><p>查看本地仓储的状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>对比代码的差异</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看代码提交的日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>恢复到之前的某个版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 哈希值可以在<span class="built_in">log</span>中看</div><div class="line">git reset --hard 哈希值的前六位</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 哈希值可以在<span class="built_in">log</span>中看</span><br><span class="line">git reset --hard 哈希值的前六位</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载远程仓储的所有变动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch [remote]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [remote]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>同步本地代码到远程仓储的指定分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull [remote] [branch]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull [remote] [branch]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>同步所有分支到远程仓储</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push [remote] --all</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --all</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -536,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/25/JS-gleaning(2)/" rel="next" title="JS 拾遗（二）">
-                <i class="fa fa-chevron-left"></i> JS 拾遗（二）
+              <a href="/2017/04/21/JS-gleaning(1)/" rel="next" title="JS 拾遗（一）">
+                <i class="fa fa-chevron-left"></i> JS 拾遗（一）
               </a>
             
           </div>
@@ -546,8 +547,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/21/JS-gleaning(1)/" rel="prev" title="JS 拾遗（一）">
-                JS 拾遗（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/25/JS-gleaning(2)/" rel="prev" title="JS 拾遗（二）">
+                JS 拾遗（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,7 +640,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

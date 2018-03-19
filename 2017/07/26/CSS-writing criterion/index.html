@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/26/CSS-writing criterion/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="css一直是一门被人诟病的语言。有人说它甚至不能算是一门语言。正因如此，规范的css才更显得至关重要…">
-<meta property="og:updated_time" content="2017-07-26T10:09:46.182Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:10:53.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3样式书写规范">
 <meta name="twitter:description" content="css一直是一门被人诟病的语言。有人说它甚至不能算是一门语言。正因如此，规范的css才更显得至关重要…">
@@ -413,7 +414,7 @@
 <p>css一直是一门被人诟病的语言。有人说它甚至不能算是一门语言。正因如此，规范的css才更显得至关重要…  </p>
 </blockquote>
 <a id="more"></a>
-<h2 id="编码设置"><a href="#编码设置" class="headerlink" title="编码设置"></a>编码设置</h2><p>采用UTF-8编码，在css代码头部使用：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span></div></pre></td></tr></table></figure></p>
+<h2 id="编码设置"><a href="#编码设置" class="headerlink" title="编码设置"></a>编码设置</h2><p>采用UTF-8编码，在css代码头部使用：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span></span><br></pre></td></tr></table></figure></p>
 <p>注意：必须要定义在CSS文件所有的字符前面（包括注释），编码申明才会生效。  </p>
 <h2 id="命名空间规范"><a href="#命名空间规范" class="headerlink" title="命名空间规范"></a>命名空间规范</h2><ul>
 <li>布局：以<code>g</code>为命名空间。例如：g-wrap、g-header、g-content</li>
@@ -430,7 +431,7 @@
 <li>visual视觉外观。相关属性：color、background、list-style、transform、animation</li>
 </ul>
 <h2 id="css方言的使用建议"><a href="#css方言的使用建议" class="headerlink" title="css方言的使用建议"></a>css方言的使用建议</h2><h3 id="嵌套层级规定"><a href="#嵌套层级规定" class="headerlink" title="嵌套层级规定"></a>嵌套层级规定</h3><p>嵌套层级不建议超过3层。  </p>
-<h3 id="共用类的使用方法"><a href="#共用类的使用方法" class="headerlink" title="共用类的使用方法"></a>共用类的使用方法</h3><p>共用类使用%xxx定义，@extend引用，如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">%clearfix &#123;</div><div class="line">  overflow: auto;</div><div class="line">  zoom: 1;</div><div class="line">&#125;</div><div class="line">.g-header &#123;</div><div class="line">  @extend %clearfix;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="共用类的使用方法"><a href="#共用类的使用方法" class="headerlink" title="共用类的使用方法"></a>共用类的使用方法</h3><p>共用类使用%xxx定义，@extend引用，如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%<span class="selector-tag">clearfix</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">  <span class="attribute">zoom</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.g-header</span> &#123;</span><br><span class="line">  @extend %clearfix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样编译出来的文件中会将公共样式放到一个类中，不会造成冗余代码。</p>
 
       
@@ -481,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/26/node-better webpack/" rel="next" title="webpack2优化">
-                <i class="fa fa-chevron-left"></i> webpack2优化
+              <a href="/2017/07/19/database-mysql/" rel="next" title="mysql基本操作">
+                <i class="fa fa-chevron-left"></i> mysql基本操作
               </a>
             
           </div>
@@ -491,8 +492,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/19/database-mysql/" rel="prev" title="mysql基本操作">
-                mysql基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/26/node-better webpack/" rel="prev" title="webpack2优化">
+                webpack2优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -584,7 +585,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

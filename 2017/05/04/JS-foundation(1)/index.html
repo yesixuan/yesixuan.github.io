@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/04/JS-foundation(1)/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:13:26.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 基础进阶（一）">
 <meta name="twitter:description" content="本节通过了解JS中变量在计算机中的内存中存储方式来解释JS中的一些难题，按值传递和引用传递…">
@@ -425,7 +426,7 @@
 <li>一个引用数据的内存由三个部分构成：变量对象中存储变量名与内存地址（内存指针）、堆内存中存储键值对、内存地址指向堆内存中的一个引用类型数据</li>
 <li>复制一个引用类型的数据其实是给了新变量一个新的内存地址（这个过程发生在变量对象中）。这个新的内存地址与原来的内存地址指向的是同一个引用类型数据</li>
 </ul>
-<h3 id="内存空间管理"><a href="#内存空间管理" class="headerlink" title="内存空间管理"></a>内存空间管理</h3><h4 id="JS的内存生命周期"><a href="#JS的内存生命周期" class="headerlink" title="JS的内存生命周期"></a>JS的内存生命周期</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;  <span class="comment">// 在内存中给数值变量分配空间</span></div><div class="line">alert(a + <span class="number">100</span>);  <span class="comment">// 使用内存</span></div><div class="line">a = <span class="literal">null</span>; <span class="comment">// 使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
+<h3 id="内存空间管理"><a href="#内存空间管理" class="headerlink" title="内存空间管理"></a>内存空间管理</h3><h4 id="JS的内存生命周期"><a href="#JS的内存生命周期" class="headerlink" title="JS的内存生命周期"></a>JS的内存生命周期</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span>;  <span class="comment">// 在内存中给数值变量分配空间</span></span><br><span class="line">alert(a + <span class="number">100</span>);  <span class="comment">// 使用内存</span></span><br><span class="line">a = <span class="literal">null</span>; <span class="comment">// 使用完毕之后，释放内存空间</span></span><br></pre></td></tr></table></figure>
 <pre><code>给a赋值null的目的是让a原本对应的值失去引用，脱离执行环境，这个值会在下一次垃圾收集器执行操作时被找到并释放。
 在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要了。因此垃圾收集器很容易做出判断并回收。但是全局变量什么时候需要自动释放内存空间则很难判断，因此在我们的开发中，需要尽量避免使用全局变量，以确保性能问题。
 </code></pre><h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><h4 id="what"><a href="#what" class="headerlink" title="what"></a>what</h4><blockquote>
@@ -460,7 +461,7 @@
 <p>this的指向，是在函数被调用的时候确定的。也就是执行上下文被创建时确定的。</p>
 </blockquote>
 <h4 id="函数中的this"><a href="#函数中的this" class="headerlink" title="函数中的this"></a>函数中的<code>this</code></h4><p>在一个函数上下文中，this由调用者提供，由调用函数的方式来决定。如果调用者函数，被某一个对象所拥有，那么该函数在调用时，内部的this指向该对象。如果函数独立调用，那么该函数内部的this，则指向undefined。但是在非严格模式中，当this指向undefined时，它会被自动指向全局对象。</p>
-<h4 id="使用call-apply显示指定this"><a href="#使用call-apply显示指定this" class="headerlink" title="使用call,apply显示指定this"></a>使用call,apply显示指定<code>this</code></h4><p>JavaScript内部提供了一种机制，让我们可以自行手动设置this的指向。它们就是call与apply。所有的函数都具有着两个方法。它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。<br>下面举一个利用call,apply实现继承的方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义父级的构造函数</span></div><div class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age  = age;</div><div class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">// 定义子类的构造函数</span></div><div class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</div><div class="line">    <span class="comment">// use call</span></div><div class="line">    Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">    <span class="keyword">this</span>.high = high;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Student的构造函数等同于下</span></div><div class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age  = age;</div><div class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</div><div class="line">    <span class="comment">// Person.call(this, name, age); 这一句话，相当于上面三句话，因此实现了继承</span></div><div class="line">    <span class="keyword">this</span>.high = high;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="使用call-apply显示指定this"><a href="#使用call-apply显示指定this" class="headerlink" title="使用call,apply显示指定this"></a>使用call,apply显示指定<code>this</code></h4><p>JavaScript内部提供了一种机制，让我们可以自行手动设置this的指向。它们就是call与apply。所有的函数都具有着两个方法。它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。<br>下面举一个利用call,apply实现继承的方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义父级的构造函数</span></span><br><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义子类的构造函数</span></span><br><span class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// use call</span></span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, age);</span><br><span class="line">    <span class="keyword">this</span>.high = high;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Student的构造函数等同于下</span></span><br><span class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</span><br><span class="line">    <span class="comment">// Person.call(this, name, age); 这一句话，相当于上面三句话，因此实现了继承</span></span><br><span class="line">    <span class="keyword">this</span>.high = high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>注：匿名函数经常会导致<code>this</code>丢失，可以用<code>bind</code>方法来解决。</p>
 <h4 id="构造函数与原型方法上的this"><a href="#构造函数与原型方法上的this" class="headerlink" title="构造函数与原型方法上的this"></a>构造函数与原型方法上的<code>this</code></h4><p><code>new</code>一个对象的过程：</p>
 <ol>
@@ -519,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/08/JS-react-redux/" rel="next" title="redux">
-                <i class="fa fa-chevron-left"></i> redux
+              <a href="/2017/04/26/JS-vue-vuex/" rel="next" title="vuex">
+                <i class="fa fa-chevron-left"></i> vuex
               </a>
             
           </div>
@@ -529,8 +530,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/26/JS-vue-vuex/" rel="prev" title="vuex">
-                vuex <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/08/JS-react-redux/" rel="prev" title="redux">
+                redux <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,7 +623,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

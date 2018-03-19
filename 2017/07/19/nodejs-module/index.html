@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/19/nodejs-module/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…">
-<meta property="og:updated_time" content="2017-07-19T11:39:34.070Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:16:30.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CommonJs规范以及nodejs的包管理工具">
 <meta name="twitter:description" content="借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…">
@@ -413,7 +414,7 @@
 <p>借助nodejs的生态开发也有不断的一段时间了，常用的一直是那几个常用的命令。如今，是时候好好理一理了…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="CommonJs规范"><a href="#CommonJs规范" class="headerlink" title="CommonJs规范"></a>CommonJs规范</h2><h3 id="一览"><a href="#一览" class="headerlink" title="一览"></a>一览</h3><p>module代表当前的模块，而module上的exports属性是这个模块对外暴露对象的接口。require其实就是导入某个模块的exports属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 导出模块 */</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;&#125;</div><div class="line"><span class="comment">/* 导入模块 */</span></div><div class="line"><span class="keyword">const</span> xx = <span class="built_in">require</span>(<span class="string">'xx'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="CommonJs规范"><a href="#CommonJs规范" class="headerlink" title="CommonJs规范"></a>CommonJs规范</h2><h3 id="一览"><a href="#一览" class="headerlink" title="一览"></a>一览</h3><p>module代表当前的模块，而module上的exports属性是这个模块对外暴露对象的接口。require其实就是导入某个模块的exports属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 导出模块 */</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;</span><br><span class="line"><span class="comment">/* 导入模块 */</span></span><br><span class="line"><span class="keyword">const</span> xx = <span class="built_in">require</span>(<span class="string">'xx'</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存</li>
 <li>模块加载的顺序，按照其在代码中出现的顺序（这也是我们一般将导入模块的操作放到最顶部的原因）</li>
@@ -421,13 +422,13 @@
 <h3 id="module-exports与exports"><a href="#module-exports与exports" class="headerlink" title="module.exports与exports"></a>module.exports与exports</h3><p>为了方便，Node为每个模块提供一个exports变量，指向module.exports。等同在每个模块头部，有一行这样的命令：<code>var exports = module.exports</code>。<br>这样就有两个值得我们注意的点了：</p>
 <ol>
 <li><p>我们可以在exports变量上添加属性，但是不能直接给exports变量赋值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 正确做法 */</span></div><div class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">/* 错误的做法 */</span></div><div class="line">exports = <span class="function"><span class="keyword">function</span> <span class="title">exp</span>(<span class="params"></span>) </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 正确做法 */</span></span><br><span class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">/* 错误的做法 */</span></span><br><span class="line">exports = <span class="function"><span class="keyword">function</span> <span class="title">exp</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在给exports添加属性后不能给module.exports重新赋值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 实际对外输出的就是module.exports属性，这样就切断了module.exports与exports的联系</span></div><div class="line"><span class="built_in">module</span>.exports = <span class="string">'Hello world'</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.exp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">// 实际对外输出的就是module.exports属性，这样就切断了module.exports与exports的联系</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'Hello world'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><p>require的常规用法这里就不再多说了，这里只说以前忽略的点。<br>目录加载规则：有些时候，我们在require的参数中只写目录而不写文件名。在没有特殊指定的情况下，node会加载该目录下的index.js或是index.node文件。当然我们也可以指定目录与文件名:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span> : <span class="string">"some-library"</span>,</div><div class="line">  <span class="string">"main"</span> : <span class="string">"./lib/some-library.js"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><p>require的常规用法这里就不再多说了，这里只说以前忽略的点。<br>目录加载规则：有些时候，我们在require的参数中只写目录而不写文件名。在没有特殊指定的情况下，node会加载该目录下的index.js或是index.node文件。当然我们也可以指定目录与文件名:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="string">"some-library"</span>,</span><br><span class="line">  <span class="string">"main"</span> : <span class="string">"./lib/some-library.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="模块加载机制"><a href="#模块加载机制" class="headerlink" title="模块加载机制"></a>模块加载机制</h3><p>CommonJS模块的加载机制是，输入的是被输出的值的拷贝。也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。</p>
 <h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
 <li>npm init：创建package.json文件</li>
@@ -437,7 +438,7 @@
 <li>npm unpublish –force：删除自己的npm包（每个版本都得删）</li>
 <li>npm config list：查看配置信息</li>
 </ul>
-<h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>之前发布不成功，报了403的错误。解决方案是要讲淘宝的源切换会npm官方的源。然后还要重新登录。<br>某些模块被墙的解决方案（以node-sass为例）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install --save node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass</div><div class="line"><span class="comment"># --registry=https://registry.npm.taobao.org 淘宝npm包镜像</span></div><div class="line"><span class="comment"># --disturl=https://npm.taobao.org/dist 淘宝node源码镜像，一些二进制包编译时用</span></div><div class="line"><span class="comment"># --sass-binary-site=http://npm.taobao.org/mirrors/node-sass 这个才是node-sass镜像</span></div></pre></td></tr></table></figure></p>
+<h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>之前发布不成功，报了403的错误。解决方案是要讲淘宝的源切换会npm官方的源。然后还要重新登录。<br>某些模块被墙的解决方案（以node-sass为例）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --save node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass</span><br><span class="line"><span class="comment"># --registry=https://registry.npm.taobao.org 淘宝npm包镜像</span></span><br><span class="line"><span class="comment"># --disturl=https://npm.taobao.org/dist 淘宝node源码镜像，一些二进制包编译时用</span></span><br><span class="line"><span class="comment"># --sass-binary-site=http://npm.taobao.org/mirrors/node-sass 这个才是node-sass镜像</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h2><p>yarn安装模块的速度着实把我给惊艳到了，这里必须要说道说道。</p>
 <h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
 <li>yarn</li>
@@ -504,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/19/nodejs-createServer/" rel="next" title="原生nodejs创建服务">
-                <i class="fa fa-chevron-left"></i> 原生nodejs创建服务
+              <a href="/2017/07/11/JS-common function(1)/" rel="next" title="JS常用方法（一）">
+                <i class="fa fa-chevron-left"></i> JS常用方法（一）
               </a>
             
           </div>
@@ -514,8 +515,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/11/JS-common function(1)/" rel="prev" title="JS常用方法（一）">
-                JS常用方法（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/19/nodejs-createServer/" rel="prev" title="原生nodejs创建服务">
+                原生nodejs创建服务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -607,7 +608,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

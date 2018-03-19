@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/26/JS-vue-vuex/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:15:53.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex">
 <meta name="twitter:description" content="凌晨四点多惊醒，杂事纷呈，再难入眠。浑浑噩噩坐上地铁，坐地铁的近一个小时时间看了CSDN的老师讲vuex的视频，确实解惑不少…">
@@ -374,7 +375,18 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/vue/" itemprop="url" rel="index">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/vue/" itemprop="url" rel="index">
                     <span itemprop="name">vue</span>
                   </a>
                 </span>
@@ -414,27 +426,27 @@
 </blockquote>
 <a id="more"></a>
 <h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><h4 id="what"><a href="#what" class="headerlink" title="what?"></a>what?</h4><p>state是整个应用的数据中心，管理整个应用的状态。也称为状态对象。</p>
-<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/index.js</code>中，就是一个大的对象（或者单独来一个<code>state.js</code>引进来）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">  <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">history</span>: []</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  state</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/index.js</code>中，就是一个大的对象（或者单独来一个<code>state.js</code>引进来）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">  count: <span class="number">0</span>,</span><br><span class="line">  history: []</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
 <li>直接在组件模板里：<code></code>。</li>
 <li><p>在计算属性里面使用：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  count () &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  count () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>最高级的用法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed:&#123;</div><div class="line">  ...mapState([</div><div class="line">    count</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">  ...mapState([</span><br><span class="line">    count</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="mutations"><a href="#mutations" class="headerlink" title="mutations"></a>mutations</h3><h4 id="what-1"><a href="#what-1" class="headerlink" title="what?"></a>what?</h4><p>我把它理解为直接操作状态对象的操作中心。</p>
-<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/mutations.js</code>中,里面暴露了多个函数来改变状态对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = <span class="function"><span class="params">state</span> =&gt;</span> &#123;</div><div class="line">  state.count++</div><div class="line">  state.history.push(<span class="string">'increment'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mothods: &#123;</div><div class="line">  ...mapMutations([</div><div class="line">    increment</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/mutations.js</code>中,里面暴露了多个函数来改变状态对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  state.count++</span><br><span class="line">  state.history.push(<span class="string">'increment'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mothods: &#123;</span><br><span class="line">  ...mapMutations([</span><br><span class="line">    increment</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h3><h4 id="what-2"><a href="#what-2" class="headerlink" title="what?"></a>what?</h4><p><code>getter</code>可以看作是<code>state</code>的计算属性，即通过状态对象衍生出来的数据。从它的名字为<code>getter</code>可以看出,通过读取<code>state</code>得到衍生值。</p>
-<h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/getters.js</code>中,里面暴露了许多值，这些值都是通过函数返回值赋值（通过这种方式可以避免在组件内直接使用<code>mapState</code>这种局限性较大方式）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> count = <span class="function"><span class="params">state</span> =&gt;</span> state.count</div></pre></td></tr></table></figure></p>
-<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  ...mapGetters([</div><div class="line">    count</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/getters.js</code>中,里面暴露了许多值，这些值都是通过函数返回值赋值（通过这种方式可以避免在组件内直接使用<code>mapState</code>这种局限性较大方式）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> count = <span class="function"><span class="params">state</span> =&gt;</span> state.count</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  ...mapGetters([</span><br><span class="line">    count</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><h4 id="what-3"><a href="#what-3" class="headerlink" title="what?"></a>what?</h4><p><code>action</code>用来派发<code>mutation</code>，一个<code>action</code>中可以触发多个<code>mutation</code>，在不同的时间不同的条件下触发不同的<code>mutation</code>（异步操作在此处执行）。</p>
-<h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/actions.js</code>中,里面暴露了很多方法。方法里面触发<code>mutation</code>（函数默认的第一个参数是<code>context</code>，下例使用了对象的结构）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementIfOdd = <span class="function">(<span class="params">&#123; commit, state &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> ((state.count + <span class="number">1</span>) % <span class="number">2</span> === <span class="number">0</span>) &#123;</div><div class="line">    commit(<span class="string">'increment'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementAsync = <span class="function">(<span class="params">&#123; commit &#125;</span>) =&gt;</span> &#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    commit(<span class="string">'increment'</span>)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mothods: &#123;</div><div class="line">  ...mapActions([</div><div class="line">    incrementIfOdd,</div><div class="line">    incrementAsync</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><p>一般是定义在<code>store/actions.js</code>中,里面暴露了很多方法。方法里面触发<code>mutation</code>（函数默认的第一个参数是<code>context</code>，下例使用了对象的结构）。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementIfOdd = <span class="function">(<span class="params">&#123; commit, state &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> ((state.count + <span class="number">1</span>) % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    commit(<span class="string">'increment'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> incrementAsync = <span class="function">(<span class="params">&#123; commit &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    commit(<span class="string">'increment'</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mothods: &#123;</span><br><span class="line">  ...mapActions([</span><br><span class="line">    incrementIfOdd,</span><br><span class="line">    incrementAsync</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><h4 id="what-4"><a href="#what-4" class="headerlink" title="what?"></a>what?</h4><p>用来将上述种种进行模块化。</p>
-<h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  state,</div><div class="line">  getters,</div><div class="line">  actions,</div><div class="line">  mutations</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    moduleA</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  actions,</span><br><span class="line">  mutations</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    moduleA</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h4><p>实际上就是在state后面多加了一层moduleA（我们那些可爱的映射函数都没法用了）。</p>
 
       
@@ -487,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/04/JS-foundation(1)/" rel="next" title="JS 基础进阶（一）">
-                <i class="fa fa-chevron-left"></i> JS 基础进阶（一）
+              <a href="/2017/04/25/JS-gleaning(2)/" rel="next" title="JS 拾遗（二）">
+                <i class="fa fa-chevron-left"></i> JS 拾遗（二）
               </a>
             
           </div>
@@ -497,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/JS-gleaning(2)/" rel="prev" title="JS 拾遗（二）">
-                JS 拾遗（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/JS-foundation(1)/" rel="prev" title="JS 基础进阶（一）">
+                JS 基础进阶（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,7 +602,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/15/CSS-fundationStyle/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:10:11.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS基础样式库">
 <meta name="twitter:description" content="本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…">
@@ -424,7 +425,7 @@
 <p>本文列举了一些我们常常需要用到的css基础样式库。这样既保证代码的精简，又保证开发的效率。我个人是极喜欢的…</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>国内以为大神通读Normalize.css源码，并且将Normalize.css进行了更细粒度的划分放入<a href="https://github.com/Alsiso/Koala" target="_blank" rel="external">Koala</a>这个项目中。非常符合我的心意。感谢@Alsiso。<a href="http://segmentfault.com/a/1190000003055238" target="_blank" rel="external">原文地址</a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>国内一位大神通读Normalize.css源码，并且将Normalize.css进行了更细粒度的划分放入<a href="https://github.com/Alsiso/Koala" target="_blank" rel="noopener">Koala</a>这个项目中。非常符合我的心意。感谢@Alsiso。<a href="http://segmentfault.com/a/1190000003055238" target="_blank" rel="noopener">原文地址</a></p>
 <h3 id="样式重置方案normal-css"><a href="#样式重置方案normal-css" class="headerlink" title="样式重置方案normal.css"></a>样式重置方案<code>normal.css</code></h3><p>Normalize.css不仅统一了样式，还保留元素的可辨识性，这是我们应该继承和发扬的优点，normal.css也会参考借鉴Normalize.css所有优势，不过Normalize.css更简洁，让开发者更容易上手，并且对它进行瘦身，比如移除一些不会用到的元素标签hgroup，将一些元素进行分模块管理，比如html5.css，form.css等，方便按需求灵活引用。</p>
 <h4 id="调整内容"><a href="#调整内容" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
 <li>字体约定62.5%，方便单位转换</li>
@@ -471,7 +472,7 @@
 <li>提供组合式按钮</li>
 <li>支持iconfont.css，搭配图标按钮使用</li>
 </ul>
-<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span>默认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span>默认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="栅格系统grid-css"><a href="#栅格系统grid-css" class="headerlink" title="栅格系统grid.css"></a>栅格系统<code>grid.css</code></h3><p>借鉴了Bootstrap的一套响应式流式栅格布局系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。<br>对栅格系统的样式命名进行重新组织，简化和移除工具代码，只保留核心布局样式。</p>
 <h4 id="调整内容-2"><a href="#调整内容-2" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
 <li>.ui-grid-container(固定宽度)和.ui-grid-fluid(100%宽度)用于包裹.ui-row</li>
@@ -485,7 +486,7 @@
 <li>支持列嵌套，必须包裹在.ui-row行中</li>
 <li>简化代码，不支持列偏移，列排序</li>
 </ul>
-<h4 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-grid-fluid"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-8"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-4"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-grid-fluid"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-row"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-8"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-col-4"</span>&gt;</span>.ui-col-8<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="辅助工具utils-css"><a href="#辅助工具utils-css" class="headerlink" title="辅助工具utils.css"></a>辅助工具<code>utils.css</code></h3><p>提供最常用的功能类class，命名使用fn-前缀来进行区别表示，如果在项目中能够灵活复用这些类，那将大大提升开发效率。</p>
 <h4 id="调整内容-3"><a href="#调整内容-3" class="headerlink" title="调整内容"></a>调整内容</h4><ul>
 <li>浮动元素与清楚浮动元素</li>
@@ -502,13 +503,13 @@
 <li>未知高度垂直居中</li>
 <li>列表平铺</li>
 </ul>
-<h4 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 文字溢出显示省略号 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fn-text-ellipsis"</span>&gt;</span>文字那是相当的长<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 文字溢出显示省略号 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fn-text-ellipsis"</span>&gt;</span>文字那是相当的长<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="字体图标iconfont-css"><a href="#字体图标iconfont-css" class="headerlink" title="字体图标iconfont.css"></a>字体图标<code>iconfont.css</code></h3><p>iconfont都已经很熟悉了，是一种把图标放入自定义字体中，然后使用字体图标来替代普通图标的技术，使用起来方便灵活。</p>
 <h4 id="包含内容"><a href="#包含内容" class="headerlink" title="包含内容"></a>包含内容</h4><ul>
 <li>提供网页中66个最常用的字体图标</li>
 <li>可搭配form.css按钮组件使用</li>
 </ul>
-<h4 id="使用示例-3"><a href="#使用示例-3" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#126;<span class="tag">&lt;/<span class="name">b</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="使用示例-3"><a href="#使用示例-3" class="headerlink" title="使用示例"></a>使用示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"ui-btn"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#126;<span class="tag">&lt;/<span class="name">b</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="动画库animate-css"><a href="#动画库animate-css" class="headerlink" title="动画库animate.css"></a>动画库<code>animate.css</code></h3><p>这个在动画与过度一文中有详细讲到，此处暂且不提。</p>
 <h3 id="打印print-css"><a href="#打印print-css" class="headerlink" title="打印print.css"></a>打印<code>print.css</code></h3><p>可以优化打印出的网页更适合浏览，并且加快打印速度，节省打印机耗材。</p>
 <h4 id="调整的内容"><a href="#调整的内容" class="headerlink" title="调整的内容"></a>调整的内容</h4><ul>
@@ -563,8 +564,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/16/CSS-flexBox/" rel="next" title="Flex布局">
-                <i class="fa fa-chevron-left"></i> Flex布局
+              <a href="/2017/05/15/CSS-css3-animation/" rel="next" title="动画与过渡">
+                <i class="fa fa-chevron-left"></i> 动画与过渡
               </a>
             
           </div>
@@ -573,8 +574,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/15/CSS-css3-animation/" rel="prev" title="动画与过渡">
-                动画与过渡 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/16/CSS-flexBox/" rel="prev" title="Flex布局">
+                Flex布局 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -666,7 +667,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

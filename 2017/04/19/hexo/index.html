@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/19/hexo/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:11:16.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我是用hexo搭建个人博客的经历">
 <meta name="twitter:description" content="首先贴出两个网址hexo的使用教程nextT主题的替换教程">
@@ -398,18 +399,18 @@
       
 
       
-        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">hexo的使用教程</a><br><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="external">nextT主题的替换教程</a></p>
+        <h2 id="首先贴出两个网址"><a href="#首先贴出两个网址" class="headerlink" title="首先贴出两个网址"></a>首先贴出两个网址</h2><p><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="noopener">hexo的使用教程</a><br><a href="http://www.tuicool.com/articles/zeIZJzv" target="_blank" rel="noopener">nextT主题的替换教程</a></p>
 <a id="more"></a>
 <p><br></p>
 <h2 id="下面总结下我自己的填坑经历"><a href="#下面总结下我自己的填坑经历" class="headerlink" title="下面总结下我自己的填坑经历"></a>下面总结下我自己的填坑经历</h2><h3 id="关于hexo"><a href="#关于hexo" class="headerlink" title="关于hexo"></a>关于hexo</h3><h4 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h4><ol>
 <li>npm install -g hexo</li>
 <li>hexo init</li>
 <li>hexo generate（hexo g也可以，用来生成静态页面）</li>
-<li>hexo server （浏览器输入<a href="http://localhost:4000）（然后去配置github，再继续第五步）" target="_blank" rel="external">http://localhost:4000）（然后去配置github，再继续第五步）</a></li>
+<li>hexo server （浏览器输入<a href="http://localhost:4000）（然后去配置github，再继续第五步）" target="_blank" rel="noopener">http://localhost:4000）（然后去配置github，再继续第五步）</a></li>
 <li>npm install hexo-deployer-git –save （这一步是在配置完github之后）</li>
 <li>hexo deploy<h4 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h4></li>
 <li>建立Repository （名字为yesixuan.github.io）</li>
-<li>修改项目配置文件 （根目录下的_config.yml）<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: https://github.com/leopardpan/leopardpan.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<li>修改项目配置文件 （根目录下的_config.yml）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/leopardpan/leopardpan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="部署以及常用操作"><a href="#部署以及常用操作" class="headerlink" title="部署以及常用操作"></a>部署以及常用操作</h4><ol>
@@ -428,17 +429,17 @@
 <li>hexo version #查看Hexo的版本</li>
 </ol>
 <h3 id="关于更换主题（这里以nextT为例）"><a href="#关于更换主题（这里以nextT为例）" class="headerlink" title="关于更换主题（这里以nextT为例）"></a>关于更换主题（这里以nextT为例）</h3><ol>
-<li>下载主题的zip包。（地址：<a href="https://github.com/iissnan/hexo-theme-next/releases）" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next/releases）</a></li>
+<li>下载主题的zip包。（地址：<a href="https://github.com/iissnan/hexo-theme-next/releases）" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next/releases）</a></li>
 <li>结业后的文件夹改名为next，放入项目的themes目录里面</li>
 <li>打开站点配置文件，找到theme字段，并将其值更改为next 。</li>
 <li>此时可已在本地测试看看</li>
 <li>切换hexo里面的不同主题，在主题配置文件里面找到scheme的配置项，自己加减注释来切换</li>
 </ol>
-<h3 id="关于标签与分类-原地址"><a href="#关于标签与分类-原地址" class="headerlink" title="关于标签与分类 原地址"></a>关于标签与分类 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">原地址</a></h3><ol>
+<h3 id="关于标签与分类-原地址"><a href="#关于标签与分类-原地址" class="headerlink" title="关于标签与分类 原地址"></a>关于标签与分类 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="noopener">原地址</a></h3><ol>
 <li>hexo new page tags （hexo new page categories）</li>
 <li>确认站点配置文件里有tag_dir: tags （category_dir: categories）</li>
 <li>确认主题配置文件里有tags: /tags （categories: /categories）</li>
-<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-10-20 06:49:50</div><div class="line">type: "tags"</div><div class="line">comments: false</div></pre></td></tr></table></figure>
+<li>编辑站点的source/tags/index.md （略…），添加<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2015-10-20 06:49:50</span><br><span class="line">type: "tags"</span><br><span class="line">comments: false</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -494,15 +495,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/20/Front-end-Interview/" rel="next" title="前端面试">
-                <i class="fa fa-chevron-left"></i> 前端面试
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/20/Front-end-Interview/" rel="prev" title="前端面试">
+                前端面试 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -593,7 +594,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

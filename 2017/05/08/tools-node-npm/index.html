@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/08/tools-node-npm/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="本文旨在拾起一些实用但是容易被忽略的npm小知识…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:16:53.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm">
 <meta name="twitter:description" content="本文旨在拾起一些实用但是容易被忽略的npm小知识…">
@@ -413,11 +414,11 @@
 <p>本文旨在拾起一些实用但是容易被忽略的npm小知识…</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="安装制定版本的包"><a href="#安装制定版本的包" class="headerlink" title="安装制定版本的包"></a>安装制定版本的包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install &lt;packageName&gt;@1.7.13</div></pre></td></tr></table></figure>
-<h3 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm update &lt;packageName&gt;</div></pre></td></tr></table></figure>
-<h3 id="清空本地的缓存包"><a href="#清空本地的缓存包" class="headerlink" title="清空本地的缓存包"></a>清空本地的缓存包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm cache clean</div></pre></td></tr></table></figure>
-<h3 id="从本地缓存中现在包"><a href="#从本地缓存中现在包" class="headerlink" title="从本地缓存中现在包"></a>从本地缓存中现在包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 意味着9999999分钟之后才上网下载包</span></div><div class="line">$ npm install --cache-min 9999999 &lt;package-name&gt;</div></pre></td></tr></table></figure>
-<h3 id="针对国内的特殊网络环境"><a href="#针对国内的特殊网络环境" class="headerlink" title="针对国内的特殊网络环境"></a>针对国内的特殊网络环境</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 修改node安装目录的npmrc配置文件，添加如下代码</span></div><div class="line">registry = https:<span class="comment">//registry.npm.taobao.org</span></div><div class="line">sass_binary_site=https:<span class="comment">//npm.taobao.org/mirrors/node-sass/</span></div></pre></td></tr></table></figure>
+<h3 id="安装制定版本的包"><a href="#安装制定版本的包" class="headerlink" title="安装制定版本的包"></a>安装制定版本的包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install &lt;packageName&gt;@1.7.13</span><br></pre></td></tr></table></figure>
+<h3 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm update &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="清空本地的缓存包"><a href="#清空本地的缓存包" class="headerlink" title="清空本地的缓存包"></a>清空本地的缓存包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm cache clean</span><br></pre></td></tr></table></figure>
+<h3 id="从本地缓存中现在包"><a href="#从本地缓存中现在包" class="headerlink" title="从本地缓存中现在包"></a>从本地缓存中现在包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 意味着9999999分钟之后才上网下载包</span></span><br><span class="line">$ npm install --cache-min 9999999 &lt;package-name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="针对国内的特殊网络环境"><a href="#针对国内的特殊网络环境" class="headerlink" title="针对国内的特殊网络环境"></a>针对国内的特殊网络环境</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改node安装目录的npmrc配置文件，添加如下代码</span></span><br><span class="line">registry = https:<span class="comment">//registry.npm.taobao.org</span></span><br><span class="line">sass_binary_site=https:<span class="comment">//npm.taobao.org/mirrors/node-sass/</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -465,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/09/JS-react/" rel="next" title="react入门">
-                <i class="fa fa-chevron-left"></i> react入门
+              <a href="/2017/05/08/JS-react-redux/" rel="next" title="redux">
+                <i class="fa fa-chevron-left"></i> redux
               </a>
             
           </div>
@@ -475,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/08/JS-react-redux/" rel="prev" title="redux">
-                redux <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/09/JS-react/" rel="prev" title="react入门">
+                react入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +569,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

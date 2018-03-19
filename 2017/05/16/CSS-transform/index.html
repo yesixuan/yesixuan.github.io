@@ -94,7 +94,8 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/16/CSS-transform/index.html">
 <meta property="og:site_name" content="yesixuan">
 <meta property="og:description" content="CSS3的转换是能够启用浏览器硬件加速的一个属性，它也能代替我们常用的一些css属性。但人总有惰性，不愿意舍弃自己熟悉的东西而去使用一个不太熟的事物…">
-<meta property="og:updated_time" content="2017-06-05T11:21:34.931Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T05:10:45.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3变形">
 <meta name="twitter:description" content="CSS3的转换是能够启用浏览器硬件加速的一个属性，它也能代替我们常用的一些css属性。但人总有惰性，不愿意舍弃自己熟悉的东西而去使用一个不太熟的事物…">
@@ -426,9 +427,9 @@
 <a id="more"></a>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>通过CSS3转换，我们能够对元素进行移动、缩放、转动、拉长或拉伸。<br>transform属性指一组转换函数，<code>transform-origin</code>属性（常用百分比来表示）定元素的中心点在哪里，新增加了第三个数transform-origin-z，控制元素三维空间中心点。<code>transform-style</code>的值设置为<code>preserve-3d</code>，建立一个3D渲染环境。</p>
 <h3 id="2D转换"><a href="#2D转换" class="headerlink" title="2D转换"></a>2D转换</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>2D转换的属性名为transform，使用方法为transform:method(value)。<br>2D转换方法有translate、scale、rotate、skew、matrix，还有基于这些分支出的translateX、scaleY等。</p>
-<h4 id="translate-x-y"><a href="#translate-x-y" class="headerlink" title="translate(x,y)"></a>translate(x,y)</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">  <span class="comment">/* 向右移50px，向下移100px */</span></div><div class="line">  <span class="comment">/* 分支属性即在方法名后面加大写的“X”或“Y” */</span></div><div class="line">  <span class="attribute">transform</span>:<span class="built_in">translate</span>(50px,100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">  <span class="comment">/* 顺时针旋转30度 */</span></div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(30deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="scale-x-y"><a href="#scale-x-y" class="headerlink" title="scale(x,y)"></a>scale(x,y)</h4><p>scale方法的参数表示缩放的倍数。<br>当参数值为负值的时候，就出现里翻转现象（展开收起中的上下箭头就可以用这种方式来做）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">  <span class="comment">/* 该元素将会沿纵轴翻转 */</span></div><div class="line">  <span class="attribute">transform</span>:<span class="built_in">scale</span>(-1,1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="translate-x-y"><a href="#translate-x-y" class="headerlink" title="translate(x,y)"></a>translate(x,y)</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">  <span class="comment">/* 向右移50px，向下移100px */</span></span><br><span class="line">  <span class="comment">/* 分支属性即在方法名后面加大写的“X”或“Y” */</span></span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">translate</span>(50px,100px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">  <span class="comment">/* 顺时针旋转30度 */</span></span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(30deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="scale-x-y"><a href="#scale-x-y" class="headerlink" title="scale(x,y)"></a>scale(x,y)</h4><p>scale方法的参数表示缩放的倍数。<br>当参数值为负值的时候，就出现里翻转现象（展开收起中的上下箭头就可以用这种方式来做）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">  <span class="comment">/* 该元素将会沿纵轴翻转 */</span></span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">scale</span>(-1,1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="skew"><a href="#skew" class="headerlink" title="skew()"></a>skew()</h4><p>首先纠正一个误区：参数是坐标轴旋转度数。参考坐标系x轴向右正，y向下正。旋转x轴时候，平行于y轴的直线方向不变，依旧水平，但逐渐变短，平行于x的直线跟随x轴转动依旧平行于x轴，但是逐渐变长。反之亦然。</p>
 <h3 id="3D转换"><a href="#3D转换" class="headerlink" title="3D转换"></a>3D转换</h3><h4 id="创建3D模型"><a href="#创建3D模型" class="headerlink" title="创建3D模型"></a>创建3D模型</h4><ul>
 <li>模式：transform-style: presserve-3d</li>
@@ -489,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/17/JS-function/" rel="next" title="JS中函数的生命周期">
-                <i class="fa fa-chevron-left"></i> JS中函数的生命周期
+              <a href="/2017/05/16/CSS-scss/" rel="next" title="SASS的基本用法">
+                <i class="fa fa-chevron-left"></i> SASS的基本用法
               </a>
             
           </div>
@@ -499,8 +500,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/16/CSS-scss/" rel="prev" title="SASS的基本用法">
-                SASS的基本用法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/17/JS-function/" rel="prev" title="JS中函数的生命周期">
+                JS中函数的生命周期 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +593,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
