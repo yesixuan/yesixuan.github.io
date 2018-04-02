@@ -96,7 +96,10 @@
 <meta property="og:description" content="互联网协议解决的问题是：两台计算机是如何进行通讯的…">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052902.png">
-<meta property="og:updated_time" content="2018-04-02T07:57:07.378Z">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052910.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png">
+<meta property="og:updated_time" content="2018-04-02T08:04:10.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="互联网协议入门">
 <meta name="twitter:description" content="互联网协议解决的问题是：两台计算机是如何进行通讯的…">
@@ -430,14 +433,14 @@
 <p>所谓”子网掩码”，就是表示子网络特征的一个参数。它在形式上等同于IP地址，也是一个32位二进制数字，它的网络部分全部为1，主机部分全部为0。比如，IP地址172.16.254.1，如果已知网络部分是前24位，主机部分是后8位，那么子网络掩码就是11111111.11111111.11111111.00000000，写成十进制就是255.255.255.0。  </p>
 <p>将IP地址与子网掩码进行AND运算，就能最终知道目标计算机在哪个子网络。  </p>
 <p>总结一下，IP协议的作用主要有两个，一个是为每一台计算机分配IP地址，另一个是确定哪些地址在同一个子网络。  </p>
-<h4 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h4><p>根据IP协议发送的数据，就叫做IP数据包。不难想象，其中标头部分必定包括IP地址信息。<br>“标头”部分主要包括版本、长度、IP地址等信息，”数据”部分则是IP数据包的具体内容。它放进以太网数据包后，以太网数据包就变成了下面这样（以太网数据包整体作为IP数据包的数据部分存在）。<br>！<a href="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052910.png" target="_blank" rel="noopener">IP数据包</a>  </p>
+<h4 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h4><p>根据IP协议发送的数据，就叫做IP数据包。不难想象，其中标头部分必定包括IP地址信息。<br>“标头”部分主要包括版本、长度、IP地址等信息，”数据”部分则是IP数据包的具体内容。它放进以太网数据包后，以太网数据包就变成了下面这样（以太网数据包整体作为IP数据包的数据部分存在）。<br><img src="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052910.png" alt="数据包">  </p>
 <h4 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h4><p>要精准找到发送目标，我们需要两个信息：IP地址与mac地址。IP地址是已知的，mac地址却不得而知。<br>所以我们需要一种机制，能够由IP地址得到mac地址。<br>以下我们分成两种情况：① 发送者与接收者不在同一子网络（那么事实上没有办法得到对方的MAC地址，只能把数据包传送到两个子网络连接处的”网关”（gateway），让网关去处理）；② 发送者与接收者在同一子网络，此时可以通过ARP协议来获取对方的mac地址（具体如何实现，暂且不表）  </p>
 <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>有了MAC地址和IP地址，我们已经可以在互联网上任意两台主机上建立通信。<br>但是每个主机都会有多个程序运行，如何建立两台主机中程序到程序的通信呢？<br><strong>“传输层”的功能，就是建立”端口到端口”的通信。相比之下，”网络层”的功能是建立”主机到主机”的通信。只要确定主机和端口，我们就能实现程序之间的交流。</strong>因此，Unix系统就把主机+端口，叫做”套接字”（socket）。有了它，就可以进行网络应用程序开发了。  </p>
-<h4 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h4><p>现在，我们必须在数据包中加入端口信息，这就需要新的协议。最简单的实现叫做UDP协议，它的格式几乎就是在数据前面，加上端口号。<br>！<a href="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png" target="_blank" rel="noopener">UDP协议</a>  </p>
+<h4 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h4><p>现在，我们必须在数据包中加入端口信息，这就需要新的协议。最简单的实现叫做UDP协议，它的格式几乎就是在数据前面，加上端口号。<br><img src="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png" alt="UDP协议">  </p>
 <h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>UDP协议的优点是比较简单，容易实现，但是缺点是可靠性较差，一旦数据包发出，无法知道对方是否收到。</p>
 <p>为了解决这个问题，提高网络可靠性，TCP协议就诞生了。这个协议非常复杂，但可以近似认为，它就是有确认机制的UDP协议，每发出一个数据包都要求确认。如果有一个数据包遗失，就收不到确认，发出方就知道有必要重发这个数据包了。</p>
 <p>因此，TCP协议能够确保数据不会遗失。它的缺点是过程复杂、实现困难、消耗较多的资源。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用程序收到”传输层”的数据，接下来就要进行解读。由于互联网是开放架构，数据来源五花八门，必须事先规定好格式，否则根本无法解读。（如http协议）<br><strong>“应用层”的作用，就是规定应用程序的数据格式。</strong><br>这是最高的一层，直接面对用户。它的数据就放在TCP数据包的”数据”部分。因此，现在的以太网的数据包就变成下面这样。<br>！<a href="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png" target="_blank" rel="noopener">完整数据包</a></p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用程序收到”传输层”的数据，接下来就要进行解读。由于互联网是开放架构，数据来源五花八门，必须事先规定好格式，否则根本无法解读。（如http协议）<br><strong>“应用层”的作用，就是规定应用程序的数据格式。</strong><br>这是最高的一层，直接面对用户。它的数据就放在TCP数据包的”数据”部分。因此，现在的以太网的数据包就变成下面这样。<br><img src="http://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png" alt="完整数据包"></p>
 
       
     </div>
