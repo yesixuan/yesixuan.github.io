@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="react," />
+  <meta name="keywords" content="协议," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
-<meta name="keywords" content="react">
+<meta name="description" content="http协议是浏览器与服务器通信的协议，也是前端工程师最熟悉的一个应用层协议…">
+<meta name="keywords" content="协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React webapp(二)">
-<meta property="og:url" content="http://yoursite.com/2017/05/24/JS-react-webapp(2)/index.html">
+<meta property="og:title" content="http协议入门">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/computer-http协议入门/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
+<meta property="og:description" content="http协议是浏览器与服务器通信的协议，也是前端工程师最熟悉的一个应用层协议…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T05:15:04.646Z">
+<meta property="og:updated_time" content="2018-04-09T03:58:59.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React webapp(二)">
-<meta name="twitter:description" content="写这篇博客的时候，刚刚将这个webapp的首页完成…">
+<meta name="twitter:title" content="http协议入门">
+<meta name="twitter:description" content="http协议是浏览器与服务器通信的协议，也是前端工程师最熟悉的一个应用层协议…">
 
 <script>
     (function(){
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/24/JS-react-webapp(2)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/04/computer-http协议入门/"/>
 
 
 
 
 
-  <title> React webapp(二) | yesixuan </title>
+  <title> http协议入门 | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/JS-react-webapp(2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/computer-http协议入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -326,7 +326,7 @@
             
             
               
-                React webapp(二)
+                http协议入门
               
             
           </h1>
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T10:55:00+08:00">
-                2017-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T20:00:00+08:00">
+                2018-04-04
               </time>
             
 
@@ -364,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/计算机/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机</span>
                   </a>
                 </span>
 
@@ -375,19 +375,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JS/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
+                  <a href="/categories/计算机/互联网协议/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网协议</span>
                   </a>
                 </span>
 
@@ -422,19 +411,81 @@
 
       
         <blockquote>
-<p>写这篇博客的时候，刚刚将这个webapp的首页完成…</p>
+<p>http协议是浏览器与服务器通信的协议，也是前端工程师最熟悉的一个应用层协议…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="智能组件与木偶组件"><a href="#智能组件与木偶组件" class="headerlink" title="智能组件与木偶组件"></a>智能组件与木偶组件</h2><p>我们将react项目中的组件分为智能组件和木偶组件两类，每个组件拥有一个文件夹，文件夹里面包含index.jsx、style.less（它的子组件在它的下级目录）。</p>
-<h3 id="智能组件"><a href="#智能组件" class="headerlink" title="智能组件"></a>智能组件</h3><p>我们把智能组件放到containers文件夹下，containers文件夹下的一级目录放的是每个路由分页面。智能组件主要是作为一个容器，负责给木偶组件传递方法和数据。</p>
-<h3 id="木偶组件"><a href="#木偶组件" class="headerlink" title="木偶组件"></a>木偶组件</h3><p>木偶组件位于components文件夹下。它的作用主要是页面的展示，它是消费父组件（智能组件）传递给他的方法和数据。</p>
-<h2 id="字体图标"><a href="#字体图标" class="headerlink" title="字体图标"></a>字体图标</h2><h3 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h3><p><a href="https://icomoon.io/" target="_blank" rel="noopener">在线制作字体图标</a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成的css文件放在’static/css’文件夹下，字体文件放在’static/fonts’文件夹下（相对路径不要搞错）。</p>
-<h2 id="postcss"><a href="#postcss" class="headerlink" title="postcss"></a>postcss</h2><p>上代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入样式文件</span></span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./style.less'</span></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">&lt;div className=&#123;styles[<span class="string">"content-title"</span>]&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<h2 id="fetch的使用"><a href="#fetch的使用" class="headerlink" title="fetch的使用"></a>fetch的使用</h2><h3 id="mock接口"><a href="#mock接口" class="headerlink" title="mock接口"></a>mock接口</h3><h4 id="写接口"><a href="#写接口" class="headerlink" title="写接口"></a>写接口</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mock/server.js</span></span><br><span class="line">  <span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'koa'</span>)();</span><br><span class="line">  <span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</span><br><span class="line">  <span class="comment">//首页广告</span></span><br><span class="line">  <span class="keyword">var</span> homeAdData = <span class="built_in">require</span>(<span class="string">'./home/ad.js'</span>); <span class="comment">// 这里其实是拿到一个json</span></span><br><span class="line">  router.get(<span class="string">'/api/homead'</span>,<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">  	<span class="keyword">this</span>.body = homeAdData;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// ...后面可以接着写</span></span><br><span class="line">  <span class="comment">//开启服务</span></span><br><span class="line">  app.use(router.routes())</span><br><span class="line">     .use(router.allowedMethods());</span><br><span class="line">  app.listen(<span class="number">3002</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="定义json"><a href="#定义json" class="headerlink" title="定义json"></a>定义json</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mock/home/ad.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = [</span><br><span class="line">  &#123;</span><br><span class="line">      title: <span class="string">'暑假5折'</span>,</span><br><span class="line">      img: <span class="string">'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191639092-2000037796.png'</span>,</span><br><span class="line">      link: <span class="string">'http://www.imooc.com/wap/index'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">      title: <span class="string">'特价出国'</span>,</span><br><span class="line">      img: <span class="string">'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191648124-298129318.png'</span>,</span><br><span class="line">      link: <span class="string">'http://www.imooc.com/wap/index'</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> AdData <span class="keyword">from</span> <span class="string">'../../../../mock/home/ad'</span></span><br><span class="line"><span class="keyword">import</span> &#123;getAdData&#125; <span class="keyword">from</span> <span class="string">'../../../fetch/home/home'</span></span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">  <span class="comment">// 第一步，调接口</span></span><br><span class="line">  <span class="keyword">const</span> result = getAdData();</span><br><span class="line">  <span class="comment">// 第二步，拿到结果，如果成功，将字符串转成JSON对象</span></span><br><span class="line">  result.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(res.ok) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.json()</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> AdData <span class="comment">// 如果调接口拿数据出错，则直接返回这个import进来的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">json</span> =&gt;</span> &#123; <span class="comment">// 将转换后的数据跟UI组件的显示数据对接起来</span></span><br><span class="line">    <span class="keyword">const</span> data = json</span><br><span class="line">    <span class="keyword">if</span>(data.length) &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        data: data</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err.message)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="滚动事件中的性能优化"><a href="#滚动事件中的性能优化" class="headerlink" title="滚动事件中的性能优化"></a>滚动事件中的性能优化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">  <span class="keyword">const</span> wrapper = <span class="keyword">this</span>.refs.wrapper</span><br><span class="line">  <span class="keyword">const</span> loadMoreFn = <span class="keyword">this</span>.props.loadMoreFn</span><br><span class="line">  <span class="comment">// 这里是滚动事件被触发之后的回调函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> top = wrapper.getBoundingClientRect().top</span><br><span class="line">    <span class="keyword">const</span> windowHeight = <span class="built_in">window</span>.screen.height</span><br><span class="line">    <span class="keyword">if</span>(top &amp;&amp; top &lt; windowHeight) &#123;</span><br><span class="line">      loadMoreFn() <span class="comment">// 从父组件传过来的加载更多数据的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  * 1. 外部定义变量用来存储定时器</span></span><br><span class="line"><span class="comment">  * 2. 在滚动事件里面判断那个变量有没有存定时器</span></span><br><span class="line"><span class="comment">  * 3. 定时器搞起来，用之前的变量存起来</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">let</span> timeAction</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,() =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.props.isLoadingMore) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(timeAction) &#123;</span><br><span class="line">      clearTimeout(timeAction)</span><br><span class="line">    &#125;</span><br><span class="line">    timeAction = setTimeout(callback,<span class="number">50</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。URL是一种<strong>特殊类型的URI</strong>，包含了用于查找某个资源的足够的信息。  </p>
+<p><code>http://www.aspxfans.com:8080/news/index.asp?boardID=5&amp;ID=24618&amp;page=1#name</code><br>一个完整的URL包含：协议名、域名（或主机名）、端口、虚拟目录、文件名、参数、锚。  </p>
+<p>tip: URI强调怎样来标识一个资源、URL强调怎样来获取这个资源。  </p>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><p>一个完整的request包含：请求行、请求头部、<strong>空行</strong>、请求体。  </p>
+<h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><p><code>GET /562f25980001b1b106000338.jpg HTTP/1.1</code><br>请求行回答了三个问题：我要通过什么样的方式？去到什么地方？我是谁？  </p>
+<h3 id="请求头部（用来说明服务器要使用的附加信息）"><a href="#请求头部（用来说明服务器要使用的附加信息）" class="headerlink" title="请求头部（用来说明服务器要使用的附加信息）"></a>请求头部（用来说明服务器要使用的附加信息）</h3><p>常用请求头部：  </p>
+<ul>
+<li>Accept: 接收类型，表示浏览器支持的MIME类型</li>
+<li>Accept-Encoding：浏览器支持的压缩类型,如gzip等,超出类型不能接收</li>
+<li>Content-Type：客户端发送出去实体内容的类型</li>
+<li>Cache-Control: 指定请求和响应遵循的缓存机制，如no-cache</li>
+<li>If-Modified-Since：对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到1s之内，http1.0中</li>
+<li>Expires：缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间（过期时间）</li>
+<li>Max-age：代表资源在本地缓存多少秒，有效时间内不会请求，而是使用缓存，http1.1中（有效时间段）</li>
+<li>If-None-Match：对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中</li>
+<li>Cookie: 有cookie并且同域访问时会自动带上</li>
+<li>Connection: 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive</li>
+<li>Host：请求的服务器URL</li>
+<li>Origin：最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私</li>
+<li>Referer：该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)</li>
+<li>User-Agent：用户客户端的一些必要信息，如UA头部等</li>
+</ul>
+<p>tip: 组合拳：  </p>
+<ul>
+<li><code>If-Modified-Since</code>与服务器给的<code>Last-Modified</code>  </li>
+<li><code>If-None-Match</code>与服务器给的<code>ETag</code>（Last-Modified是服务器给的一个时间戳，而ETag相当于是给了一个唯一ID）  </li>
+<li><code>Expires</code>与<code>Max-age</code>前者指的是服务器给出的过期时间点，后者指定的是在某个时间段内缓存有效  </li>
+</ul>
+<p><code>Expires</code>与<code>Max-age</code>是强缓存，而<code>If-Modified-Since</code>与<code>If-None-Match</code>则属于弱缓存。  </p>
+<h3 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h3><p>即使没有请求主体，也必须有空行。  </p>
+<h3 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h3><p>请求体并不是一个请求报文所必需的，它是用来承载数据的。</p>
+<h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><p>Response也由四个部分组成，分别是：状态行、消息报头、空行和响应体。  </p>
+<h3 id="响应行"><a href="#响应行" class="headerlink" title="响应行"></a>响应行</h3><p>响应行告诉我们的是发生了什么？<br>由HTTP协议版本号， 状态码， 消息短语 三部分组成。<br>最常用的状态吗：  </p>
+<ul>
+<li>200——表明该请求被成功地完成，所请求的资源发送回客户端</li>
+<li>304——自从上次请求后，请求的网页未修改过，请客户端使用本地缓存</li>
+<li>400——客户端请求有错（譬如可以是安全模块拦截）</li>
+<li>401——请求未经授权</li>
+<li>403——禁止访问（譬如可以是未登录时禁止）</li>
+<li>404——资源未找到</li>
+<li>500——服务器内部错误</li>
+<li>503——服务不可用</li>
+</ul>
+<h3 id="相应头"><a href="#相应头" class="headerlink" title="相应头"></a>相应头</h3><p>常用的响应头：  </p>
+<ul>
+<li>Access-Control-Allow-Headers: 服务器端允许的请求Headers</li>
+<li>Access-Control-Allow-Methods: 服务器端允许的请求方法</li>
+<li>Access-Control-Allow-Origin: 服务器端允许的请求Origin头部（譬如为*）</li>
+<li>Content-Type：服务端返回的实体内容的类型</li>
+<li>Date：数据从服务器发送的时间</li>
+<li>Cache-Control：告诉浏览器或其他客户，什么环境可以安全的缓存文档</li>
+<li>Last-Modified：请求资源的最后修改时间</li>
+<li>Expires：应该在什么时候认为文档已经过期,从而不再缓存它</li>
+<li>Max-age：客户端的本地资源应该缓存多少秒，开启了Cache-Control后有效</li>
+<li>ETag：请求变量的实体标签的当前值</li>
+<li>Set-Cookie：设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端</li>
+<li>Keep-Alive：如果客户端有keep-alive，服务端也会有响应（如timeout=38）</li>
+<li>Server：服务器的一些相关信息</li>
+</ul>
+<h3 id="空行-1"><a href="#空行-1" class="headerlink" title="空行"></a>空行</h3><p>消息报头后面的空行是必须的。  </p>
+<h3 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h3><p>服务器返回给客户端的文本信息。  </p>
+<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><p>GET: 请求指定的页面信息，并返回实体主体;<br>HEAD: 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头;<br>POST: 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改;<br>PUT: 从客户端向服务器传送的数据取代指定的文档的内容;<br>DELETE: 请求服务器删除指定的页面;<br>CONNECT: HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器;<br>OPTIONS: 允许客户端查看服务器的性能;<br>TRACE: 回显服务器收到的请求，主要用于测试或诊断。  </p>
+<h2 id="HTTP-请求-响应的步骤"><a href="#HTTP-请求-响应的步骤" class="headerlink" title="HTTP 请求/响应的步骤"></a>HTTP 请求/响应的步骤</h2><ol>
+<li><p>客户端连接到Web服务器<br>一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口（默认为80）建立一个TCP套接字连接。  </p>
+</li>
+<li><p>发送HTTP请求<br>通过TCP套接字，客户端向Web服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据4部分组成。  </p>
+</li>
+<li><p>服务器接受请求并返回HTTP响应<br>Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据4部分组成。  </p>
+</li>
+<li><p>释放连接TCP连接<br>若connection 模式为close，则服务器主动关闭TCP连接，客户端被动关闭连接，释放TCP连接;若connection 模式为keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;  </p>
+</li>
+</ol>
 
       
     </div>
@@ -469,7 +520,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react/" rel="tag"><i class="fa fa-tag"></i> react</a>
+            <a href="/tags/协议/" rel="tag"><i class="fa fa-tag"></i> 协议</a>
           
         </div>
       
@@ -482,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/20/JS-react-webapp(1)/" rel="next" title="React webapp(一)">
-                <i class="fa fa-chevron-left"></i> React webapp(一)
+              <a href="/2018/04/04/computer-TCP协议入门/" rel="next" title="TCP协议入门">
+                <i class="fa fa-chevron-left"></i> TCP协议入门
               </a>
             
           </div>
@@ -491,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/27/JS-angular-suction(1)/" rel="prev" title="angular4搭建竞拍网站（一）">
-                angular4搭建竞拍网站（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#智能组件与木偶组件"><span class="nav-number">1.</span> <span class="nav-text">智能组件与木偶组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#智能组件"><span class="nav-number">1.1.</span> <span class="nav-text">智能组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#木偶组件"><span class="nav-number">1.2.</span> <span class="nav-text">木偶组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体图标"><span class="nav-number">2.</span> <span class="nav-text">字体图标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作"><span class="nav-number">2.1.</span> <span class="nav-text">制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postcss"><span class="nav-number">3.</span> <span class="nav-text">postcss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch的使用"><span class="nav-number">4.</span> <span class="nav-text">fetch的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mock接口"><span class="nav-number">4.1.</span> <span class="nav-text">mock接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写接口"><span class="nav-number">4.1.1.</span> <span class="nav-text">写接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义json"><span class="nav-number">4.1.2.</span> <span class="nav-text">定义json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-1"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动事件中的性能优化"><span class="nav-number">5.</span> <span class="nav-text">滚动事件中的性能优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number">2.</span> <span class="nav-text">Request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求行"><span class="nav-number">2.1.</span> <span class="nav-text">请求行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求头部（用来说明服务器要使用的附加信息）"><span class="nav-number">2.2.</span> <span class="nav-text">请求头部（用来说明服务器要使用的附加信息）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空行"><span class="nav-number">2.3.</span> <span class="nav-text">空行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求体"><span class="nav-number">2.4.</span> <span class="nav-text">请求体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response"><span class="nav-number">3.</span> <span class="nav-text">Response</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#响应行"><span class="nav-number">3.1.</span> <span class="nav-text">响应行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相应头"><span class="nav-number">3.2.</span> <span class="nav-text">相应头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空行-1"><span class="nav-number">3.3.</span> <span class="nav-text">空行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应体"><span class="nav-number">3.4.</span> <span class="nav-text">响应体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求方法"><span class="nav-number">4.</span> <span class="nav-text">HTTP请求方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-请求-响应的步骤"><span class="nav-number">5.</span> <span class="nav-text">HTTP 请求/响应的步骤</span></a></li></ol></div>
             
 
           </div>
