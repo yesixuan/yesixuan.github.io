@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="优化," />
+  <meta name="keywords" content="协议," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="好吧，拾人牙慧的一些优化措施，让老夫再来唠叨一番…">
-<meta name="keywords" content="优化">
+<meta name="description" content="互联网的通信安全(https协议)是建立在SSL/TLS协议之上…">
+<meta name="keywords" content="协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="细说图片懒加载">
-<meta property="og:url" content="http://yoursite.com/2017/08/22/JS-optimize 图片懒加载/index.html">
+<meta property="og:title" content="SSL&#x2F;TLS协议简述">
+<meta property="og:url" content="http://yoursite.com/2018/04/10/computer-SSL&TLS协议/index.html">
 <meta property="og:site_name" content="yesixuan">
-<meta property="og:description" content="好吧，拾人牙慧的一些优化措施，让老夫再来唠叨一番…">
+<meta property="og:description" content="互联网的通信安全(https协议)是建立在SSL/TLS协议之上…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T05:13:59.166Z">
+<meta property="og:updated_time" content="2018-04-10T10:01:26.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="细说图片懒加载">
-<meta name="twitter:description" content="好吧，拾人牙慧的一些优化措施，让老夫再来唠叨一番…">
+<meta name="twitter:title" content="SSL&#x2F;TLS协议简述">
+<meta name="twitter:description" content="互联网的通信安全(https协议)是建立在SSL/TLS协议之上…">
 
 <script>
     (function(){
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/22/JS-optimize 图片懒加载/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/10/computer-SSL&TLS协议/"/>
 
 
 
 
 
-  <title> 细说图片懒加载 | yesixuan </title>
+  <title> SSL/TLS协议简述 | yesixuan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/JS-optimize 图片懒加载/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/computer-SSL&TLS协议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶思玄">
@@ -326,7 +326,7 @@
             
             
               
-                细说图片懒加载
+                SSL/TLS协议简述
               
             
           </h1>
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T20:45:00+08:00">
-                2017-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T20:00:00+08:00">
+                2018-04-10
               </time>
             
 
@@ -364,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/计算机/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机</span>
                   </a>
                 </span>
 
@@ -375,8 +375,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/计算机/互联网协议/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网协议</span>
                   </a>
                 </span>
 
@@ -411,32 +411,52 @@
 
       
         <blockquote>
-<p>好吧，拾人牙慧的一些优化措施，让老夫再来唠叨一番…</p>
+<p>互联网的通信安全(https协议)是建立在SSL/TLS协议之上…</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="实现图片懒加载的原理"><a href="#实现图片懒加载的原理" class="headerlink" title="实现图片懒加载的原理"></a>实现图片懒加载的原理</h2><p><img>标签有一个属性是src，用来表示图像的URL，当这个属性的值不为空时，浏览器就会根据这个值发送请求。如果没有src属性，就不会发送请求。<br>我们先不给<img>设置src，把图片真正的URL放在另一个属性data-src中，在需要的时候也就是图片进入可视区域的之前，将URL取出放到src中。</p>
-<h2 id="判断元素是否在可视区"><a href="#判断元素是否在可视区" class="headerlink" title="判断元素是否在可视区"></a>判断元素是否在可视区</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>①. 通过document.documentElement.clientHeight获取屏幕可视窗口高度。<br>②. 通过element.offsetTop获取元素相对于文档顶部的距离。<br>③. 通过document.documentElement.scrollTop获取浏览器窗口顶部与文档顶部之间的距离，也就是滚动条滚动的距离。<br>然后判断②-③&lt;①是否成立，如果成立，元素就在可视区域内。</p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>通过<code>getBoundingClientRect()</code>方法来获取元素的大小以及位置。<br>这个方法返回一个名为ClientRect的DOMRect对象，包含了top、right、botton、left、width、height这些值。<br>我们可以通过<code>el.getBoundingClientRect().top</code>来获取元素到可视区顶部的距离。<br>也就是说，在<code>el.getBoundingClientRect().top&lt;=clientHeight</code>时，图片是在可视区域内的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInSight</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> bound = el.getBoundingClientRect();</span><br><span class="line">  <span class="keyword">const</span> clientHeight = <span class="built_in">window</span>.innerHeight;</span><br><span class="line">  <span class="comment">// 如果只考虑向下滚动加载</span></span><br><span class="line">  <span class="comment">// 这里加100是为了提前一点点加载</span></span><br><span class="line">  <span class="keyword">return</span> bound.top &lt;= clientHeight + <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法三（IntersectionObserver）"><a href="#方法三（IntersectionObserver）" class="headerlink" title="方法三（IntersectionObserver）"></a>方法三（<a href="http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html" target="_blank" rel="noopener">IntersectionObserver</a>）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="keyword">new</span> IntersectionObserver(callback, option);</span><br><span class="line"><span class="comment">// 开始观察</span></span><br><span class="line">io.observe(<span class="built_in">document</span>.getElementById(<span class="string">'example'</span>));</span><br><span class="line"><span class="comment">// 停止观察</span></span><br><span class="line">io.unobserve(element);</span><br><span class="line"><span class="comment">// 关闭观察器</span></span><br><span class="line">io.disconnect();</span><br></pre></td></tr></table></figure>
-<p>callback的参数是一个数组，每个数组都是一个IntersectionObserverEntry对象，包括以下属性：</p>
-<ul>
-<li>time: 可见性发生变化的时间，单位为毫秒;  </li>
-<li>rootBounds: 与getBoundingClientRect()方法的返回值一样;</li>
-<li>boundingClientRect: 目标元素的矩形区域的信息;  </li>
-<li>intersectionRect: 目标元素与视口（或根元素）的交叉区域的信息;  </li>
-<li>intersectionRatio: 目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0;</li>
-<li>target: 被观察的目标元素，是一个 DOM 节点对象。<br>由上可知：当intersectionRatio &gt; 0 &amp;&amp; intersectionRatio &lt;= 1即在可视区域内。  </li>
-</ul>
-<h2 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkImgs</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> imgs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.my-photo'</span>);</span><br><span class="line">  <span class="built_in">Array</span>.from(imgs).forEach(<span class="function"><span class="params">el</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isInSight(el)) &#123;</span><br><span class="line">      loadImg(el);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 加载图片逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.src) &#123;</span><br><span class="line">    <span class="keyword">const</span> source = el.dataset.src;</span><br><span class="line">    el.src = source;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里应该是有一个优化的地方，设一个标识符标识已经加载图片的index，当滚动条滚动时就不需要遍历所有的图片，只需要遍历未加载的图片即可。  </p>
-<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><p>基本步骤：</p>
+<p>本文主要回答两大问题：<br>①： 传统 http 协议存在哪些问题<br>②： SSL/TLS 协议是如何解决这些问题的  </p>
+<h2 id="传统-http-协议存在哪些问题"><a href="#传统-http-协议存在哪些问题" class="headerlink" title="传统 http 协议存在哪些问题"></a>传统 http 协议存在哪些问题</h2><p>不使用 SSL/TLS 的HTTP通信，就是不加密的通信。所有信息明文传播，带来了三大风险。  </p>
 <ol>
-<li>获取第一次触发事件的时间戳;</li>
-<li>获取第二次触发事件的时间戳;</li>
-<li>时间差如果大于某个阈值就执行事件，然后重置第一个时间。  </li>
+<li>窃听风险（eavesdropping）：第三方可以获知通信内容；</li>
+<li>篡改风险（tampering）：第三方可以修改通信内容；</li>
+<li>冒充风险（pretending）：第三方可以冒充他人身份参与通信。  </li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, mustRun = <span class="number">500</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> previous = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">const</span> context = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">const</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span> (!previous)&#123;</span><br><span class="line">      previous = now;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> remaining = now - previous;</span><br><span class="line">    <span class="keyword">if</span> (mustRun &amp;&amp; remaining &gt;= mustRun) &#123;</span><br><span class="line">      fn.apply(context, args);</span><br><span class="line">      previous = now;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="最后一种的实现（比较新的浏览器支持）"><a href="#最后一种的实现（比较新的浏览器支持）" class="headerlink" title="最后一种的实现（比较新的浏览器支持）"></a>最后一种的实现（比较新的浏览器支持）</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkImgs</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> imgs = <span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">".my-photo"</span>));</span><br><span class="line">  imgs.forEach(<span class="function"><span class="params">item</span> =&gt;</span> io.observe(item));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!el.src) &#123;</span><br><span class="line">    <span class="keyword">const</span> source = el.dataset.src;</span><br><span class="line">    el.src = source;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> io = <span class="keyword">new</span> IntersectionObserver(<span class="function"><span class="params">ioes</span> =&gt;</span> &#123;</span><br><span class="line">  ioes.forEach(<span class="function"><span class="params">ioe</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> el = ioe.target;</span><br><span class="line">    <span class="keyword">const</span> intersectionRatio = ioe.intersectionRatio;</span><br><span class="line">    <span class="keyword">if</span> (intersectionRatio &gt; <span class="number">0</span> &amp;&amp; intersectionRatio &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">      loadImg(el);</span><br><span class="line">    &#125;</span><br><span class="line">    el.onload = el.onerror = <span class="function"><span class="params">()</span> =&gt;</span> io.unobserve(el);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="SSL-TLS-协议是如何解决这些问题的"><a href="#SSL-TLS-协议是如何解决这些问题的" class="headerlink" title="SSL/TLS 协议是如何解决这些问题的"></a>SSL/TLS 协议是如何解决这些问题的</h2><h3 id="窃听风险"><a href="#窃听风险" class="headerlink" title="窃听风险"></a>窃听风险</h3><p>要解决窃听风险的问题，就必须对信息进行加密处理。<br>而目前对信息的加密主要有两大类：对称加密与非对称加密（又称：公钥加密）。  </p>
+<p>简单理解这两种加密类型就是对称加密的<strong>加密与解密</strong>用的是同一套密文，而公钥加密的<strong>加密</strong>用“公钥”，<strong>解密</strong>用“私钥”。<br>tip: 有时我们也会用<strong>私钥</strong>加密，然后将加密后的信息传递给拥有公钥的对方，以证明：<em>我是我</em>。（这一过程俗称数字签名，你的私钥就相当于你的指纹，一旦你用自己的私钥对文件进行加密，也就意味只该文件上面有了你的指纹，任何人进行篡改都会被发现）  </p>
+<p>https 协议在进行信息传递的过程中就是通过公钥加密（目前简单这样理解）来保证传输的信息即使被人截获，对方也不能知道信息的具体内容。如此这般便解决了被窃听的隐患。  </p>
+<h3 id="篡改风险"><a href="#篡改风险" class="headerlink" title="篡改风险"></a>篡改风险</h3><p>其实理解了前面讲的窃听风险的规避原理，我们便自然知道在客户端与服务器端正常通信的过程中，第三方无法知道双方信息的解密私钥，也无法知道双方信息的加密公钥。所以一旦第三方对加密后的信息进行篡改，真正的接收信息方也就无法通过自己的私钥来对信息进行解密，也就进一步知道信息被篡改了。  </p>
+<p>上面讲的是在双方在建立信任之后的防篡改机制。双方在建立信任之前，客户端向服务器端索要并验证公钥（该公钥由服务器给出）。此时，客户端如何认定这个公钥就是由目标服务器给出的呢？  </p>
+<p>解决方法：将公钥放在<strong>数字证书</strong>中。只要证书是可信的，公钥就是可信的。<br>（数字证书是权威机构 CA 给各家服务器发的“良民证”）  </p>
+<h3 id="冒充风险"><a href="#冒充风险" class="headerlink" title="冒充风险"></a>冒充风险</h3><p>冒充风险其实有着两重含义：① 服务器被冒充； ② 客户端被冒充。<br>下面让老夫来唠一唠：  </p>
+<p>服务器为什么不会被冒充？<br>那就要请出上文提到的<strong>数字证书</strong>。服务器在表明自己身份的时候是需要出示自己的“良民证”的，而伪装者是无法拥有与之匹配的“良民证”的。  </p>
+<p>客户端为什么不会被冒充？<br>客户端在得到服务器给出的公钥之后，用这个公钥加密自己生成的一个随机码，最后发送出去。<br>此时，这个随机码就是：天不知，地不知，客户端知，服务器知。有了这个随机码，客户端与服务器就如同确认过眼神，双方都认定对方是对的人。第三者根本没有假扮成原配插足的可能性。</p>
+<h2 id="SSL-TLS-协议的握手过程"><a href="#SSL-TLS-协议的握手过程" class="headerlink" title="SSL/TLS 协议的握手过程"></a>SSL/TLS 协议的握手过程</h2><p>SSL/TLS 协议的握手过程简单地讲就是客户端与服务器确认眼神的过程。<br>“握手阶段”涉及四次通信，我们一个个来看。需要注意的是，”握手阶段”的所有通信都是明文的。  </p>
+<h3 id="客户端发出请求"><a href="#客户端发出请求" class="headerlink" title="客户端发出请求"></a>客户端发出请求</h3><p>我是谁，我具备什么样的能力。  </p>
+<ol>
+<li>支持的协议版本，比如TLS 1.0版；</li>
+<li>一个客户端生成的随机数，稍后用于生成”对话密钥”；</li>
+<li>支持的加密方法，比如RSA公钥加密；</li>
+<li>支持的压缩方法。  </li>
+</ol>
+<h3 id="服务器回应"><a href="#服务器回应" class="headerlink" title="服务器回应"></a>服务器回应</h3><p>确认双方的密码本，并出示自己的“良民证”。  </p>
+<ol>
+<li>确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信；</li>
+<li>一个服务器生成的随机数，稍后用于生成”对话密钥”；</li>
+<li>确认使用的加密方法，比如RSA公钥加密；</li>
+<li>服务器证书。  </li>
+</ol>
+<h3 id="客户端回应"><a href="#客户端回应" class="headerlink" title="客户端回应"></a>客户端回应</h3><p>用对方给的密码本加密“本人是谁”的信息。  </p>
+<ol>
+<li>一个随机数。该随机数用服务器公钥加密，防止被窃听；</li>
+<li>编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送；</li>
+<li>客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。  </li>
+</ol>
+<h3 id="服务器的最后回应"><a href="#服务器的最后回应" class="headerlink" title="服务器的最后回应"></a>服务器的最后回应</h3><p>根据前三次会话产生的三个密语，生成一个“会话密钥”，也就是对的眼神。  </p>
+<ol>
+<li>编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送；</li>
+<li>服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。  </li>
+</ol>
+<h2 id="更多的事"><a href="#更多的事" class="headerlink" title="更多的事"></a>更多的事</h2><p><strong>会话密码</strong>与<strong>公钥加密</strong>有什么关系？<br>首先了解一点，公钥加密是计算量很大的加密方式，而且数据量越大，计算量越大。<br>如果对整个信息都进行公钥加密的话，会消耗双方大量的性能。<br>所以实际上的做法是：消息通过<strong>对称加密</strong>来加密，而对称加密的解密密钥是通过<strong>非对称加密</strong>来加密。<br>如此这般，方能兼顾安全与性能。  </p>
 
       
     </div>
@@ -471,7 +491,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/优化/" rel="tag"><i class="fa fa-tag"></i> 优化</a>
+            <a href="/tags/协议/" rel="tag"><i class="fa fa-tag"></i> 协议</a>
           
         </div>
       
@@ -484,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/22/JS-common function(4)/" rel="next" title="JS常用方法（四）">
-                <i class="fa fa-chevron-left"></i> JS常用方法（四）
+              <a href="/2018/04/09/computer-http协议缓存/" rel="next" title="http协议缓存">
+                <i class="fa fa-chevron-left"></i> http协议缓存
               </a>
             
           </div>
@@ -493,10 +513,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/24/tools-VScode 上手/" rel="prev" title="VScode上手">
-                VScode上手 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现图片懒加载的原理"><span class="nav-number">1.</span> <span class="nav-text">实现图片懒加载的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断元素是否在可视区"><span class="nav-number">2.</span> <span class="nav-text">判断元素是否在可视区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法三（IntersectionObserver）"><span class="nav-number">2.3.</span> <span class="nav-text">方法三（IntersectionObserver）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载图片"><span class="nav-number">3.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数节流"><span class="nav-number">4.</span> <span class="nav-text">函数节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后一种的实现（比较新的浏览器支持）"><span class="nav-number">5.</span> <span class="nav-text">最后一种的实现（比较新的浏览器支持）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统-http-协议存在哪些问题"><span class="nav-number">1.</span> <span class="nav-text">传统 http 协议存在哪些问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS-协议是如何解决这些问题的"><span class="nav-number">2.</span> <span class="nav-text">SSL/TLS 协议是如何解决这些问题的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#窃听风险"><span class="nav-number">2.1.</span> <span class="nav-text">窃听风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#篡改风险"><span class="nav-number">2.2.</span> <span class="nav-text">篡改风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒充风险"><span class="nav-number">2.3.</span> <span class="nav-text">冒充风险</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-TLS-协议的握手过程"><span class="nav-number">3.</span> <span class="nav-text">SSL/TLS 协议的握手过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端发出请求"><span class="nav-number">3.1.</span> <span class="nav-text">客户端发出请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器回应"><span class="nav-number">3.2.</span> <span class="nav-text">服务器回应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端回应"><span class="nav-number">3.3.</span> <span class="nav-text">客户端回应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器的最后回应"><span class="nav-number">3.4.</span> <span class="nav-text">服务器的最后回应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的事"><span class="nav-number">4.</span> <span class="nav-text">更多的事</span></a></li></ol></div>
             
 
           </div>
